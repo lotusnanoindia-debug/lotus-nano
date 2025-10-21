@@ -6,8 +6,8 @@ import autoprefixer from 'autoprefixer';
 import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-  output: 'hybrid',
-  adapter: netlify(),
+  output: 'static', // Keep this as static!
+  adapter: netlify(), // Adapter enables server routes
   site: 'https://lotus-nano.com',
   trailingSlash: 'never',
   build: {
@@ -16,44 +16,32 @@ export default defineConfig({
   integrations: [
     sitemap({
       serialize(item) {
-        // Remove trailing slash from URLs
         item.url = item.url.replace(/\/$/, '');
 
-        // Homepage - highest priority
         if (item.url === 'https://lotus-nano.com') {
           item.priority = 1.0;
           item.changefreq = 'weekly';
-        }
-        // Core service pages - highest priority
-        else if (
+        } else if (
           item.url.match(
             /\/(pfas-substitutes-sourcing|pfas-management-advisory|intelligence)$/
           )
         ) {
           item.priority = 0.9;
           item.changefreq = 'monthly';
-        }
-        // About and Working with us - high priority
-        else if (item.url.match(/\/(about|working-with-us)$/)) {
+        } else if (item.url.match(/\/(about|working-with-us)$/)) {
           item.priority = 0.8;
           item.changefreq = 'monthly';
-        }
-        // Content/playbooks - medium priority
-        else if (
+        } else if (
           item.url.match(
             /\/(pfas-delay-tactics-playbook|pfas-free-cookware-coating-PE-CVD|pfas-free-textile-playbook|pfas-transformation-playbook|pfas-roadmap-for-manufacturers|pfas-future-outlook|why-consumers-demand-pfas-free|automotive-lens-anti-reflective-coating)$/
           )
         ) {
           item.priority = 0.7;
           item.changefreq = 'monthly';
-        }
-        // Legal/terms - low priority
-        else if (item.url.match(/\/(privacy|terms-of-service)$/)) {
+        } else if (item.url.match(/\/(privacy|terms-of-service)$/)) {
           item.priority = 0.3;
           item.changefreq = 'yearly';
-        }
-        // Default
-        else {
+        } else {
           item.priority = 0.5;
           item.changefreq = 'monthly';
         }
