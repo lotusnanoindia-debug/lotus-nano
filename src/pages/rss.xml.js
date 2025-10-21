@@ -4,8 +4,9 @@ import { blogPosts } from '../data/blogPosts';
 export async function GET(context) {
   return rss({
     title: 'Lotus Nano Intelligence',
-    description: 'Strategic PFAS insights and analysis from Lotus Nano.',
-    site: context.site,
+    description:
+      'Strategic PFAS insights and alternative technology intelligence',
+    site: 'https://lotus-nano.com', // Hardcoded instead of context.site
     items: blogPosts.map((post) => ({
       title: post.blogtitle,
       description: post.blogdescr,
@@ -15,6 +16,5 @@ export async function GET(context) {
       categories: [post.categoryFull, post.category],
     })),
     customData: `<language>en-GB</language>`,
-    stylesheet: '/rss-styles.xsl', // Optional: add custom styling
   });
 }
