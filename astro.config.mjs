@@ -3,9 +3,11 @@ import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-  output: 'static',
+  output: 'hybrid',
+  adapter: netlify(),
   site: 'https://lotus-nano.com',
   trailingSlash: 'never',
   build: {
