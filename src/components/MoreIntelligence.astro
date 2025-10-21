@@ -1,0 +1,68 @@
+---
+import { blogPosts } from '../data/blogPosts';
+
+interface Props {
+  currentArticleUrl: string;
+}
+
+const { currentArticleUrl } = Astro.props;
+
+// Get 4 random articles excluding current one
+const otherArticles = blogPosts.filter(
+  (post) => post.url !== currentArticleUrl
+);
+const shuffled = otherArticles.sort(() => 0.5 - Math.random());
+const randomFour = shuffled.slice(0, 4);
+---
+
+<section class="border-t border-stone-800 py-24">
+  <div class="mx-auto max-w-5xl px-6 lg:px-8">
+    <h2 class="mb-12 text-3xl font-black text-stone-100">More Intelligence</h2>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        randomFour.map((post) => (
+          <a
+            href={post.url}
+            class="group overflow-hidden rounded-xl border border-stone-800 bg-stone-800/30 transition-all hover:border-amber-400/50"
+          >
+            <div class="aspect-video w-full overflow-hidden">
+              <img
+                src={post.img}
+                alt={post.blogtitle}
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-6">
+              <div class="mb-2 text-xs font-semibold uppercase tracking-wider text-amber-400">
+                {post.categoryFull}
+              </div>
+              <h3 class="mb-3 text-lg font-bold leading-tight text-stone-200 transition-colors group-hover:text-amber-400">
+                {post.blogtitle}
+              </h3>
+              <p class="text-sm leading-relaxed text-stone-400">
+                {post.blogdescr}
+              </p>
+              <div class="mt-4 flex items-center gap-2 text-xs text-stone-500">
+                <span>{post.readTime}</span>
+                <span>·</span>
+                <span>{post.publishDateFull}</span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- View All Link -->
+    <div class="mt-12 text-center">
+      <a
+        href="/intelligence"
+        class="group inline-flex items-center gap-2 text-lg font-semibold text-stone-400 transition-colors hover:text-amber-400"
+      >
+        View all Intelligence
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+  </div>
+</section>

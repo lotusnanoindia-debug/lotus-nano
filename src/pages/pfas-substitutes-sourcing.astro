@@ -1,0 +1,1026 @@
+---
+import BaseLayout from '../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import IntelCTA from '../components/IntelCTA.astro';
+
+const title =
+  'PFAS Substitutes Sourcing | Proven 4-Phase De-Risking Methodology | Lotus Nano';
+const description =
+  'Our proven 4-phase PFAS sourcing methodology delivers validated alternatives 50% faster. From deep requirements understanding to global supplier intelligence and clean handover.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://lotus-nano.com/pfas-substitutes-sourcing#service',
+    name: 'PFAS Substitutes Sourcing',
+    description: description,
+    url: 'https://lotus-nano.com/pfas-substitutes-sourcing',
+    provider: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'Worldwide',
+    },
+    serviceType: 'PFAS Alternatives Sourcing',
+    category: 'Environmental Consulting',
+    offers: {
+      '@type': 'Offer',
+      description:
+        '4-phase de-risking methodology for PFAS-free alternatives sourcing',
+      availability: 'https://schema.org/InStock',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://lotus-nano.com/pfas-substitutes-sourcing#breadcrumb',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'PFAS Substitutes Sourcing',
+        item: 'https://lotus-nano.com/pfas-substitutes-sourcing',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://lotus-nano.com/pfas-substitutes-sourcing"
+  ogImage="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-de-risk-approach.png?w=1200&h=630"
+  ogType="website"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Main Content -->
+  <article class="relative min-h-screen bg-stone-900 pt-32 lg:pt-48">
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+      <!-- Hero: Asymmetric Problem Statement -->
+      <header class="mb-48 grid gap-12 lg:grid-cols-12 lg:gap-20">
+        <div class="lg:col-span-7">
+          <div
+            class="mb-8 inline-flex items-center rounded-full border border-stone-700/50 bg-stone-800/50 px-4 py-2 text-sm font-medium text-stone-300 backdrop-blur-sm"
+          >
+            <div class="mr-3 h-2 w-2 rounded-full bg-amber-400"></div>
+            PFAS Alternatives Sourcing
+          </div>
+
+          <h1
+            class="mb-8 text-5xl font-black leading-tight tracking-tighter text-stone-100 lg:text-7xl xl:text-8xl"
+          >
+            PFAS-Free.<br />In 4 Steps.
+          </h1>
+
+          <p class="mb-12 max-w-2xl text-xl leading-relaxed text-stone-400">
+            Validated PFAS alternatives that actually work at scale. Minimal
+            trial-and-error. No regrettable substitutions. Just systematic
+            sourcing from the global marketplace.
+          </p>
+
+          <span
+            class="group/cta inline-block cursor-pointer font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+            data-fillout-id="8F9rw7E4UBus"
+            data-fillout-embed-type="popup"
+            data-fillout-dynamic-resize
+            data-fillout-popup-size="medium"
+          >
+            Discuss your sourcing challenge
+            <span
+              class="inline-block transition-transform duration-300 group-hover/cta:translate-x-1"
+              >→</span
+            >
+          </span>
+        </div>
+
+        <div class="flex items-center lg:col-span-5">
+          <figure class="relative w-full">
+            <img
+              src="https://the-knowledge-brokers.sirv.com/lotus-nano/pfas-sourcing-at-lotus-nano.png?w=600"
+              alt="PFAS sourcing methodology"
+              class="w-full rounded-2xl grayscale transition-all duration-700 hover:grayscale-0"
+              width="600"
+              height="400"
+              loading="eager"
+            />
+          </figure>
+        </div>
+      </header>
+
+      <!-- Your Path to PFAS Freedom: 4-Step Overview -->
+      <section class="mb-32">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-6xl"
+          >
+            Your Path to <span class="text-amber-400">PFAS Freedom</span>
+          </h2>
+          <p class="text-lg leading-relaxed text-stone-400">
+            Four systematic phases. Zero trial-and-error. Validated alternatives
+            that actually work at scale.
+          </p>
+        </header>
+
+        <!-- Asymmetric Grid: Image Left, Cards Right -->
+        <div class="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <!-- Left: Large Image -->
+          <div class="lg:col-span-5">
+            <div class="lg:sticky lg:top-32">
+              <figure>
+                <img
+                  src="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-de-risk-approach1.png?w=600&sharpen=1"
+                  alt="4-phase PFAS sourcing methodology"
+                  class="w-full rounded-2xl border border-stone-800/50 grayscale transition-all duration-700 hover:grayscale-0"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </div>
+
+          <!-- Right: 4 Steps Stacked -->
+          <div class="space-y-6 lg:col-span-7">
+            <!-- Step 1 -->
+            <article class="group">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+              >
+                <div class="flex items-start gap-6">
+                  <div
+                    class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                  >
+                    <span class="text-2xl font-black text-amber-400">01</span>
+                  </div>
+                  <div>
+                    <h3
+                      class="mb-2 text-xl font-black leading-tight text-stone-100"
+                    >
+                      Definition
+                    </h3>
+                    <p class="text-sm leading-relaxed text-stone-500">
+                      Map the complete technical, regulatory, and commercial
+                      landscape before touching suppliers.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Step 2 -->
+            <article class="group">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+              >
+                <div class="flex items-start gap-6">
+                  <div
+                    class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                  >
+                    <span class="text-2xl font-black text-amber-400">02</span>
+                  </div>
+                  <div>
+                    <h3
+                      class="mb-2 text-xl font-black leading-tight text-stone-100"
+                    >
+                      Intelligence
+                    </h3>
+                    <p class="text-sm leading-relaxed text-stone-500">
+                      Access 350+ pre-qualified zero-PFAS suppliers & deep
+                      market intelligence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Step 3 -->
+            <article class="group">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+              >
+                <div class="flex items-start gap-6">
+                  <div
+                    class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                  >
+                    <span class="text-2xl font-black text-amber-400">03</span>
+                  </div>
+                  <div>
+                    <h3
+                      class="mb-2 text-xl font-black leading-tight text-stone-100"
+                    >
+                      Validation
+                    </h3>
+                    <p class="text-sm leading-relaxed text-stone-500">
+                      Rigorous real-world testing before commitment. No
+                      regrettable substitutions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Step 4 -->
+            <article class="group">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+              >
+                <div class="flex items-start gap-6">
+                  <div
+                    class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                  >
+                    <span class="text-2xl font-black text-amber-400">04</span>
+                  </div>
+                  <div>
+                    <h3
+                      class="mb-2 text-xl font-black leading-tight text-stone-100"
+                    >
+                      Onboarding
+                    </h3>
+                    <p class="text-sm leading-relaxed text-stone-500">
+                      Clean onboarding and supplier handover. You own the
+                      relationship. No ongoing fees, no vendor lock-in.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 Phases: Vertical Timeline Layout -->
+      <section class="mb-32">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            How We <span class="text-amber-400">Source Differently</span>
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Four systematic phases that eliminate guesswork and compress
+            timelines. Most manufacturers skip phase 1 and 2—then wonder why
+            alternatives fail.
+          </p>
+        </header>
+
+        <!-- Phase Timeline -->
+        <div class="relative">
+          <!-- Connecting Line (Desktop) -->
+          <div
+            class="absolute bottom-0 left-12 top-0 hidden w-0.5 bg-stone-800 lg:block"
+          >
+          </div>
+
+          <!-- Phase 1 -->
+          <div class="relative mb-16 grid gap-8 lg:grid-cols-12 lg:gap-12">
+            <!-- Phase Number -->
+            <div class="flex items-start lg:col-span-2 lg:justify-end">
+              <div
+                class="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-2"
+              >
+                <div
+                  class="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-400/30 bg-amber-600/20 lg:h-20 lg:w-20"
+                >
+                  <span class="text-2xl font-black text-amber-400 lg:text-3xl"
+                    >01</span
+                  >
+                </div>
+                <div class="lg:text-right">
+                  <div
+                    class="text-xs font-bold uppercase tracking-wider text-stone-600"
+                  >
+                    Phase One
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase Content -->
+            <div class="lg:col-span-10">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50 lg:p-10"
+              >
+                <h3
+                  class="mb-4 text-2xl font-black tracking-tight text-stone-100 lg:text-3xl"
+                >
+                  Deep Requirements Understanding
+                </h3>
+
+                <p class="mb-8 text-base leading-relaxed text-stone-400">
+                  Most PFAS sourcing fails because requirements are superficial.
+                  We map the complete technical, regulatory, and commercial
+                  landscape before touching supplier networks.
+                </p>
+
+                <!-- Deliverables Grid -->
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Complete technical specification analysis</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Performance threshold validation</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Regulatory constraint mapping</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Cost-performance trade-off analysis</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Supply chain integration assessment</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Timeline and volume requirement definition</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="relative mb-16 grid gap-8 lg:grid-cols-12 lg:gap-12">
+            <!-- Phase Number -->
+            <div class="flex items-start lg:col-span-2 lg:justify-end">
+              <div
+                class="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-2"
+              >
+                <div
+                  class="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-400/30 bg-amber-600/20 lg:h-20 lg:w-20"
+                >
+                  <span class="text-2xl font-black text-amber-400 lg:text-3xl"
+                    >02</span
+                  >
+                </div>
+                <div class="lg:text-right">
+                  <div
+                    class="text-xs font-bold uppercase tracking-wider text-stone-600"
+                  >
+                    Phase Two
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase Content -->
+            <div class="lg:col-span-10">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50 lg:p-10"
+              >
+                <h3
+                  class="mb-4 text-2xl font-black tracking-tight text-stone-100 lg:text-3xl"
+                >
+                  Global Supplier Intelligence
+                </h3>
+
+                <p class="mb-8 text-base leading-relaxed text-stone-400">
+                  Access to 350+ pre-qualified zero-PFAS suppliers, research
+                  institutes, and laboratories your competitors may have never
+                  had on their radar. We've spent years building these
+                  relationships so you don't have to.
+                </p>
+
+                <!-- Deliverables Grid -->
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Proprietary supplier network screening</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Technical capability verification</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Manufacturing capacity assessment</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Quality system audit</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Commercial terms pre-negotiation</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Shortlist presentation (3-5 candidates)</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="relative mb-16 grid gap-8 lg:grid-cols-12 lg:gap-12">
+            <!-- Phase Number -->
+            <div class="flex items-start lg:col-span-2 lg:justify-end">
+              <div
+                class="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-2"
+              >
+                <div
+                  class="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-400/30 bg-amber-600/20 lg:h-20 lg:w-20"
+                >
+                  <span class="text-2xl font-black text-amber-400 lg:text-3xl"
+                    >03</span
+                  >
+                </div>
+                <div class="lg:text-right">
+                  <div
+                    class="text-xs font-bold uppercase tracking-wider text-stone-600"
+                  >
+                    Phase Three
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase Content -->
+            <div class="lg:col-span-10">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50 lg:p-10"
+              >
+                <h3
+                  class="mb-4 text-2xl font-black tracking-tight text-stone-100 lg:text-3xl"
+                >
+                  Rigorous Validation & Testing
+                </h3>
+
+                <p class="mb-8 text-base leading-relaxed text-stone-400">
+                  Laboratory claims mean nothing if they don't translate to
+                  production. We coordinate real-world testing before you commit
+                  to anything.
+                </p>
+
+                <!-- Deliverables Grid -->
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Sample procurement and testing coordination</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Performance benchmarking vs. PFAS baseline</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Production-scale trial planning</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Third-party PFAS verification</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Risk assessment and mitigation strategy</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Final supplier recommendation report</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="relative grid gap-8 lg:grid-cols-12 lg:gap-12">
+            <!-- Phase Number -->
+            <div class="flex items-start lg:col-span-2 lg:justify-end">
+              <div
+                class="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-2"
+              >
+                <div
+                  class="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-400/30 bg-amber-600/20 lg:h-20 lg:w-20"
+                >
+                  <span class="text-2xl font-black text-amber-400 lg:text-3xl"
+                    >04</span
+                  >
+                </div>
+                <div class="lg:text-right">
+                  <div
+                    class="text-xs font-bold uppercase tracking-wider text-stone-600"
+                  >
+                    Phase Four
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase Content -->
+            <div class="lg:col-span-10">
+              <div
+                class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50 lg:p-10"
+              >
+                <h3
+                  class="mb-4 text-2xl font-black tracking-tight text-stone-100 lg:text-3xl"
+                >
+                  Clean Handover & Independence
+                </h3>
+
+                <p class="mb-8 text-base leading-relaxed text-stone-400">
+                  You own the supplier relationship. We facilitate
+                  introductions, transfer knowledge, then step back. No ongoing
+                  fees, no vendor lock-in.
+                </p>
+
+                <!-- Deliverables Grid -->
+                <div class="grid gap-4 md:grid-cols-2">
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Direct supplier introduction and relationship transfer</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Complete documentation package</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Technical specification finalization</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Quality agreement framework</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Implementation roadmap</span
+                    >
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-400"
+                    />
+                    <span class="text-sm text-stone-500"
+                      >Post-handover support (3 months included)</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- When Standard Sourcing Isn't Enough -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            When Standard Sourcing <span class="text-amber-400"
+              >Isn't Enough</span
+            >
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            For complex applications where existing PFAS alternatives don't
+            exist, we offer advanced pathways.
+          </p>
+        </header>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <!-- R&D Collaboration -->
+          <article
+            class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/20"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon name="mdi:flask-outline" class="h-6 w-6 text-amber-400" />
+            </div>
+
+            <h3 class="mb-4 text-2xl font-black tracking-tight text-stone-100">
+              R&D Collaboration Programs
+            </h3>
+
+            <p class="mb-6 text-base leading-relaxed text-stone-400">
+              Partner with material science institutes and innovative suppliers
+              to co-develop PFAS alternatives tailored to your exact
+              requirements.
+            </p>
+
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                ></span>
+                <span class="text-sm text-stone-500"
+                  >Academic and industry R&D network access</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                ></span>
+                <span class="text-sm text-stone-500"
+                  >Joint development agreement facilitation</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                ></span>
+                <span class="text-sm text-stone-500"
+                  >IP protection and commercialization strategy</span
+                >
+              </li>
+            </ul>
+          </article>
+
+          <!-- Custom Development -->
+          <article
+            class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/20"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon name="mdi:cog-outline" class="h-6 w-6 text-amber-400" />
+            </div>
+
+            <h3 class="mb-4 text-2xl font-black tracking-tight text-stone-100">
+              Custom Formulation Development
+            </h3>
+
+            <p class="mb-6 text-base leading-relaxed text-stone-400">
+              Commission bespoke PFAS-free formulations when existing solutions
+              fall short. Retain full ownership of developed materials.
+            </p>
+
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                ></span>
+                <span class="text-sm text-stone-500"
+                  >Dedicated formulation chemistry teams</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                ></span>
+                <span class="text-sm text-stone-500"
+                  >Rapid prototyping and iteration cycles</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                ></span>
+                <span class="text-sm text-stone-500"
+                  >Scale-up to commercial production support</span
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Why We Succeed -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Why Others Struggle <span class="text-amber-400"
+              >Where We Succeed</span
+            >
+          </h2>
+        </header>
+
+        <div class="space-y-6">
+          <!-- Comparison 1 -->
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-xl border border-stone-700 bg-stone-800/50 p-6">
+              <div class="mb-3 flex items-start gap-4">
+                <Icon
+                  name="mdi:close-circle"
+                  class="mt-0.5 h-6 w-6 flex-shrink-0 text-stone-600"
+                />
+                <div>
+                  <h4 class="mb-1 text-sm font-bold text-stone-400">
+                    Typical Approach
+                  </h4>
+                  <p class="text-sm text-stone-500">
+                    Start with supplier outreach before understanding true
+                    requirements
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="rounded-xl border border-amber-400/30 bg-stone-800/30 p-6"
+            >
+              <div class="mb-3 flex items-start gap-4">
+                <Icon
+                  name="mdi:check-circle"
+                  class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+                />
+                <div>
+                  <h4 class="mb-1 text-sm font-bold text-stone-100">
+                    Our Approach
+                  </h4>
+                  <p class="text-sm text-stone-400">
+                    Deep requirements mapping BEFORE touching suppliers —
+                    eliminates 80% of wasted time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison 2 -->
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-xl border border-stone-700 bg-stone-800/50 p-6">
+              <div class="mb-3 flex items-start gap-4">
+                <Icon
+                  name="mdi:close-circle"
+                  class="mt-0.5 h-6 w-6 flex-shrink-0 text-stone-600"
+                />
+                <div>
+                  <h4 class="mb-1 text-sm font-bold text-stone-400">
+                    Typical Approach
+                  </h4>
+                  <p class="text-sm text-stone-500">
+                    Limited to publicly listed or familiar suppliers and usual
+                    trade directories
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="rounded-xl border border-amber-400/30 bg-stone-800/30 p-6"
+            >
+              <div class="mb-3 flex items-start gap-4">
+                <Icon
+                  name="mdi:check-circle"
+                  class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+                />
+                <div>
+                  <h4 class="mb-1 text-sm font-bold text-stone-100">
+                    Our Approach
+                  </h4>
+                  <p class="text-sm text-stone-400">
+                    Proprietary network of 350+ pre-qualified suppliers — many
+                    competitors don't know exist. Deep sourcing capability with
+                    cutting edge tools.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison 3 -->
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-xl border border-stone-700 bg-stone-800/50 p-6">
+              <div class="mb-3 flex items-start gap-4">
+                <Icon
+                  name="mdi:close-circle"
+                  class="mt-0.5 h-6 w-6 flex-shrink-0 text-stone-600"
+                />
+                <div>
+                  <h4 class="mb-1 text-sm font-bold text-stone-400">
+                    Typical Approach
+                  </h4>
+                  <p class="text-sm text-stone-500">
+                    Accept supplier claims at face value, waste time discovering
+                    issues during trials.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="rounded-xl border border-amber-400/30 bg-stone-800/30 p-6"
+            >
+              <div class="mb-3 flex items-start gap-4">
+                <Icon
+                  name="mdi:check-circle"
+                  class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+                />
+                <div>
+                  <h4 class="mb-1 text-sm font-bold text-stone-100">
+                    Our Approach
+                  </h4>
+                  <p class="text-sm text-stone-400">
+                    Deep scrutiny and evidence-based product & supplier
+                    validation before you go to trials to eliminate time
+                    wasters.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Industries Served -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-12 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Industries We've <span class="text-amber-400">Assisted</span>
+          </h2>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon name="mdi:car" class="mx-auto mb-2 h-8 w-8 text-amber-400" />
+            <div class="text-sm font-medium text-stone-300">Automotive</div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon name="mdi:atom" class="mx-auto mb-2 h-8 w-8 text-amber-400" />
+            <div class="text-sm font-medium text-stone-300">Coatings</div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon name="mdi:chip" class="mx-auto mb-2 h-8 w-8 text-amber-400" />
+            <div class="text-sm font-medium text-stone-300">Consumer Goods</div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon
+              name="mdi:hospital-building"
+              class="mx-auto mb-2 h-8 w-8 text-amber-400"
+            />
+            <div class="text-sm font-medium text-stone-300">
+              Medical Devices
+            </div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon
+              name="mdi:package-variant"
+              class="mx-auto mb-2 h-8 w-8 text-amber-400"
+            />
+            <div class="text-sm font-medium text-stone-300">Packaging</div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon
+              name="mdi:tshirt-crew"
+              class="mx-auto mb-2 h-8 w-8 text-amber-400"
+            />
+            <div class="text-sm font-medium text-stone-300">Textiles</div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon
+              name="mdi:lightbulb"
+              class="mx-auto mb-2 h-8 w-8 text-amber-400"
+            />
+            <div class="text-sm font-medium text-stone-300">Energy</div>
+          </div>
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 px-4 py-6 text-center transition-colors hover:border-amber-400/30"
+          >
+            <Icon name="mdi:cook" class="mx-auto mb-2 h-8 w-8 text-amber-400" />
+            <div class="text-sm font-medium text-stone-300">Cookware</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <IntelCTA />
+  </article>
+</BaseLayout>

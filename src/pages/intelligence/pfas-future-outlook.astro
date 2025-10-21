@@ -1,0 +1,1529 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { blogPosts } from '../../data/blogPosts';
+import MoreIntelligence from '../../components/MoreIntelligence.astro';
+import IntelCTA from '../../components/IntelCTA.astro';
+
+const article = blogPosts.find(
+  (post) => post.url === '/intelligence/pfas-future-outlook'
+);
+
+if (!article) {
+  throw new Error('Article metadata not found in blogPosts.ts');
+}
+
+// Format date as "MMM YYYY" (e.g., "Aug 2025")
+const publishDateFormatted = new Date(
+  article.publishDateFull
+).toLocaleDateString('en-GB', {
+  month: 'short',
+  year: 'numeric',
+});
+
+// Current date for dateModified
+const currentDate = new Date().toISOString().split('T')[0];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `https://lotus-nano.com${article.url}#article`,
+    headline: article.blogtitle,
+    description: article.blogdescr,
+    image: {
+      '@type': 'ImageObject',
+      url: article.img,
+      width: 1200,
+      height: 630,
+    },
+    author: {
+      '@type': 'Person',
+      '@id': `https://lotus-nano.com${article.url}#author`,
+      name: article.authorName,
+      jobTitle: article.authorRole,
+      image: {
+        '@type': 'ImageObject',
+        url: article.authorImage,
+      },
+    },
+    publisher: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    datePublished: article.publishDateFull,
+    dateModified: currentDate,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://lotus-nano.com${article.url}`,
+    },
+    isPartOf: {
+      '@id': 'https://lotus-nano.com/intelligence#blog',
+    },
+    inLanguage: 'en-GB',
+    articleSection: article.categoryFull,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `https://lotus-nano.com${article.url}#breadcrumb`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Intelligence',
+        item: 'https://lotus-nano.com/intelligence',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.blogtitle,
+        item: `https://lotus-nano.com${article.url}`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={article.blogtitle}
+  description={article.blogdescr}
+  canonical={`https://lotus-nano.com${article.url}`}
+  ogImage={article.img}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <meta property="article:author" content={article.authorName} />
+    <meta property="article:published_time" content={article.publishDateFull} />
+    <meta property="article:modified_time" content={currentDate} />
+    <meta property="article:section" content={article.categoryFull} />
+  </Fragment>
+
+  <article class="bg-stone-900">
+    <!-- Hero Image -->
+    <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <img
+        src={article.img}
+        alt={article.blogtitle}
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent"
+      >
+      </div>
+    </section>
+
+    <!-- Header -->
+    <section class="relative -mt-32 pb-24">
+      <div class="mx-auto max-w-4xl px-6 lg:px-8">
+        <!-- Meta -->
+        <div class="mb-8 flex items-center justify-between text-sm">
+          <div class="flex items-center gap-3">
+            <span class="font-semibold text-amber-400"
+              >{article.categoryFull}</span
+            >
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{publishDateFormatted}</span>
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{article.readTime} read</span>
+          </div>
+          <a
+            href="/intelligence"
+            class="text-stone-500 transition-colors hover:text-stone-300"
+            >← Intelligence</a
+          >
+        </div>
+
+        <!-- Title -->
+        <h1
+          class="mb-8 text-5xl font-black leading-[0.95] tracking-tighter text-stone-100 lg:text-7xl"
+        >
+          {article.blogtitle}
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="mb-16 text-2xl font-light leading-relaxed text-stone-400 lg:text-3xl"
+        >
+          {article.blogdescr}
+        </p>
+
+        <!-- Author -->
+        <div class="flex items-center gap-4 border-t border-stone-800 pt-8">
+          <img
+            src={article.authorImage}
+            alt={article.authorName}
+            class="h-12 w-12 rounded-full"
+            width="48"
+            height="48"
+          />
+          <div>
+            <div class="font-semibold text-stone-200">{article.authorName}</div>
+            <div class="text-sm text-stone-500">{article.authorRole}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="rounded-xl border-l-4 border-amber-400 bg-stone-800/30 p-8">
+          <p class="mb-6 text-2xl font-light leading-relaxed text-stone-200">
+            "Phasing out PFAS becomes mandatory. Strategic planning determines
+            whether organisations lead this transformation or scramble to
+            comply."
+          </p>
+          <p class="text-lg leading-relaxed text-stone-400">
+            Between 2025 and 2035, PFAS regulations will fundamentally reshape
+            manufacturing, supply chains, and competitive dynamics across
+            industries. Organisations treating this as distant regulatory
+            speculation rather than imminent operational reality face market
+            displacement, compliance crises, and competitive disadvantage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            Regulatory frameworks worldwide are converging toward comprehensive
+            PFAS restrictions that extend beyond specific compounds to entire
+            chemical families. What began as targeted bans on legacy substances
+            has evolved into systematic elimination affecting thousands of
+            materials across manufacturing sectors.
+          </p>
+
+          <p>
+            This outlook synthesises regulatory developments, technology trends,
+            market forces, and strategic implications into actionable timelines
+            for organisations navigating PFAS transition. Three scenario
+            analyses illuminate possible futures ranging from coordinated global
+            restrictions to fragmented regional approaches, each carrying
+            distinct strategic implications.
+          </p>
+
+          <p class="text-xl font-medium text-stone-300">
+            Understanding regulatory trajectory enables proactive positioning
+            rather than reactive compliance—the difference between leading
+            market transformation and scrambling to maintain operations under
+            enforcement pressure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Regulatory Convergence -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-5xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          Global Regulatory Convergence
+        </h2>
+
+        <div class="mb-12 space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            Regulatory momentum has shifted from incremental compound-specific
+            restrictions toward comprehensive class-based bans. The European
+            Union's universal PFAS restriction proposal exemplifies this
+            evolution—targeting over 10,000 substances simultaneously rather
+            than addressing individual chemicals sequentially.
+          </p>
+
+          <p>
+            This regulatory convergence reflects scientific consensus about PFAS
+            persistence, bioaccumulation, and environmental harm extending
+            across entire chemical families. Jurisdictions implementing
+            restrictions increasingly adopt similar frameworks, timelines, and
+            enforcement approaches despite political and economic differences.
+          </p>
+        </div>
+
+        <!-- Regulatory Phases -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-bold text-stone-200">
+            Six Regulatory Phases (2025–2035)
+          </h3>
+
+          <div class="space-y-4">
+            <!-- Phase 1 -->
+            <details
+              class="group rounded-xl border border-stone-800 bg-stone-800/30"
+            >
+              <summary
+                class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-sm font-black text-amber-400"
+                    >01</span
+                  >
+                  <div>
+                    <div>2025–2026: Early Adopter Restrictions</div>
+                    <div class="text-sm font-normal text-stone-400">
+                      Probability: 95%
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                  >▼</span
+                >
+              </summary>
+              <div
+                class="space-y-4 border-t border-stone-800 p-6 text-stone-400"
+              >
+                <p class="leading-relaxed">
+                  Nordic countries (Denmark, Norway, Sweden) and progressive US
+                  states (California, Maine, Minnesota) implement comprehensive
+                  PFAS bans affecting consumer products and food packaging.
+                  Enforcement begins creating market pressure extending beyond
+                  restricted jurisdictions as retailers and manufacturers avoid
+                  dual inventory systems.
+                </p>
+                <div
+                  class="rounded border border-stone-700 bg-stone-900/50 p-4"
+                >
+                  <h5 class="mb-2 font-semibold text-stone-300">
+                    Strategic Implication
+                  </h5>
+                  <p class="text-sm leading-relaxed">
+                    Early movers establish PFAS-free capabilities whilst
+                    competitors remain dependent on restricted materials.
+                    First-mover advantages compound as market preference shifts
+                    toward verified alternatives.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Phase 2 -->
+            <details
+              class="group rounded-xl border border-stone-800 bg-stone-800/30"
+            >
+              <summary
+                class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-sm font-black text-amber-400"
+                    >02</span
+                  >
+                  <div>
+                    <div>2027–2028: EU Universal Restriction</div>
+                    <div class="text-sm font-normal text-stone-400">
+                      Probability: 85%
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                  >▼</span
+                >
+              </summary>
+              <div
+                class="space-y-4 border-t border-stone-800 p-6 text-stone-400"
+              >
+                <p class="leading-relaxed">
+                  European Chemicals Agency (ECHA) finalises universal PFAS
+                  restriction under REACH regulation, targeting all per- and
+                  polyfluoroalkyl substances. Transition periods vary by
+                  application: 18 months for consumer products, 5 years for
+                  industrial applications, 12 years for critical uses where
+                  alternatives remain unproven.
+                </p>
+                <div
+                  class="rounded border border-stone-700 bg-stone-900/50 p-4"
+                >
+                  <h5 class="mb-2 font-semibold text-stone-300">
+                    Strategic Implication
+                  </h5>
+                  <p class="text-sm leading-relaxed">
+                    EU market access requires verified PFAS-free status.
+                    Organisations without transition strategies face immediate
+                    compliance crises. Supply chains supplying EU markets
+                    experience cascading pressure regardless of headquarters
+                    location.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Phase 3 -->
+            <details
+              class="group rounded-xl border border-stone-800 bg-stone-800/30"
+            >
+              <summary
+                class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-sm font-black text-amber-400"
+                    >03</span
+                  >
+                  <div>
+                    <div>2028–2029: North American Expansion</div>
+                    <div class="text-sm font-normal text-stone-400">
+                      Probability: 75%
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                  >▼</span
+                >
+              </summary>
+              <div
+                class="space-y-4 border-t border-stone-800 p-6 text-stone-400"
+              >
+                <p class="leading-relaxed">
+                  US federal legislation or EPA regulatory action establishes
+                  nationwide PFAS framework, superseding state-level patchwork.
+                  Canada aligns restrictions with US and EU approaches, creating
+                  North American regulatory consistency. Mexico follows suit
+                  under trade agreement pressures.
+                </p>
+                <div
+                  class="rounded border border-stone-700 bg-stone-900/50 p-4"
+                >
+                  <h5 class="mb-2 font-semibold text-stone-300">
+                    Strategic Implication
+                  </h5>
+                  <p class="text-sm leading-relaxed">
+                    North American manufacturers lose home market regulatory
+                    advantages. Organisations delaying transition based on US
+                    political uncertainty face compressed timelines and limited
+                    alternative availability.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Phase 4 -->
+            <details
+              class="group rounded-xl border border-stone-800 bg-stone-800/30"
+            >
+              <summary
+                class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-sm font-black text-amber-400"
+                    >04</span
+                  >
+                  <div>
+                    <div>2029–2030: Asian Market Restrictions</div>
+                    <div class="text-sm font-normal text-stone-400">
+                      Probability: 70%
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                  >▼</span
+                >
+              </summary>
+              <div
+                class="space-y-4 border-t border-stone-800 p-6 text-stone-400"
+              >
+                <p class="leading-relaxed">
+                  Japan, South Korea, and Taiwan implement PFAS restrictions
+                  aligned with EU and North American frameworks. China
+                  establishes domestic PFAS regulations balancing environmental
+                  goals with manufacturing competitiveness, creating unique
+                  compliance requirements that nevertheless restrict most
+                  applications.
+                </p>
+                <div
+                  class="rounded border border-stone-700 bg-stone-900/50 p-4"
+                >
+                  <h5 class="mb-2 font-semibold text-stone-300">
+                    Strategic Implication
+                  </h5>
+                  <p class="text-sm leading-relaxed">
+                    Global supply chains require universal PFAS-free
+                    capabilities. Regional differentiation becomes impractical
+                    as major markets converge on similar restrictions. Last
+                    holdouts lose competitive positioning.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Phase 5 -->
+            <details
+              class="group rounded-xl border border-stone-800 bg-stone-800/30"
+            >
+              <summary
+                class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-sm font-black text-amber-400"
+                    >05</span
+                  >
+                  <div>
+                    <div>2030–2032: Enforcement Intensification</div>
+                    <div class="text-sm font-normal text-stone-400">
+                      Probability: 80%
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                  >▼</span
+                >
+              </summary>
+              <div
+                class="space-y-4 border-t border-stone-800 p-6 text-stone-400"
+              >
+                <p class="leading-relaxed">
+                  Regulatory authorities shift from framework establishment to
+                  active enforcement. Testing requirements expand from
+                  manufacturer declarations to analytical verification.
+                  Non-compliance penalties escalate. Supply chain liability
+                  extends beyond direct manufacturers to importers, retailers,
+                  and distributors.
+                </p>
+                <div
+                  class="rounded border border-stone-700 bg-stone-900/50 p-4"
+                >
+                  <h5 class="mb-2 font-semibold text-stone-300">
+                    Strategic Implication
+                  </h5>
+                  <p class="text-sm leading-relaxed">
+                    Compliance documentation becomes critical business asset.
+                    Organisations lacking systematic PFAS management face market
+                    access barriers, customer rejection, and enforcement
+                    actions. "PFAS-free" claims without verification create
+                    liability exposure.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Phase 6 -->
+            <details
+              class="group rounded-xl border border-stone-800 bg-stone-800/30"
+            >
+              <summary
+                class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+              >
+                <div class="flex items-center gap-4">
+                  <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400/10 text-sm font-black text-amber-400"
+                    >06</span
+                  >
+                  <div>
+                    <div>2033–2035: Universal Compliance</div>
+                    <div class="text-sm font-normal text-stone-400">
+                      Probability: 60%
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                  >▼</span
+                >
+              </summary>
+              <div
+                class="space-y-4 border-t border-stone-800 p-6 text-stone-400"
+              >
+                <p class="leading-relaxed">
+                  PFAS becomes universally restricted across developed
+                  economies. Limited exemptions remain for critical applications
+                  where alternatives genuinely don't exist, subject to sunset
+                  provisions and substitution plans. Developing economies adopt
+                  restrictions under trade pressure and international
+                  frameworks.
+                </p>
+                <div
+                  class="rounded border border-stone-700 bg-stone-900/50 p-4"
+                >
+                  <h5 class="mb-2 font-semibold text-stone-300">
+                    Strategic Implication
+                  </h5>
+                  <p class="text-sm leading-relaxed">
+                    PFAS-free operations become baseline expectation rather than
+                    competitive advantage. Market leaders established during
+                    transition period maintain dominant positions. Late movers
+                    face permanent competitive disadvantages from delayed
+                    capability development.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategic Timeline -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          Key Milestones 2025–2035
+        </h2>
+
+        <div class="mb-12 space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            Strategic planning requires understanding not just regulatory
+            endpoints but implementation timelines determining when
+            organisations must achieve compliance. This timeline synthesises
+            confirmed regulations, proposed frameworks, and enforcement
+            trajectories into actionable milestones.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+
+        <!-- 2026 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2026</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3 text-stone-400">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >California AB 1200 (cookware PFAS ban) enforcement begins
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Maine LD 1433 (all product categories) phase-in starts</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >EU REACH PFAS restriction proposal public consultation
+                  concludes</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Denmark implements national PFAS ban ahead of EU timeline</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Minnesota HF 2310 (food packaging) takes effect January 2026</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span>EU member states vote on PFAS restriction proposal</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Additional US states (Washington, Vermont, New York)
+                  implement bans</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span>Norway and Sweden align with Denmark restrictions</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2027 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2027</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >EU PFAS restriction enters force (pending approval timeline)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Consumer product transition period begins (18-month
+                  compliance window)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Canada proposes federal PFAS framework aligned with EU
+                  approach</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Japan begins regulatory consultations on PFAS restrictions</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2028 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2028</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >EU consumer product PFAS ban fully enforced (18 months
+                  post-entry)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >US federal PFAS legislation expected (high probability)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span>South Korea announces PFAS restriction framework</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Major retailers (Walmart, Amazon, Target) require supplier
+                  PFAS-free verification</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2029 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2029</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span>Canada federal PFAS restrictions take effect</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Australia and New Zealand implement coordinated restrictions</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span>China announces domestic PFAS management framework</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Enforcement actions against non-compliant products intensify
+                  globally</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2030 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2030</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >EU industrial application restrictions phase in (5-year
+                  transition)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span>Japan and Taiwan restrictions fully implemented</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Mexico aligns with North American framework under trade
+                  agreements</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Global supply chains largely PFAS-free except critical use
+                  exemptions</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2032 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2032</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >EU industrial transition periods complete for most
+                  applications</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >China restrictions fully enforced across domestic market</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Developing economies adopt restrictions under international
+                  frameworks</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Critical use exemptions under review for sunset provisions</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2035 -->
+        <div class="relative mt-12 space-y-12 border-l-2 border-stone-800 pl-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold text-stone-200">2035</h3>
+            <ul class="space-y-3 text-stone-400">
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >EU critical use exemptions sunset (12-year maximum
+                  transition)</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Universal PFAS restrictions across developed economies</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >Extremely limited exemptions remain for applications without
+                  alternatives</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="mdi:circle-small"
+                  class="mt-1 h-5 w-5 shrink-0 text-amber-400"
+                />
+                <span
+                  >PFAS-free operations become universal baseline for market
+                  participation</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <!-- Beyond Government Regulation -->
+  <section class="pb-24">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <h2 class="mb-8 text-3xl font-black text-stone-100">
+        Beyond Government Regulation
+      </h2>
+
+      <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+        <p>
+          Regulatory frameworks create compliance floors, but market forces
+          drive elimination beyond legal minimums. Corporate sustainability
+          commitments, investor pressure, consumer preference, and supply chain
+          requirements accelerate PFAS phase-out independent of government
+          mandates.
+        </p>
+
+        <p>
+          Major retailers establishing PFAS-free requirements for suppliers
+          affect markets globally, not just jurisdictions with legal
+          restrictions. Brand reputation risk from PFAS association motivates
+          proactive elimination even where regulations lag. These market forces
+          often prove more immediate than distant regulatory deadlines.
+        </p>
+      </div>
+
+      <!-- Market Forces -->
+      <div class="mt-12 space-y-6">
+        <h3 class="text-2xl font-bold text-stone-200">Key Market Drivers</h3>
+
+        <div class="space-y-4">
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>Retailer Requirements</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-4 border-t border-stone-800 p-6 text-stone-400">
+              <p class="leading-relaxed">
+                Major retailers (Walmart, Amazon, Target, Carrefour) establish
+                supplier PFAS-free verification requirements ahead of regulatory
+                mandates. These requirements affect global supply chains
+                regardless of local regulations, creating de facto universal
+                standards through market power.
+              </p>
+              <p class="text-sm leading-relaxed">
+                Supplier non-compliance risks delisting, reduced shelf space, or
+                exclusion from preferred vendor status. Compliance documentation
+                requirements intensify as retailers face liability exposure for
+                products containing undisclosed PFAS.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>Investor Pressure</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-4 border-t border-stone-800 p-6 text-stone-400">
+              <p class="leading-relaxed">
+                ESG investment frameworks increasingly incorporate PFAS
+                management as material risk factor. Proxy voting on chemical
+                safety proposals gains shareholder support. Credit rating
+                agencies factor PFAS liability into corporate assessments,
+                affecting capital costs.
+              </p>
+              <p class="text-sm leading-relaxed">
+                Organisations maintaining PFAS dependence face shareholder
+                resolutions, activist campaigns, and investment exclusion from
+                sustainability-focused funds representing trillions in assets
+                under management.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>Consumer Preference</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-4 border-t border-stone-800 p-6 text-stone-400">
+              <p class="leading-relaxed">
+                Growing consumer awareness about PFAS health effects drives
+                purchasing decisions, particularly in categories with direct
+                exposure (cookware, food packaging, textiles, cosmetics). "PFAS-
+                free" verified claims command pricing premiums and market share
+                advantages.
+              </p>
+              <p class="text-sm leading-relaxed">
+                Social media amplifies PFAS concerns rapidly, creating brand
+                reputation risks that materialize faster than regulatory
+                timelines. Companies addressing PFAS proactively benefit from
+                positive positioning versus those dragged into reactive defence.
+              </p>
+            </div>
+          </details>
+
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>Technology Innovation</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-4 border-t border-stone-800 p-6 text-stone-400">
+              <p class="leading-relaxed">
+                Alternative technology development accelerates as market demand
+                materializes. Materials science breakthroughs, process
+                innovations, and novel chemistries emerge addressing PFAS
+                performance properties without fluorine. Investment flows into
+                alternatives development as commercialisation opportunities
+                expand.
+              </p>
+              <p class="text-sm leading-relaxed">
+                Early alternative adopters gain competitive advantages through
+                established capabilities whilst late movers face crowded
+                markets, higher costs, and limited differentiation
+                opportunities. Technology lock-in effects favour pioneers.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sector Playbooks (Abbreviated - too long for one message) -->
+  <section class="pb-24">
+    <div class="mx-auto max-w-5xl px-6 lg:px-8">
+      <h2 class="mb-8 text-3xl font-black text-stone-100">
+        Five Strategic Sectors
+      </h2>
+
+      <div class="mb-12 space-y-6 text-lg leading-relaxed text-stone-400">
+        <p>
+          PFAS elimination implications vary dramatically across industries.
+          Sector-specific transition strategies account for application
+          complexity, alternative maturity, performance requirements, and
+          regulatory timelines unique to each manufacturing domain.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10"
+          >
+            <Icon name="mdi:food-apple" class="h-6 w-6 text-amber-400" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-stone-200">Food Packaging</h3>
+          <p class="mb-4 text-sm leading-relaxed text-stone-400">
+            Earliest enforcement timelines due to direct food contact. Multiple
+            viable alternatives exist, making transition technically feasible
+            but requiring supply chain coordination.
+          </p>
+          <div class="text-xs text-stone-500">
+            Timeline: 2025–2027 | Risk: High Urgency
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10"
+          >
+            <Icon name="mdi:tshirt-crew" class="h-6 w-6 text-amber-400" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-stone-200">Textiles</h3>
+          <p class="mb-4 text-sm leading-relaxed text-stone-400">
+            Challenging due to performance specifications (water/stain
+            resistance). Alternative technologies emerging but require
+            validation across diverse fabric types and applications.
+          </p>
+          <div class="text-xs text-stone-500">
+            Timeline: 2026–2029 | Risk: Medium Complexity
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10"
+          >
+            <Icon name="mdi:car" class="h-6 w-6 text-amber-400" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-stone-200">Automotive</h3>
+          <p class="mb-4 text-sm leading-relaxed text-stone-400">
+            Multiple PFAS applications (seals, hoses, fluids, interior
+            treatments). Long product development cycles require early
+            alternative qualification.
+          </p>
+          <div class="text-xs text-stone-500">
+            Timeline: 2027–2032 | Risk: Supply Chain
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10"
+          >
+            <Icon name="mdi:chip" class="h-6 w-6 text-amber-400" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-stone-200">Electronics</h3>
+          <p class="mb-4 text-sm leading-relaxed text-stone-400">
+            Critical use exemptions likely extend timelines but alternatives
+            development active. Performance requirements (thermal management,
+            dielectric properties) create technical challenges.
+          </p>
+          <div class="text-xs text-stone-500">
+            Timeline: 2028–2035 | Risk: Technical
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10"
+          >
+            <Icon name="mdi:airplane" class="h-6 w-6 text-amber-400" />
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-stone-200">Aerospace</h3>
+          <p class="mb-4 text-sm leading-relaxed text-stone-400">
+            Longest exemption periods due to safety-critical applications and
+            certification requirements. However, proactive development reduces
+            dependence on uncertain exemption extensions.
+          </p>
+          <div class="text-xs text-stone-500">
+            Timeline: 2030–2035+ | Risk: Certification
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Scenarios (Simplified) -->
+  <section class="pb-24">
+    <div class="mx-auto max-w-5xl px-6 lg:px-8">
+      <h2 class="mb-8 text-3xl font-black text-stone-100">
+        Three Plausible Futures
+      </h2>
+
+      <div class="mb-12 space-y-6 text-lg leading-relaxed text-stone-400">
+        <p>
+          PFAS regulatory evolution could follow multiple trajectories based on
+          political developments, scientific findings, alternative technology
+          progress, and economic pressures. Three scenarios illuminate possible
+          futures with distinct strategic implications.
+        </p>
+      </div>
+
+      <!-- Scenarios -->
+      <div class="space-y-6">
+        <!-- Scenario A -->
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+          <div class="mb-6 flex items-start justify-between">
+            <div>
+              <h3 class="mb-2 text-2xl font-bold text-stone-200">
+                Scenario A: Fast Global Convergence
+              </h3>
+              <div class="text-sm text-stone-400">Probability: Medium</div>
+            </div>
+            <div
+              class="rounded-lg bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-400"
+            >
+              Accelerated
+            </div>
+          </div>
+          <p class="mb-6 leading-relaxed text-stone-400">
+            Major economies coordinate comprehensive PFAS restrictions on
+            accelerated timelines. Scientific consensus strengthens, political
+            opposition weakens, and alternative technology development
+            progresses rapidly. International frameworks harmonize enforcement,
+            creating consistent global standards.
+          </p>
+          <div class="rounded border border-stone-700 bg-stone-900/50 p-4">
+            <h5 class="mb-2 font-semibold text-stone-300">
+              Strategic Response
+            </h5>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Aggressive transition timelines required. First-mover advantages
+              compound rapidly. Late movers face severe competitive
+              disadvantages and potential market exclusion. Investment in
+              alternative development and early adoption becomes critical.
+            </p>
+          </div>
+        </div>
+
+        <!-- Scenario B -->
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+          <div class="mb-6 flex items-start justify-between">
+            <div>
+              <h3 class="mb-2 text-2xl font-bold text-stone-200">
+                Scenario B: Patchwork Expansion
+              </h3>
+              <div class="text-sm text-stone-400">Probability: Medium/High</div>
+            </div>
+            <div
+              class="rounded-lg bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-400"
+            >
+              Baseline
+            </div>
+          </div>
+          <p class="mb-6 leading-relaxed text-stone-400">
+            Regulations expand across jurisdictions but implementation timelines
+            and scope vary. EU leads whilst US and Asian markets follow with
+            delays and modifications. Critical use exemptions extend longer than
+            initially proposed. Alternative development proceeds but faces
+            technical and economic hurdles.
+          </p>
+          <div class="rounded border border-stone-700 bg-stone-900/50 p-4">
+            <h5 class="mb-2 font-semibold text-stone-300">
+              Strategic Response
+            </h5>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Phased transition aligned with jurisdiction-specific timelines.
+              Strategic prioritization based on market importance and regulatory
+              urgency. Portfolio approach balancing early adoption in restricted
+              markets with delayed transition where exemptions exist.
+            </p>
+          </div>
+        </div>
+
+        <!-- Scenario C -->
+        <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+          <div class="mb-6 flex items-start justify-between">
+            <div>
+              <h3 class="mb-2 text-2xl font-bold text-stone-200">
+                Scenario C: Prolonged Uncertainty
+              </h3>
+              <div class="text-sm text-stone-400">Probability: Low</div>
+            </div>
+            <div
+              class="rounded-lg bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-400"
+            >
+              Delayed
+            </div>
+          </div>
+          <p class="mb-6 leading-relaxed text-stone-400">
+            Political opposition, industry pushback, and economic concerns slow
+            regulatory implementation. Exemptions broaden, timelines extend, and
+            enforcement weakens. Alternative development faces funding
+            constraints and technical challenges. Regional divergence increases
+            rather than converges.
+          </p>
+          <div class="rounded border border-stone-700 bg-stone-900/50 p-4">
+            <h5 class="mb-2 font-semibold text-stone-300">
+              Strategic Response
+            </h5>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Cautious transition balancing regulatory preparedness against
+              continued PFAS dependence. Flexible strategies enabling rapid
+              acceleration if regulations tighten unexpectedly. Risk: late
+              movers under delayed scenario become permanent laggards if
+              acceleration occurs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Checklist -->
+  <section class="pb-24">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <h2 class="mb-8 text-3xl font-black text-stone-100">
+        Seven Strategic Actions
+      </h2>
+
+      <div class="mb-12 space-y-6 text-lg leading-relaxed text-stone-400">
+        <p>
+          Regardless of scenario trajectory, certain strategic actions deliver
+          value across futures. These seven priorities position organisations
+          for successful PFAS elimination under accelerated, baseline, or
+          delayed regulatory timelines.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            1
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Complete PFAS Inventory
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Comprehensive footprint mapping across products, processes, and
+              supply chains identifies all PFAS touchpoints. Analytical testing
+              verifies supplier declarations and reveals undisclosed exposure.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            2
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Risk-Based Prioritisation
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Strategic sequencing addresses high-urgency applications first
+              whilst allowing time for complex challenges. Balance regulatory
+              timelines, technical feasibility, and commercial impact.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            3
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Alternative Technology Tracking
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Systematic monitoring of emerging alternatives, research
+              developments, and commercial availability enables early adoption
+              of viable options. Establish supplier relationships before demand
+              overwhelms capacity.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            4
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Cross-Functional Governance
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              PFAS elimination requires coordination across R&D, operations,
+              quality, regulatory, procurement, and commercial functions.
+              Executive sponsorship and clear accountability structures enable
+              effective implementation.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            5
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Pilot Programme Validation
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Small-batch testing and controlled market introduction identify
+              problems before full-scale commitment. Customer acceptance
+              validation reveals performance issues laboratory testing misses.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            6
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Documentation & Verification
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Systematic compliance documentation including analytical testing,
+              supplier declarations, and traceability records supports
+              regulatory submissions, customer requirements, and stakeholder
+              transparency.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-start gap-4 rounded-xl border border-stone-800 bg-stone-800/30 p-6"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-lg font-black text-amber-400"
+          >
+            7
+          </div>
+          <div>
+            <h4 class="mb-2 font-bold text-stone-200">
+              Market Leadership Positioning
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Strategic communication about PFAS elimination progress
+              differentiates organisations from competitors. Verified claims
+              supported by third-party testing build stakeholder confidence and
+              competitive advantage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="pb-24">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <h2 class="mb-8 text-3xl font-black text-stone-100">
+        Strategic Imperative
+      </h2>
+
+      <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+        <p>
+          PFAS elimination represents enterprise transformation, not isolated
+          chemical substitution. Organisations approaching this systematically—
+          with clear governance, adequate resources, and realistic timelines—
+          complete transitions successfully whilst maintaining performance
+          standards and competitive positioning.
+        </p>
+
+        <p>
+          The window for proactive planning narrows as regulatory timelines
+          compress and alternative availability tightens. Strategic decisions
+          made today determine whether organisations lead market transformation
+          or scramble to maintain compliance under enforcement pressure.
+        </p>
+
+        <p class="text-xl font-medium text-stone-300">
+          Future outlook analysis illuminates trajectories, but strategic action
+          determines outcomes. Organisations waiting for regulatory certainty
+          will find themselves perpetually behind those planning systematically
+          across scenarios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- More Intelligence -->
+  <MoreIntelligence currentArticleUrl={article.url} />
+  <IntelCTA />
+</BaseLayout>

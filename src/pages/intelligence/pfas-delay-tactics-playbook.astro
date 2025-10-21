@@ -1,0 +1,658 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { blogPosts } from '../../data/blogPosts';
+import MoreIntelligence from '../../components/MoreIntelligence.astro';
+import IntelCTA from '../../components/IntelCTA.astro';
+
+const article = blogPosts.find(
+  (post) => post.url === '/intelligence/pfas-delay-tactics-playbook'
+);
+
+if (!article) {
+  throw new Error('Article metadata not found in blogPosts.ts');
+}
+
+const publishDateFormatted = new Date(article.publishDateFull).toLocaleDateString('en-GB', {
+  month: 'short',
+  year: 'numeric',
+});
+
+const currentDate = new Date().toISOString().split('T')[0];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `https://lotus-nano.com${article.url}#article`,
+    headline: article.blogtitle,
+    description: article.blogdescr,
+    image: {
+      '@type': 'ImageObject',
+      url: article.img,
+      width: 1200,
+      height: 630,
+    },
+    author: {
+      '@type': 'Person',
+      '@id': `https://lotus-nano.com${article.url}#author`,
+      name: article.authorName,
+      jobTitle: article.authorRole,
+      image: {
+        '@type': 'ImageObject',
+        url: article.authorImage,
+      },
+    },
+    publisher: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    datePublished: article.publishDateFull,
+    dateModified: currentDate,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://lotus-nano.com${article.url}`,
+    },
+    isPartOf: {
+      '@id': 'https://lotus-nano.com/intelligence#blog',
+    },
+    inLanguage: 'en-GB',
+    articleSection: article.categoryFull,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `https://lotus-nano.com${article.url}#breadcrumb`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Intelligence',
+        item: 'https://lotus-nano.com/intelligence',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.blogtitle,
+        item: `https://lotus-nano.com${article.url}`,
+      },
+    ],
+  },
+];
+
+// Pattern definitions
+const patterns = [
+  // Category 1: Scientific & Technical
+  {
+    id: 1,
+    category: 'scientific',
+    categoryName: 'Scientific & Technical Uncertainty',
+    categoryIcon: 'mdi:microscope',
+    name: 'The Science Isn\'t Settled Yet',
+    icon: 'mdi:book-open-variant',
+    legitimacy: 'mixed',
+    legitimate: 'Science evolves, early research has limitations, and healthy scientific debate exists.',
+    problematic: 'Used to demand perfect certainty before any action, indefinitely postponing decisions.',
+    forward: 'Apply precautionary principle where persistence and bioaccumulation exist. Set evidence threshold for action, not paralysis.'
+  },
+  {
+    id: 2,
+    category: 'scientific',
+    categoryName: 'Scientific & Technical Uncertainty',
+    categoryIcon: 'mdi:microscope',
+    name: 'Our PFAS Type Is Different',
+    icon: 'mdi:molecule',
+    legitimacy: 'delay',
+    legitimate: 'Not all PFAS have identical toxicological profiles or environmental fate.',
+    problematic: 'Ignores entire class persistence and regrettable substitution risk. Yesterday\'s "safer" alternative becomes today\'s regulated substance.',
+    forward: 'Focus on class-wide action. Moving from C8 to C6 to C4 repeats the same cycle. Exit fluorochemistry entirely where feasible.'
+  },
+  {
+    id: 3,
+    category: 'scientific',
+    categoryName: 'Scientific & Technical Uncertainty',
+    categoryIcon: 'mdi:microscope',
+    name: 'Alternatives Don\'t Perform',
+    icon: 'mdi:speedometer',
+    legitimacy: 'legitimate',
+    legitimate: 'Some alternatives genuinely underperform in specific high-stress applications (extreme heat, chemical exposure, critical safety).',
+    problematic: 'Applied as blanket statement without testing systems approaches combining fabric engineering, process optimization, and chemistry.',
+    forward: 'Identify where performance gaps are real versus assumed. Test fabric + chemistry + process combinations. Most applications have viable pathways.'
+  },
+  {
+    id: 4,
+    category: 'scientific',
+    categoryName: 'Scientific & Technical Uncertainty',
+    categoryIcon: 'mdi:microscope',
+    name: 'Products Won\'t Work Without PFAS',
+    icon: 'mdi:cog-off',
+    legitimacy: 'mixed',
+    legitimate: 'Genuinely essential uses exist: certain medical devices, critical safety equipment, aerospace applications.',
+    problematic: 'Applied to convenience applications without verification. "Essential" conflates "performs best" with "societal necessity".',
+    forward: 'Rigorously define essential based on societal need, not performance preference. Verify lack of alternatives independently with time-bound exemptions.'
+  },
+  {
+    id: 5,
+    category: 'scientific',
+    categoryName: 'Scientific & Technical Uncertainty',
+    categoryIcon: 'mdi:microscope',
+    name: 'We Need More Research',
+    icon: 'mdi:flask-outline',
+    legitimacy: 'delay',
+    legitimate: 'Understanding alternatives fully before scaling is prudent engineering practice.',
+    problematic: 'Becomes indefinite study with no decision timeline. "More research needed" used for years without concrete action.',
+    forward: 'Set time-bound research phase with clear decision criteria and go/no-go milestones. Pilot testing with committed timelines.'
+  },
+
+  // Category 2: Economic & Business
+  {
+    id: 6,
+    category: 'economic',
+    categoryName: 'Economic & Business Viability',
+    categoryIcon: 'mdi:currency-usd',
+    name: 'Transition Costs Are Prohibitive',
+    icon: 'mdi:calculator',
+    legitimacy: 'legitimate',
+    legitimate: 'Reformulation, retooling, validation, and scaling costs are real and significant, particularly for SMEs.',
+    problematic: 'Ignores long-term liability exposure, brand damage, and market access costs. Short-term focus excludes risk calculation.',
+    forward: 'Full cost-benefit analysis including regulatory risk, liability exposure, and market trends. Proactive investment cheaper than reactive crisis management.'
+  },
+  {
+    id: 7,
+    category: 'economic',
+    categoryName: 'Economic & Business Viability',
+    categoryIcon: 'mdi:currency-usd',
+    name: 'This Will Cost Jobs',
+    icon: 'mdi:account-hard-hat',
+    legitimacy: 'legitimate',
+    legitimate: 'Transition causes short-term displacement in chemical manufacturing and dependent industries.',
+    problematic: 'Used to halt all action without transition planning, workforce development, or just transition principles.',
+    forward: 'Managed transition with workforce retraining programs. Green chemistry creates new employment. Historical chemical transitions show net job creation.'
+  },
+  {
+    id: 8,
+    category: 'economic',
+    categoryName: 'Economic & Business Viability',
+    categoryIcon: 'mdi:currency-usd',
+    name: 'Global Competitors Don\'t Face This',
+    icon: 'mdi:earth',
+    legitimacy: 'mixed',
+    legitimate: 'Regulatory asymmetry creates temporary competitive imbalance in global markets.',
+    problematic: 'Ignores regulatory convergence trajectory and first-mover advantages in establishing PFAS-free supply chains.',
+    forward: 'EU plus US states create de facto global standard. Leading captures premium positioning. Lagging faces future market exclusion.'
+  },
+  {
+    id: 9,
+    category: 'economic',
+    categoryName: 'Economic & Business Viability',
+    categoryIcon: 'mdi:currency-usd',
+    name: 'Shareholders Won\'t Accept This',
+    icon: 'mdi:chart-pie',
+    legitimacy: 'mixed',
+    legitimate: 'Fiduciary duty requires justifying major capital expenditures to shareholders.',
+    problematic: 'Ignores ESG materiality and regulatory risk in valuation. Forward-looking investors see inaction as greater risk.',
+    forward: 'Frame as risk mitigation and strategic positioning, not discretionary spend. Leading asset managers increasingly factor PFAS exposure into valuations.'
+  },
+  {
+    id: 10,
+    category: 'economic',
+    categoryName: 'Economic & Business Viability',
+    categoryIcon: 'mdi:currency-usd',
+    name: 'We\'ve Already Invested Millions',
+    icon: 'mdi:hammer-wrench',
+    legitimacy: 'mixed',
+    legitimate: 'Sunk costs represent real capital. Asset write-offs impact financial statements and valuations.',
+    problematic: 'Past investment dictates future strategy despite changing regulatory landscape. Sunk cost fallacy prevents rational decision-making.',
+    forward: 'Compare sunk costs to future liability, compliance, and market access risks. Depreciation schedules and phased transitions manage financial impact.'
+  },
+
+  // Category 3: Regulatory & Legal
+  {
+    id: 11,
+    category: 'regulatory',
+    categoryName: 'Regulatory & Legal Positioning',
+    categoryIcon: 'mdi:gavel',
+    name: 'Essential Use Exemptions Cover Us',
+    icon: 'mdi:key-variant',
+    legitimacy: 'delay',
+    legitimate: 'Genuine essential uses require temporary exemptions where no alternatives exist.',
+    problematic: 'Applied broadly without rigorous justification or sunset provisions. Self-certification without independent verification.',
+    forward: 'Independent verification of essential claims. Time-bound exemptions with mandated alternative development and regular review.'
+  },
+  {
+    id: 12,
+    category: 'regulatory',
+    categoryName: 'Regulatory & Legal Positioning',
+    categoryIcon: 'mdi:gavel',
+    name: 'Regulations Are Unclear',
+    icon: 'mdi:file-question-outline',
+    legitimacy: 'mixed',
+    legitimate: 'Regulatory patchwork creates genuine compliance complexity across jurisdictions.',
+    problematic: 'Used to justify inaction whilst waiting for perfect clarity that never arrives.',
+    forward: 'Comply with strictest standard as practical baseline. Regulatory convergence is directional. Early movers shape standards.'
+  },
+  {
+    id: 13,
+    category: 'regulatory',
+    categoryName: 'Regulatory & Legal Positioning',
+    categoryIcon: 'mdi:gavel',
+    name: 'We\'re Already Compliant',
+    icon: 'mdi:shield-check',
+    legitimacy: 'delay',
+    legitimate: 'Meeting current legal requirements is baseline expectation and fiduciary responsibility.',
+    problematic: 'Ignores regulatory trajectory and leading indicators. Current compliance doesn\'t guarantee future approval.',
+    forward: 'Regulations lag science by years. Proactive action reduces future disruption. Current approval is not long-term safety guarantee.'
+  },
+  {
+    id: 14,
+    category: 'regulatory',
+    categoryName: 'Regulatory & Legal Positioning',
+    categoryIcon: 'mdi:gavel',
+    name: 'We Must Challenge This in Court',
+    icon: 'mdi:scale-balance',
+    legitimacy: 'delay',
+    legitimate: 'Legal review of regulatory process can ensure procedural fairness and scientific basis.',
+    problematic: 'Pure delay tactic with no substantive technical argument. Uses litigation to stall for years.',
+    forward: 'Distinguish procedural challenge from substantive delay. Litigation as last resort after scientific and ethical arguments exhausted.'
+  },
+  {
+    id: 15,
+    category: 'regulatory',
+    categoryName: 'Regulatory & Legal Positioning',
+    categoryIcon: 'mdi:gavel',
+    name: 'Need Federal Action, Not States',
+    icon: 'mdi:map',
+    legitimacy: 'delay',
+    legitimate: 'Harmonized federal standards are more efficient than state-by-state variation.',
+    problematic: 'Used to halt all action whilst waiting for federal consensus that may take years.',
+    forward: 'State action catalyzes federal policy. California, New York lead. Waiting means falling behind regulatory leaders and market access.'
+  },
+
+  // Category 4: Supply Chain
+  {
+    id: 16,
+    category: 'supply',
+    categoryName: 'Supply Chain & Responsibility',
+    categoryIcon: 'mdi:truck-delivery',
+    name: 'Supply Chain Too Complex to Track',
+    icon: 'mdi:network-outline',
+    legitimacy: 'legitimate',
+    legitimate: 'Global supply chains with thousands of suppliers create genuine transparency challenges.',
+    problematic: 'Used as excuse for no action rather than phased approach starting with tier 1 suppliers.',
+    forward: 'Tiered supplier engagement. Start with direct suppliers, extend progressively. Chemical disclosure requirements in procurement contracts.'
+  },
+  {
+    id: 17,
+    category: 'supply',
+    categoryName: 'Supply Chain & Responsibility',
+    categoryIcon: 'mdi:truck-delivery',
+    name: 'Real Problem Is Other Industries',
+    icon: 'mdi:factory',
+    legitimacy: 'delay',
+    legitimate: 'Different industries contribute different PFAS load pathways and exposure routes.',
+    problematic: 'Deflects all responsibility onto firefighting foam, industrial sites, etc. whilst taking no internal action.',
+    forward: 'All sources contribute. Widespread low-level exposure from consumer goods is distinct pathway. Shared responsibility means everyone moves.'
+  },
+  {
+    id: 18,
+    category: 'supply',
+    categoryName: 'Supply Chain & Responsibility',
+    categoryIcon: 'mdi:truck-delivery',
+    name: 'Suppliers Can\'t Provide Alternatives',
+    icon: 'mdi:package-variant-closed',
+    legitimacy: 'mixed',
+    legitimate: 'Supply chain for alternatives less mature than decades of PFAS infrastructure.',
+    problematic: 'Assumed without actually engaging suppliers or testing alternatives. Demand signals create supply.',
+    forward: 'Supplier collaboration and development programs. Co-investment in alternative scaling. Demand commitments accelerate supply development.'
+  },
+  {
+    id: 19,
+    category: 'supply',
+    categoryName: 'Supply Chain & Responsibility',
+    categoryIcon: 'mdi:truck-delivery',
+    name: 'This Is About Consumer Choice',
+    icon: 'mdi:account-check',
+    legitimacy: 'delay',
+    legitimate: 'Consumer preferences and willingness to pay matter for market viability.',
+    problematic: 'Consumers cannot make informed choices without disclosure of risks. Shifts responsibility from manufacturer to end user.',
+    forward: 'Manufacturer responsibility for safety. Choice requires transparency. Growing consumer awareness and willingness to pay for safer products.'
+  },
+  {
+    id: 20,
+    category: 'supply',
+    categoryName: 'Supply Chain & Responsibility',
+    categoryIcon: 'mdi:truck-delivery',
+    name: 'Consumers Don\'t Dispose Properly',
+    icon: 'mdi:delete-variant',
+    legitimacy: 'delay',
+    legitimate: 'End-of-life management matters for environmental outcomes and circular economy.',
+    problematic: 'Shifts responsibility from persistent chemical design to consumer behavior. Products with persistent chemicals cannot be disposed of safely.',
+    forward: 'Problem starts at design stage. Persistent bioaccumulative substances remain in environment regardless of disposal method.'
+  },
+
+  // Category 5: Timeline
+  {
+    id: 21,
+    category: 'timeline',
+    categoryName: 'Timeline & Process',
+    categoryIcon: 'mdi:clock-outline',
+    name: 'We Need More Time',
+    icon: 'mdi:timer-sand',
+    legitimacy: 'mixed',
+    legitimate: 'Thorough testing and validation takes time. Rushing risks product failures and safety issues.',
+    problematic: 'Becomes indefinite timeline without milestones or commitments. "More time" used for years.',
+    forward: 'Set decision milestones with go/no-go criteria. Pilot testing with committed timelines. Most applications: 2-5 years maximum.'
+  },
+  {
+    id: 22,
+    category: 'timeline',
+    categoryName: 'Timeline & Process',
+    categoryIcon: 'mdi:clock-outline',
+    name: 'Industry Self-Regulation Works',
+    icon: 'mdi:handshake',
+    legitimacy: 'delay',
+    legitimate: 'Industry expertise valuable in developing practical, implementable solutions.',
+    problematic: 'Voluntary commitments lack accountability, timelines, penalties. History shows insufficient action.',
+    forward: 'Binding regulations create level playing field and ensure accountability. Voluntary action supplements but doesn\'t replace regulation.'
+  },
+  {
+    id: 23,
+    category: 'timeline',
+    categoryName: 'Timeline & Process',
+    categoryIcon: 'mdi:clock-outline',
+    name: 'Our Target Date Is 2040',
+    icon: 'mdi:calendar-arrow-right',
+    legitimacy: 'delay',
+    legitimate: 'Major transitions require multi-year planning, capital allocation, and investment cycles.',
+    problematic: 'Commitment decades away without interim milestones. Urgency doesn\'t match regulatory trajectory.',
+    forward: 'Urgent timeline with annual targets. Most applications should achieve transition within 2-5 years, not 15-20.'
+  },
+  {
+    id: 24,
+    category: 'timeline',
+    categoryName: 'Timeline & Process',
+    categoryIcon: 'mdi:clock-outline',
+    name: 'We Launched a PFAS-Free Line',
+    icon: 'mdi:tag-outline',
+    legitimacy: 'mixed',
+    legitimate: 'Starting somewhere shows commitment and builds internal capability and knowledge.',
+    problematic: 'Token gesture without plan to extend across all products. Capsule collection deflects whilst core business unchanged.',
+    forward: 'What\'s roadmap to 100%? What percentage by when? Single collection is start, not solution.'
+  },
+  {
+    id: 25,
+    category: 'timeline',
+    categoryName: 'Timeline & Process',
+    categoryIcon: 'mdi:clock-outline',
+    name: 'We\'re Studying the Issue',
+    icon: 'mdi:book-search',
+    legitimacy: 'delay',
+    legitimate: 'Understanding problem scope before acting is responsible management practice.',
+    problematic: 'Permanent study phase with no action commitment. Analysis paralysis without decision framework.',
+    forward: 'Study phase should be time-bound with clear decision criteria. Set timeline for assessment completion and action commitment.'
+  },
+];
+
+// Group patterns by category
+const categories = [
+  {
+    id: 'scientific',
+    name: 'Scientific & Technical Uncertainty',
+    icon: 'mdi:microscope',
+    description: 'These patterns emerge in technical and R&D discussions. Some reflect genuine scientific caution. Others weaponize uncertainty to avoid action.',
+    patterns: patterns.filter(p => p.category === 'scientific')
+  },
+  {
+    id: 'economic',
+    name: 'Economic & Business Viability',
+    icon: 'mdi:currency-usd',
+    description: 'Cost concerns are always legitimate. These patterns become problematic when they exaggerate costs, ignore risk calculations, or demand perfect certainty before investment.',
+    patterns: patterns.filter(p => p.category === 'economic')
+  },
+  {
+    id: 'regulatory',
+    name: 'Regulatory & Legal Positioning',
+    icon: 'mdi:gavel',
+    description: 'Legal and regulatory complexity is real. These patterns become delay mechanisms when used to justify indefinite inaction whilst waiting for perfect clarity.',
+    patterns: patterns.filter(p => p.category === 'regulatory')
+  },
+  {
+    id: 'supply',
+    name: 'Supply Chain & Responsibility',
+    icon: 'mdi:truck-delivery',
+    description: 'Supply chains are genuinely complex. These patterns become problematic when they redirect all responsibility elsewhere whilst taking no internal action.',
+    patterns: patterns.filter(p => p.category === 'supply')
+  },
+  {
+    id: 'timeline',
+    name: 'Timeline & Process',
+    icon: 'mdi:clock-outline',
+    description: 'Major transitions take time. These patterns become delay tactics when they create illusion of progress without meaningful commitments or milestones.',
+    patterns: patterns.filter(p => p.category === 'timeline')
+  },
+];
+---
+
+<BaseLayout
+  title={article.blogtitle}
+  description={article.blogdescr}
+  canonical={`https://lotus-nano.com${article.url}`}
+  ogImage={article.img}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <meta property="article:author" content={article.authorName} />
+    <meta property="article:published_time" content={article.publishDateFull} />
+    <meta property="article:modified_time" content={currentDate} />
+    <meta property="article:section" content={article.categoryFull} />
+  </Fragment>
+
+  <article class="bg-stone-900">
+    <!-- Hero Image -->
+    <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <img
+        src={article.img}
+        alt={article.blogtitle}
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent"></div>
+    </section>
+
+    <!-- Header -->
+    <section class="relative -mt-32 pb-24">
+      <div class="mx-auto max-w-4xl px-6 lg:px-8">
+        <div class="mb-8 flex items-center justify-between text-sm">
+          <div class="flex items-center gap-3">
+            <span class="font-semibold text-amber-400">{article.categoryFull}</span>
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{publishDateFormatted}</span>
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{article.readTime} read</span>
+          </div>
+          <a href="/intelligence" class="text-stone-500 transition-colors hover:text-stone-300">← Intelligence</a>
+        </div>
+
+        <h1 class="mb-8 text-5xl font-black leading-[0.95] tracking-tighter text-stone-100 lg:text-7xl">
+          {article.blogtitle}
+        </h1>
+
+        <p class="mb-16 text-2xl font-light leading-relaxed text-stone-400 lg:text-3xl">
+          {article.blogdescr}
+        </p>
+
+        <div class="flex items-center gap-4 border-t border-stone-800 pt-8">
+          <img src={article.authorImage} alt={article.authorName} class="h-12 w-12 rounded-full" width="48" height="48" />
+          <div>
+            <div class="font-semibold text-stone-200">{article.authorName}</div>
+            <div class="text-sm text-stone-500">{article.authorRole}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening Statement -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <p class="border-l-2 border-amber-400 pl-8 text-2xl font-light leading-relaxed text-stone-300">
+          Every PFAS transition conversation follows predictable patterns. Not because industry is malicious. Because organizational change is hard.
+        </p>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            Some arguments contain legitimate concerns. Cost pressures are real. Supply chain complexity is genuine. Technical alternatives aren't always mature.
+          </p>
+          <p>
+            The problem isn't the concerns.
+          </p>
+          <p>
+            It's when legitimate concerns become permanent paralysis.
+          </p>
+          <p>
+            This framework documents 25 patterns that appear in PFAS transition conversations globally. Some are pure delay tactics. Some start as legitimate concerns but evolve into stalling mechanisms. Most are both.
+          </p>
+          <p class="font-medium text-stone-300">
+            The goal isn't to "win" arguments. It's to recognize patterns and move conversations forward.
+          </p>
+        </div>
+
+        <div class="mt-12 space-y-4 rounded-xl border-l-4 border-amber-400 bg-stone-800/30 p-6">
+          <p class="font-semibold text-stone-200">Use this framework when:</p>
+          <ul class="space-y-2 text-stone-400">
+            <li>• You're stuck in circular procurement discussions</li>
+            <li>• Board meetings repeat the same objections quarterly</li>
+            <li>• Suppliers offer the same explanations for 18 months</li>
+            <li>• Internal stakeholders can't align on next steps</li>
+          </ul>
+          <p class="pt-4 text-stone-400">
+            This isn't about judging motivations. It's about recognizing when conversations have become loops instead of progress.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 25 Patterns by Category -->
+    {categories.map((cat, catIndex) => (
+      <section id={`category-${cat.id}`} class="pb-24">
+        <div class="mx-auto max-w-5xl px-6 lg:px-8">
+          <div class="mb-12 flex items-center gap-4 border-b border-stone-800 pb-6">
+            <Icon name={cat.icon} class="h-8 w-8 text-amber-400" />
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-stone-600">
+                Category {catIndex + 1}
+              </div>
+              <h2 class="text-3xl font-black text-stone-100">{cat.name}</h2>
+            </div>
+          </div>
+
+          <p class="mb-12 text-lg leading-relaxed text-stone-400">
+            {cat.description}
+          </p>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            {cat.patterns.map((pattern) => (
+              <div class="group rounded-lg border border-stone-800 p-6 transition-colors hover:border-amber-400/50">
+                <div class="mb-4 flex items-start justify-between border-b border-stone-800 pb-3">
+                  <div class="flex items-center gap-2">
+                    <Icon name={pattern.icon} class="h-5 w-5 text-stone-600" />
+                    <h3 class="text-lg font-bold text-stone-100 transition-colors group-hover:text-amber-400">
+                      {pattern.name}
+                    </h3>
+                  </div>
+                  <span class="ml-3 rounded-full bg-stone-800 px-2.5 py-0.5 text-xs font-bold text-stone-500 transition-colors group-hover:bg-amber-400/20 group-hover:text-amber-400">
+                    {String(pattern.id).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <!-- Legitimacy Indicator -->
+                <div class="mb-4 flex items-center gap-2 text-xs">
+                  {pattern.legitimacy === 'legitimate' && (
+<Icon name="mdi:circle" class="h-4 w-4 text-green-400" />
+                      <span class="font-semibold text-green-400">Legitimate operational challenge</span>
+                    </>
+                  )}
+                  {pattern.legitimacy === 'mixed' && (
+                    <>
+<Icon name="mdi:circle" class="h-4 w-4 text-amber-400" />
+                      <span class="font-semibold text-amber-400">Contains legitimate concern</span>
+                    </>
+                  )}
+                  {pattern.legitimacy === 'delay' && (
+                    <>
+<Icon name="mdi:circle" class="h-4 w-4 text-red-400" />
+                      <span class="font-semibold text-red-400">Primarily delay mechanism</span>
+                    </>
+                  )}
+                </div>
+
+                <div class="space-y-3">
+                  <div>
+                    <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-stone-600">
+                      What's Legitimate
+                    </p>
+                    <p class="text-sm leading-relaxed text-stone-400">
+                      {pattern.legitimate}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-stone-600">
+                      When It Becomes Problematic
+                    </p>
+                    <p class="text-sm leading-relaxed text-stone-400">
+                      {pattern.problematic}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-amber-400">
+                      How to Move Forward
+                    </p>
+                    <p class="text-sm leading-relaxed text-stone-300">
+                      {pattern.forward}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Closing -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <h2 class="text-3xl font-black text-stone-100">Using This Framework</h2>
+          <p>
+            These 25 patterns work collectively to create decision paralysis. The solution isn't debating each pattern individually. It's recognizing when conversations have become loops.
+          </p>
+          <p>
+            When you hear pattern #7 (job losses) combined with pattern #21 (need more time) and pattern #23 (distant target date), you're not hearing three separate concerns. You're seeing a system designed to avoid commitment.
+          </p>
+          <p>
+            The most effective response isn't countering each argument. It's naming the pattern: "We've been in study phase for 18 months with no decision criteria. What would need to be true for us to commit to a timeline?"
+          </p>
+          <p class="font-medium text-stone-300">
+            Pattern recognition is the first step. Action is the second.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <MoreIntelligence currentArticleUrl={article.url} />
+    <IntelCTA />
+  </article>
+</BaseLayout>

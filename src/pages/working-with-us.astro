@@ -1,0 +1,1045 @@
+---
+import BaseLayout from '../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import IntelCTA from '../components/IntelCTA.astro';
+
+const title = 'Working with Us | Lotus Nano';
+const description =
+  'What working with Lotus Nano looks like: deliverables, partnership requirements, shared success factors, and how to start.';
+const canonical = 'https://lotus-nano.com/working-with-us';
+const ogImage =
+  'https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-hero.png?w=1200&h=630';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: 'PFAS Transition & Management Services',
+      description:
+        'A comprehensive service for sourcing PFAS alternatives and implementing management strategies, designed for companies building internal capabilities.',
+      provider: {
+        '@type': 'Organization',
+        name: 'Lotus Nano',
+        url: 'https://lotus-nano.com/',
+      },
+      serviceType: ['Consulting', 'Sourcing'],
+      areaServed: 'Global',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is your geographic reach?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Global sourcing networks covering Europe, North America, Asia-Pacific. We've established relationships with 350+ verified PFAS-free suppliers across regulated and emerging markets. For management advisory, we track platforms globally but focus on solutions viable for companies operating in EU, US, UK, and other major regulated markets. Most engagements happen remotely—on-site presence rarely necessary.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How do you handle confidentiality and IP?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Standard NDAs precede any detailed technical discussion. All documentation, testing data, workflow designs, system configurations, and supplier relationships transfer to you completely. We retain no rights to your technical information or solutions we develop during engagement.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can you collaborate with our existing consultants?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. We frequently work alongside sustainability consultants and regulatory advisors. We handle the specific PFAS sourcing and management, while they handle broader strategy. Clear scope definition prevents overlap.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What happens if PFAS alternatives underperform in testing?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "We source multiple candidates and run trials in parallel. If initial candidates don't meet requirements, we source additional options until we find solutions that work. This iteration is built into the project scope.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What if a recommended software platform does not integrate properly?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'This is rare because detailed requirements mapping happens first. If integration fails post-selection, we pivot to alternatives or refund advisory fees. Forcing failed implementations helps no one.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can we exit a project mid-way through?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Defined exit points exist at each phase. You retain all deliverables completed to that stage. No ongoing obligations or penalties.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article class="relative min-h-screen bg-stone-900 pt-32 lg:pt-48">
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+      <!-- Hero -->
+      <header class="mb-48 grid gap-12 lg:grid-cols-12 lg:gap-20">
+        <!-- Left: Title -->
+        <div class="lg:col-span-7">
+          <h1
+            class="mb-8 text-5xl font-black leading-tight tracking-tighter text-stone-100 sm:text-6xl lg:text-7xl xl:text-8xl"
+          >
+            Working<br />with Us
+          </h1>
+
+          <p
+            class="mb-6 max-w-lg text-xl leading-relaxed text-stone-400 lg:text-2xl"
+          >
+            Serious PFAS transitions require serious partnerships. Here's what
+            working together looks like: deliverables, shared responsibilities,
+            and how we set projects up for success.
+          </p>
+
+          <p class="text-lg leading-relaxed text-stone-500">
+            Clear expectations. Mutual commitment. Zero ambiguity.
+          </p>
+        </div>
+
+        <!-- Right: Image -->
+        <div class="flex items-center lg:col-span-5">
+          <img
+            src="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-hero.png?w=700"
+            alt="Working with Lotus Nano"
+            class="w-full rounded-2xl grayscale transition-all duration-700 hover:grayscale-0"
+            width="700"
+            height="500"
+            loading="eager"
+          />
+        </div>
+      </header>
+
+      <!-- Section 1: Client Experience -->
+      <section class="mb-32">
+        <header class="mb-12 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            How Engagements Work
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            PFAS transitions succeed when both sides know exactly what's
+            happening, who's accountable, and what success looks like.
+          </p>
+        </header>
+
+        <div class="grid gap-8 md:grid-cols-3 lg:gap-12">
+          <!-- Scoping -->
+          <article
+            class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+            >
+              <Icon
+                name="mdi:file-document-outline"
+                class="h-7 w-7 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-4 text-2xl font-black leading-tight text-stone-100">
+              Scoping
+            </h3>
+            <p class="mb-4 leading-relaxed text-stone-400">
+              Free discovery call. We assess fit—both ways. If we're right for
+              each other, you get a statement of work within 48 hours.
+            </p>
+            <p class="text-sm text-stone-500">
+              Deliverables, timeline, pricing, success metrics. Everything
+              defined upfront.
+            </p>
+          </article>
+
+          <!-- Delivery -->
+          <article
+            class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+            >
+              <Icon name="mdi:cog-outline" class="h-7 w-7 text-amber-400" />
+            </div>
+            <h3 class="mb-4 text-2xl font-black leading-tight text-stone-100">
+              Delivery
+            </h3>
+            <p class="mb-4 leading-relaxed text-stone-400">
+              Alternative candidates appear in weeks. Platform shortlists,
+              workflow documentation. You test using your protocols.
+            </p>
+            <p class="text-sm text-stone-500">
+              Flexible & modular: engage with the services you need, when you
+              need them.
+            </p>
+          </article>
+
+          <!-- Handover -->
+          <article
+            class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+            >
+              <Icon
+                name="mdi:handshake-outline"
+                class="h-7 w-7 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-4 text-2xl font-black leading-tight text-stone-100">
+              Handover
+            </h3>
+            <p class="mb-4 leading-relaxed text-stone-400">
+              Everything transfers to you: supplier relationships,
+              documentation, system configurations, workflows.
+            </p>
+            <p class="text-sm text-stone-500">
+              You own the capability. We don't create dependency.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 2: Deliverables -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            What You Walk Away With
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Tangible outputs you own completely.
+          </p>
+        </header>
+
+        <!-- Grid Layout -->
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <!-- Left: Sourcing (Larger Feature) -->
+          <article
+            class="group relative overflow-hidden rounded-3xl border-2 border-stone-700/50 bg-gradient-to-br from-stone-800/60 via-stone-800/40 to-stone-800/20 p-12 transition-all duration-500 hover:border-amber-400/40 lg:p-14"
+          >
+            <!-- Background accent -->
+            <div
+              class="absolute right-0 top-0 h-64 w-64 rounded-full bg-amber-400/5 blur-3xl transition-all duration-700 group-hover:bg-amber-400/10"
+            >
+            </div>
+
+            <div class="relative z-10">
+              <div
+                class="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-400/40 bg-amber-600/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-amber-600/30"
+              >
+                <Icon name="mdi:flask-outline" class="h-8 w-8 text-amber-400" />
+              </div>
+
+              <h3
+                class="mb-6 text-3xl font-black leading-tight text-stone-100 lg:text-4xl"
+              >
+                <a
+                  href="/pfas-substitutes-sourcing"
+                  class="transition-colors hover:text-amber-400"
+                >
+                  PFAS Alternatives Sourcing
+                </a>
+              </h3>
+
+              <div class="space-y-4">
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Validated PFAS-free alternatives
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Performance-tested in your application, not just claimed
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Direct supplier relationships
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Contacts, pricing, contract terms—all yours
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Testing documentation
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Protocols, results, specifications
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Transition roadmap
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Your team executes independently
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Right: Advisory -->
+          <article
+            class="group relative overflow-hidden rounded-3xl border-2 border-stone-700/50 bg-gradient-to-br from-stone-800/60 via-stone-800/40 to-stone-800/20 p-12 transition-all duration-500 hover:border-amber-400/40 lg:p-14"
+          >
+            <!-- Background accent -->
+            <div
+              class="absolute right-0 top-0 h-64 w-64 rounded-full bg-amber-400/5 blur-3xl transition-all duration-700 group-hover:bg-amber-400/10"
+            >
+            </div>
+
+            <div class="relative z-10">
+              <div
+                class="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-amber-400/40 bg-amber-600/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-amber-600/30"
+              >
+                <Icon
+                  name="mdi:application-outline"
+                  class="h-8 w-8 text-amber-400"
+                />
+              </div>
+
+              <h3
+                class="mb-6 text-3xl font-black leading-tight text-stone-100 lg:text-4xl"
+              >
+                <a
+                  href="/pfas-management-advisory"
+                  class="transition-colors hover:text-amber-400"
+                >
+                  PFAS Management Advisory
+                </a>
+              </h3>
+
+              <div class="space-y-4">
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      PFAS Platform evaluation
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Independent review of software to match your needs
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Workflow creation / documentation
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Clear, repeatable processes for your team to follow
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Data architecture
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      Structuring your data for compliance and reporting
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Supplier engagement protocols
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      How to request, track, and manage supplier declarations
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <Icon
+                    name="mdi:check-circle-outline"
+                    class="mt-1 h-6 w-6 flex-shrink-0 text-amber-400"
+                  />
+                  <div>
+                    <p class="font-semibold text-stone-200">
+                      Implementation support & roadmap
+                    </p>
+                    <p class="text-sm text-stone-500">
+                      A clear plan for rollout and team adoption
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Ownership Statement -->
+        <div class="mt-12 text-center">
+          <div class="inline-flex items-center gap-4">
+            <Icon
+              name="mdi:key-outline"
+              class="h-8 w-8 flex-shrink-0 text-amber-400"
+            />
+            <p class="text-lg leading-relaxed text-stone-300">
+              You own everything. We don't retain access, IP, or operational
+              control after handover.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Partnership Fit -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Who This Works Best For
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            We specialise in complex technical <a
+              href="/pfas-substitutes-sourcing"
+              class="text-amber-400 underline decoration-amber-400/50 transition hover:decoration-amber-400"
+              >PFAS alternatives sourcing</a
+            > and independent <a
+              href="/pfas-management-advisory"
+              class="text-amber-400 underline decoration-amber-400/50 transition hover:decoration-amber-400"
+              >PFAS management advisory</a
+            >. This approach works best when certain conditions align.
+          </p>
+        </header>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
+          <div
+            class="flex gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-300 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:checkbox-marked-circle-outline"
+              class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+            />
+            <p class="leading-relaxed text-stone-400">
+              You're building internal capability, not seeking ongoing managed
+              services
+            </p>
+          </div>
+
+          <div
+            class="flex gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-300 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:checkbox-marked-circle-outline"
+              class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+            />
+            <p class="leading-relaxed text-stone-400">
+              Your challenges require specialist intervention, not commodity
+              solutions
+            </p>
+          </div>
+
+          <div
+            class="flex gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-300 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:checkbox-marked-circle-outline"
+              class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+            />
+            <p class="leading-relaxed text-stone-400">
+              Decision-makers can commit to validation and implementation phases
+            </p>
+          </div>
+
+          <div
+            class="flex gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-300 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:checkbox-marked-circle-outline"
+              class="mt-0.5 h-6 w-6 flex-shrink-0 text-amber-400"
+            />
+            <p class="leading-relaxed text-stone-400">
+              You want focused PFAS elimination expertise, not broad
+              sustainability consulting
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-stone-800/50 pt-8 text-center">
+          <p class="text-lg text-stone-400">
+            If this describes your situation, we should talk. If not, we'll help
+            you find specialists better suited to your needs.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: Partnership Requirements -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Partnership Requirements
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Successful PFAS transitions depend on contributions from both sides.
+            Here's what we need from you to deliver results.
+          </p>
+        </header>
+
+        <div class="grid gap-8 md:grid-cols-2">
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon name="mdi:account-tie" class="h-6 w-6 text-amber-400" />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              Decision-making authority
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              Projects move when we work with people who can approve
+              alternatives, commit to platforms, and validate workflows.
+              Multi-layer approval processes slow transitions—direct access to
+              decision-makers keeps momentum.
+            </p>
+          </article>
+
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon name="mdi:account-group" class="h-6 w-6 text-amber-400" />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              Technical team engagement
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              Sourcing requires materials specialists for validation testing.
+              Advisory needs IT/systems leads for integration assessment. Your
+              technical teams don't need to be available full-time, but
+              consistent access is essential.
+            </p>
+          </article>
+
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon
+                name="mdi:message-text-outline"
+                class="h-6 w-6 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              Transparency about constraints
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              Budget limits, timeline pressures, internal politics—share these
+              upfront. We'll design within your constraints or tell you honestly
+              if something isn't feasible. Hidden limitations derail projects
+              later.
+            </p>
+          </article>
+
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon name="mdi:swap-horizontal" class="h-6 w-6 text-amber-400" />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              Openness to change
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              PFAS transitions mean changing materials, systems, processes. If
+              current approaches must remain unchanged, alternatives won't solve
+              the problem. Progress requires flexibility.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 5: Pricing -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Investment
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Project-based fees tailored to your specific requirements.
+          </p>
+        </header>
+
+        <div class="mb-16 grid gap-12 lg:grid-cols-2">
+          <!-- Sourcing -->
+          <article class="border-l-4 border-amber-400 pl-8">
+            <h3 class="mb-6 text-2xl font-bold text-stone-100">
+              <a
+                href="/pfas-substitutes-sourcing"
+                class="transition-colors hover:text-amber-400"
+              >
+                PFAS Alternatives Sourcing
+              </a>
+            </h3>
+            <p class="mb-4 text-stone-400">Investment varies with:</p>
+            <ul class="space-y-2 text-stone-500">
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Number of materials requiring alternatives</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Technical complexity</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Geographic supplier requirements</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Validation depth needed</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Advisory -->
+          <article class="border-l-4 border-amber-400 pl-8">
+            <h3 class="mb-6 text-2xl font-bold text-stone-100">
+              <a
+                href="/pfas-management-advisory"
+                class="transition-colors hover:text-amber-400"
+              >
+                PFAS Management Advisory
+              </a>
+            </h3>
+            <p class="mb-4 text-stone-400">Investment varies with:</p>
+            <ul class="space-y-2 text-stone-500">
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Advisory modules selected</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Platforms requiring evaluation</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Integration complexity</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-amber-400">—</span>
+                <span>Implementation oversight scope</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div
+          class="space-y-6 rounded-2xl border-2 border-stone-700 bg-stone-800/50 p-8 lg:p-10"
+        >
+          <p class="leading-relaxed text-stone-400">
+            Duration depends on project complexity, your decision-making speed,
+            and testing protocols. Our advantage: we typically deliver up to 50%
+            faster than in-house teams because this is our specialty, not an
+            occasional project.
+          </p>
+          <p class="font-semibold text-stone-300">
+            We work on fixed project fees, never commission. Our recommendations
+            serve your requirements, not vendor incentives.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 7: Shared Success Factors -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Shared Success Factors
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Complex interventions carry inherent risk. Here's how we navigate
+            challenges together.
+          </p>
+        </header>
+
+        <div class="space-y-8">
+          <!-- Factor 1 -->
+          <article class="border-l-4 border-amber-400 pl-8">
+            <h3 class="mb-4 text-2xl font-bold text-stone-100">
+              If alternatives underperform?
+            </h3>
+            <p class="mb-4 leading-relaxed text-stone-400">
+              We source multiple candidates assuming suitable alternatives
+              exist—trials often run in parallel. Phase 3 validation in our <a
+                href="/pfas-substitutes-sourcing"
+                class="text-amber-400 underline decoration-amber-400/50 transition hover:decoration-amber-400"
+                >PFAS alternatives sourcing service</a
+              > tests performance before production commitment.
+            </p>
+            <p class="mb-4 leading-relaxed text-stone-400">
+              If initial candidates don't meet requirements, we source
+              additional options until we find solutions that work. This
+              iteration is built into project scoping.
+            </p>
+            <p class="text-sm text-stone-600">
+              If suitable alternatives don't exist in current markets, we
+              explore solutions with material science institutes. If nothing
+              proves viable, we communicate this early—transparency saves time
+              for everyone.
+            </p>
+          </article>
+
+          <!-- Factor 2 -->
+          <article class="border-l-4 border-amber-400 pl-8">
+            <h3 class="mb-4 text-2xl font-bold text-stone-100">
+              If platforms don't integrate properly?
+            </h3>
+            <p class="leading-relaxed text-stone-400">
+              Rare, because requirements mapping happens first in our <a
+                href="/pfas-management-advisory"
+                class="text-amber-400 underline decoration-amber-400/50 transition hover:decoration-amber-400"
+                >PFAS management advisory</a
+              >. If integration breaks or workflows don't match operations
+              post-selection, we pivot to alternatives or refund advisory fees.
+              Forcing failed implementations helps no one.
+            </p>
+          </article>
+
+          <!-- Factor 3 -->
+          <article class="border-l-4 border-amber-400 pl-8">
+            <h3 class="mb-4 text-2xl font-bold text-stone-100">
+              If you need to exit mid-project?
+            </h3>
+            <p class="leading-relaxed text-stone-400">
+              Defined exit points exist at each phase. You retain all
+              deliverables completed to that stage. No ongoing obligations or
+              penalties. Sometimes project priorities shift—we understand this.
+            </p>
+          </article>
+
+          <!-- Factor 4 -->
+          <article class="border-l-4 border-amber-400 pl-8">
+            <h3 class="mb-4 text-2xl font-bold text-stone-100">
+              If delivery isn't meeting expectations?
+            </h3>
+            <p class="leading-relaxed text-stone-400">
+              Speak up immediately. If we can address it, we will. If we can't
+              resolve concerns, we'll help you transition to another specialist
+              rather than prolonging an ineffective engagement.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 8: Practical Details -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Practical Details
+          </h2>
+        </header>
+
+        <div class="space-y-4">
+          <details class="group border-b border-stone-800 pb-6">
+            <summary
+              class="flex cursor-pointer items-center justify-between text-xl font-bold text-stone-200 transition-colors hover:text-amber-400"
+            >
+              <span>Geographic reach</span>
+              <Icon
+                name="mdi:chevron-down"
+                class="h-6 w-6 text-stone-500 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div
+              class="mt-6 max-w-3xl space-y-4 leading-relaxed text-stone-400"
+            >
+              <p>
+                Global sourcing networks covering Europe, North America,
+                Asia-Pacific. We've established relationships with 350+ verified
+                PFAS-free suppliers across regulated and emerging markets.
+              </p>
+              <p>
+                For management advisory, we track platforms globally but focus
+                on solutions viable for companies operating in EU, US, UK, and
+                other major regulated markets. Most engagements happen
+                remotely—on-site presence rarely necessary.
+              </p>
+            </div>
+          </details>
+
+          <details class="group border-b border-stone-800 pb-6">
+            <summary
+              class="flex cursor-pointer items-center justify-between text-xl font-bold text-stone-200 transition-colors hover:text-amber-400"
+            >
+              <span>Confidentiality and IP</span>
+              <Icon
+                name="mdi:chevron-down"
+                class="h-6 w-6 text-stone-500 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div
+              class="mt-6 max-w-3xl space-y-4 leading-relaxed text-stone-400"
+            >
+              <p>
+                Standard NDAs precede any detailed technical discussion. We
+                describe requirements generically to suppliers and vendors
+                during initial evaluation—your material specifications,
+                formulations, proprietary workflows, and data structures stay
+                confidential until you approve specific contacts.
+              </p>
+              <p>
+                All documentation, testing data, workflow designs, system
+                configurations, and supplier relationships transfer to you
+                completely. We retain no rights to your technical information or
+                solutions we develop during engagement.
+              </p>
+            </div>
+          </details>
+
+          <details class="group border-b border-stone-800 pb-6">
+            <summary
+              class="flex cursor-pointer items-center justify-between text-xl font-bold text-stone-200 transition-colors hover:text-amber-400"
+            >
+              <span>Collaborating with existing consultants</span>
+              <Icon
+                name="mdi:chevron-down"
+                class="h-6 w-6 text-stone-500 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div
+              class="mt-6 max-w-3xl space-y-4 leading-relaxed text-stone-400"
+            >
+              <p>
+                Yes. We've worked alongside sustainability consultants,
+                regulatory advisors, and implementation teams on client
+                engagements. Clear scope definition prevents overlap and
+                conflict.
+              </p>
+              <p>
+                We handle <a
+                  href="/pfas-substitutes-sourcing"
+                  class="text-amber-400 underline decoration-amber-400/50 transition hover:decoration-amber-400"
+                  >PFAS alternatives sourcing</a
+                >, and <a
+                  href="/pfas-management-advisory"
+                  class="text-amber-400 underline decoration-amber-400/50 transition hover:decoration-amber-400"
+                  >PFAS management</a
+                > such as software platform selection, workflow design, and implementation
+                oversight. Your other consultants handle broader ESG strategy, regulatory
+                filings, or their specific expertise. Specialist collaboration works
+                when everyone knows their role.
+              </p>
+            </div>
+          </details>
+
+          <details class="group border-b border-stone-800 pb-6">
+            <summary
+              class="flex cursor-pointer items-center justify-between text-xl font-bold text-stone-200 transition-colors hover:text-amber-400"
+            >
+              <span>Mid-transition intervention</span>
+              <Icon
+                name="mdi:chevron-down"
+                class="h-6 w-6 text-stone-500 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div
+              class="mt-6 max-w-3xl space-y-4 leading-relaxed text-stone-400"
+            >
+              <p>
+                We assess what's working and what's stalled. Often we join when
+                initial alternatives failed validation, platform implementations
+                underdeliver, timelines slip, or workflows don't match
+                operations.
+              </p>
+              <p>
+                We don't require restarts. We address specific gaps: source
+                alternatives for remaining materials, correct platform selection
+                mistakes, redesign ineffective workflows, accelerate testing
+                protocols. Pragmatic intervention targeting actual problems.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Section 9: Discovery Call -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Start with Discovery
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Invest 30 minutes. It's free, confidential, and without commitment.
+            Let's determine mutual fit before any commitment.
+          </p>
+        </header>
+
+        <div class="mb-16 grid gap-12 md:grid-cols-2">
+          <div>
+            <h3 class="mb-8 text-2xl font-bold text-stone-100">
+              What Happens Next
+            </h3>
+            <ol class="space-y-6">
+              <li
+                class="flex items-start gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"
+              >
+                <div
+                  class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-400/20 text-sm font-bold text-amber-400"
+                >
+                  1
+                </div>
+                <p class="pt-1 text-stone-400">
+                  You describe your PFAS challenge.
+                </p>
+              </li>
+              <li
+                class="flex items-start gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"
+              >
+                <div
+                  class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-400/20 text-sm font-bold text-amber-400"
+                >
+                  2
+                </div>
+                <p class="pt-1 text-stone-400">
+                  We assess mutual fit—both ways.
+                </p>
+              </li>
+              <li
+                class="flex items-start gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"
+              >
+                <div
+                  class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-400/20 text-sm font-bold text-amber-400"
+                >
+                  3
+                </div>
+                <p class="pt-1 text-stone-400">
+                  If it's a match: detailed proposal follows promptly.
+                </p>
+              </li>
+              <li
+                class="flex items-start gap-4 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"
+              >
+                <div
+                  class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-400/20 text-sm font-bold text-amber-400"
+                >
+                  4
+                </div>
+                <p class="pt-1 text-stone-400">
+                  If not: we'll connect you with better-suited specialists.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="mb-8 text-2xl font-bold text-stone-100">
+              What to Prepare
+            </h3>
+            <div class="space-y-6">
+              <div
+                class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"
+              >
+                <p class="mb-2 font-semibold text-stone-300">Ideal scenario:</p>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  PFAS materials list, regulatory deadlines, testing
+                  capabilities, decision-maker availability.
+                </p>
+              </div>
+              <div
+                class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"
+              >
+                <p class="mb-2 font-semibold text-stone-300">
+                  Starting with less:
+                </p>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  Many clients begin with partial information. Part of discovery
+                  is helping you map what matters most.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <IntelCTA />
+  </article>
+</BaseLayout>

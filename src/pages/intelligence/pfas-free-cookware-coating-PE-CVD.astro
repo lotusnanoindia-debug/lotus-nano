@@ -1,0 +1,1433 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { blogPosts } from '../../data/blogPosts';
+import MoreIntelligence from '../../components/MoreIntelligence.astro';
+import IntelCTA from '../../components/IntelCTA.astro';
+
+const article = blogPosts.find(
+  (post) => post.url === '/intelligence/pfas-free-cookware-coating-PE-CVD'
+);
+
+if (!article) {
+  throw new Error('Article metadata not found.');
+}
+
+// Format date as "MMM YYYY" (e.g., "Jun 2025")
+const publishDateFormatted = new Date(
+  article.publishDateFull
+).toLocaleDateString('en-GB', {
+  month: 'short',
+  year: 'numeric',
+});
+
+// Current date for dateModified
+const currentDate = new Date().toISOString().split('T')[0];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `https://lotus-nano.com${article.url}#article`,
+    headline: article.blogtitle,
+    description: article.blogdescr,
+    image: {
+      '@type': 'ImageObject',
+      url: article.img,
+      width: 1200,
+      height: 630,
+    },
+    author: {
+      '@type': 'Person',
+      '@id': `https://lotus-nano.com${article.url}#author`,
+      name: article.authorName,
+      jobTitle: article.authorRole,
+      image: {
+        '@type': 'ImageObject',
+        url: article.authorImage,
+      },
+    },
+    publisher: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    datePublished: article.publishDateFull,
+    dateModified: currentDate,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://lotus-nano.com${article.url}`,
+    },
+    isPartOf: {
+      '@id': 'https://lotus-nano.com/intelligence#blog',
+    },
+    inLanguage: 'en-GB',
+    articleSection: article.categoryFull,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `https://lotus-nano.com${article.url}#breadcrumb`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Intelligence',
+        item: 'https://lotus-nano.com/intelligence',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.blogtitle,
+        item: `https://lotus-nano.com${article.url}`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={article.blogtitle}
+  description={article.blogdescr}
+  canonical={`https://lotus-nano.com${article.url}`}
+  ogImage={article.img}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <meta property="article:author" content={article.authorName} />
+    <meta property="article:published_time" content={article.publishDateFull} />
+    <meta property="article:modified_time" content={currentDate} />
+    <meta property="article:section" content={article.categoryFull} />
+  </Fragment>
+
+  <article class="bg-stone-900">
+    <!-- Hero Image -->
+    <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <img
+        src={article.img}
+        alt={article.blogtitle}
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent"
+      >
+      </div>
+    </section>
+
+    <!-- Header -->
+    <section class="relative -mt-32 pb-24">
+      <div class="mx-auto max-w-4xl px-6 lg:px-8">
+        <!-- Meta -->
+        <div class="mb-8 flex items-center justify-between text-sm">
+          <div class="flex items-center gap-3">
+            <span class="font-semibold text-amber-400"
+              >{article.categoryFull}</span
+            >
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{publishDateFormatted}</span>
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{article.readTime} read</span>
+          </div>
+          <a
+            href="/intelligence"
+            class="text-stone-500 transition-colors hover:text-stone-300"
+            >← Intelligence</a
+          >
+        </div>
+
+        <!-- Title -->
+        <h1
+          class="mb-8 text-5xl font-black leading-[0.95] tracking-tighter text-stone-100 lg:text-7xl"
+        >
+          {article.blogtitle}
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="mb-16 text-2xl font-light leading-relaxed text-stone-400 lg:text-3xl"
+        >
+          {article.blogdescr}
+        </p>
+
+        <!-- Author -->
+        <div class="flex items-center gap-4 border-t border-stone-800 pt-8">
+          <img
+            src={article.authorImage}
+            alt={article.authorName}
+            class="h-12 w-12 rounded-full"
+            width="48"
+            height="48"
+          />
+          <div>
+            <div class="font-semibold text-stone-200">{article.authorName}</div>
+            <div class="text-sm text-stone-500">{article.authorRole}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <p
+          class="border-l-2 border-amber-400 pl-8 text-2xl font-light leading-relaxed text-stone-300"
+        >
+          The cookware industry is facing a period of significant change as
+          global PFAS restrictions accelerate. While many PFAS-free alternatives
+          have been introduced, matching the performance and durability of
+          Teflon remains a major challenge for manufacturers - until now?
+        </p>
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          The PFAS Dilemma
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            PTFE-based non-stick coatings revolutionised cookware. For decades,
+            Teflon delivered unmatched performance: effortless food release,
+            extreme durability, chemical resistance, and temperature stability
+            that made non-stick cookware universally practical.
+          </p>
+
+          <p>
+            Then regulators began restricting PFAS chemicals globally. The
+            European Union, United States, Canada, and dozens of jurisdictions
+            are implementing bans affecting every cookware manufacturer.
+            Compliance isn't optional—it's mandated with clear enforcement
+            timelines.
+          </p>
+
+          <p>
+            Manufacturers responded with ceramic coatings, silicone-based
+            systems, modified polymers, and various hybrid approaches. Billions
+            spent on R&D, production modifications, and marketing campaigns
+            promising "PFAS-free performance."
+          </p>
+
+          <p class="text-xl font-medium text-stone-300">
+            None matched Teflon's durability. Ceramic coatings degraded within
+            months. Silicone systems couldn't handle high temperatures. Modified
+            polymers increased costs without delivering comparable performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Alternatives Fail -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-5xl px-6 lg:px-8">
+        <h3 class="mb-12 text-2xl font-bold text-stone-200">
+          Why Current PFAS-Free Coatings Fail Cookware Requirements
+        </h3>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+            <div class="mb-4 text-3xl font-black text-red-400">6-12mo</div>
+            <h4 class="mb-2 text-base font-bold text-stone-200">
+              Ceramic Durability
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Non-stick properties degrade rapidly under normal home use.
+              Manufacturers quietly acknowledge replacement cycles measured in
+              months, not years.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+            <div class="mb-4 text-3xl font-black text-red-400">230°C</div>
+            <h4 class="mb-2 text-base font-bold text-stone-200">
+              Silicone Limit
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Maximum operating temperature restricts cooking methods. High-heat
+              searing, broiling, and many professional techniques become
+              impossible.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-6">
+            <div class="mb-4 text-3xl font-black text-red-400">+45%</div>
+            <h4 class="mb-2 text-base font-bold text-stone-200">
+              Cost Premium
+            </h4>
+            <p class="text-sm leading-relaxed text-stone-400">
+              Modified polymer systems increase production costs significantly
+              without achieving PTFE-level performance or consumer acceptance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          PE-CVD: A Fundamentally Different Approach
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            Plasma-Enhanced Chemical Vapour Deposition (PE-CVD) represents a
+            technology shift rather than incremental coating improvement.
+            Instead of applying materials through spray, dip, or roll coating,
+            PE-CVD builds molecular structures using cold atmospheric plasma.
+          </p>
+
+          <p>
+            This isn't marketing differentiation—it's fundamental materials
+            science that delivers PTFE-equivalent performance without PFAS
+            chemistry. The question isn't whether PE-CVD works. It's whether
+            manufacturers understand the opportunity before competitors
+            establish market position.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h3 class="mb-8 text-2xl font-bold text-stone-200">
+          The PE-CVD Process
+        </h3>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              01
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Surface Activation
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Plasma treatment removes contaminants and activates substrate
+                surfaces at the molecular level. This step determines coating
+                adhesion strength and long-term durability.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              02
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Cold Plasma Generation
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Atmospheric-pressure plasma ionises precursor gases without
+                substrate heating. This enables coating of aluminium, stainless
+                steel, and temperature-sensitive materials that traditional CVD
+                cannot process.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              03
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Molecular Layer Deposition
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Plasma-activated molecules bond directly to substrate surfaces,
+                building coating thickness atom by atom. This molecular-level
+                control creates exceptional uniformity across complex cookware
+                geometries.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              04
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                In-Process Cross-Linking
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Deposited molecules cross-link during application, creating
+                three-dimensional polymer networks. No separate curing cycle
+                required—coating achieves full properties immediately after
+                deposition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Performance Metrics -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          Performance That Matches PTFE
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            The gap between PE-CVD and alternative PFAS-free coatings isn't
+            marginal—it's categorical. Eight critical performance areas
+            demonstrate why PE-CVD succeeds where ceramics, silicones, and
+            modified polymers often struggle:
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance Metrics from Source Data -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="space-y-6">
+          <!-- Non-Stick Performance -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Non-Stick Performance</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span
+                  class="rounded bg-green-600 px-3 py-1 text-xs font-semibold text-white"
+                  >Great</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Silicone</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >Good</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Seasoned Cast Iron</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >Good</span
+                >
+              </div>
+            </div>
+          </details>
+
+          <!-- Durability -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Durability</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span
+                  class="rounded bg-green-600 px-3 py-1 text-xs font-semibold text-white"
+                  >Excellent</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="rounded bg-stone-500 px-3 py-1 text-xs text-white"
+                  >Low</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Silicone</span>
+                <span class="rounded bg-stone-500 px-3 py-1 text-xs text-white"
+                  >Low</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Seasoned Cast Iron</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+            </div>
+          </details>
+
+          <!-- Lifespan -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Lifespan</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span class="font-bold text-amber-400">8-10 Years</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="text-stone-500">2-4 Years</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="text-stone-500">1-2 Years</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Silicone</span>
+                <span class="text-stone-500">1-2 Years</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="text-blue-400">5-10 Years</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Seasoned Cast Iron</span>
+                <span class="text-blue-400">10+ Years</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Scratch Resistance -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Scratch Resistance</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span
+                  class="rounded bg-green-600 px-3 py-1 text-xs font-semibold text-white"
+                  >Excellent</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="rounded bg-stone-500 px-3 py-1 text-xs text-white"
+                  >Low</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Silicone</span>
+                <span class="rounded bg-stone-500 px-3 py-1 text-xs text-white"
+                  >Low</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Seasoned Cast Iron</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+            </div>
+          </details>
+
+          <!-- Heat Resistance -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Heat Resistance</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span class="font-bold text-amber-400">250°C (482°F)</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="text-stone-400">260°C (500°F)</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="text-blue-400">400°C (752°F)</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Silicone</span>
+                <span class="text-stone-400">250°C (482°F)</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="text-blue-400">450°C (842°F)</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Cast Iron / Stainless</span>
+                <span class="text-green-400">Very High</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Chemical Resistance -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Chemical Resistance</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span
+                  class="rounded bg-green-600 px-3 py-1 text-xs font-semibold text-white"
+                  >Outstanding</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Silicone</span>
+                <span class="rounded bg-stone-600 px-3 py-1 text-xs text-white"
+                  >Moderate</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Stainless Steel</span>
+                <span class="rounded bg-blue-600 px-3 py-1 text-xs text-white"
+                  >High</span
+                >
+              </div>
+            </div>
+          </details>
+
+          <!-- PFAS Content -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>PFAS Content</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span
+                  class="rounded bg-green-600 px-3 py-1 text-xs font-semibold text-white"
+                  >PFAS-Free</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="rounded bg-red-600 px-3 py-1 text-xs text-white"
+                  >Contains PFAS</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enhanced PTFE</span>
+                <span class="rounded bg-red-600 px-3 py-1 text-xs text-white"
+                  >Contains PFAS</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic / Silicone</span>
+                <span class="rounded bg-yellow-600 px-3 py-1 text-xs text-white"
+                  >Typically PFAS-Free</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel / Cast Iron</span>
+                <span class="rounded bg-green-600 px-3 py-1 text-xs text-white"
+                  >PFAS-Free</span
+                >
+              </div>
+            </div>
+          </details>
+
+          <!-- Energy Required -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <div class="flex items-center gap-4">
+                <span>Energy Required for Application</span>
+              </div>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div class="space-y-3 border-t border-stone-800 p-6">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-stone-300">Advanced PE-CVD</span
+                >
+                <span
+                  class="rounded bg-green-600 px-3 py-1 text-xs font-semibold text-white"
+                  >Minimal</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>PTFE (Teflon)</span>
+                <span class="rounded bg-red-600 px-3 py-1 text-xs text-white"
+                  >Extensive</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Ceramic Sol-Gel</span>
+                <span class="rounded bg-orange-600 px-3 py-1 text-xs text-white"
+                  >Moderate-Significant</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Enamel</span>
+                <span class="rounded bg-red-600 px-3 py-1 text-xs text-white"
+                  >Extensive</span
+                >
+              </div>
+              <div class="flex items-center justify-between text-stone-400">
+                <span>Seasoned Cast Iron</span>
+                <span class="rounded bg-green-600 px-3 py-1 text-xs text-white"
+                  >Minimal</span
+                >
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why PE-CVD Succeeds -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          The Materials Science Advantage
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            PE-CVD's performance superiority stems from fundamental material
+            science differences rather than incremental coating improvements:
+          </p>
+        </div>
+
+        <div class="my-12 space-y-6">
+          <div class="border-l-2 border-stone-800 pl-8">
+            <h4 class="mb-2 font-bold text-stone-200">
+              Molecular-Level Bonding
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              Unlike mechanical adhesion in spray-applied coatings, PE-CVD
+              creates chemical bonds at the molecular level. This eliminates
+              delamination—the primary failure mode of ceramic alternatives and
+              the reason their non-stick properties degrade rapidly.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-stone-800 pl-8">
+            <h4 class="mb-2 font-bold text-stone-200">
+              Atomic-Layer Precision
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              Molecular deposition ensures uniform coating thickness across
+              complex cookware geometries. This eliminates thin spots that
+              compromise durability in traditional spray, dip, or roll coating
+              methods. Thickness variation across entire pan surfaces measures
+              less than 5%.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-stone-800 pl-8">
+            <h4 class="mb-2 font-bold text-stone-200">
+              Superior Cross-Link Density
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              PE-CVD creates polymer networks with cross-link densities
+              exceeding conventional coating methods. This delivers exceptional
+              scratch resistance and chemical stability that ceramic and
+              silicone alternatives cannot achieve through their application
+              processes.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-stone-800 pl-8">
+            <h4 class="mb-2 font-bold text-stone-200">
+              Low-Temperature Processing
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              Cold plasma operation enables coating of aluminium, stainless
+              steel, and composite substrates without thermal stress. This
+              expands design possibilities unavailable with high-temperature CVD
+              or thermal spray methods whilst maintaining substrate dimensional
+              tolerances.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manufacturing Economics -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          Manufacturing Economics
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            PE-CVD adoption requires capital investment in coating equipment,
+            but the economics favour manufacturers who move decisively.
+            Production-scale systems enable cookware manufacturing at
+            commercially viable costs.
+          </p>
+
+          <p>
+            Per-unit coating costs match or undercut premium ceramic
+            alternatives whilst delivering PTFE-level performance that commands
+            price premiums consumers accept.
+          </p>
+
+          <p>
+            More significantly, PE-CVD eliminates the hidden costs plaguing
+            ceramic alternatives: warranty claims from premature coating
+            failure, brand damage from disappointed consumers, and lost repeat
+            purchases when products don't meet performance expectations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Positioning -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-5xl px-6 lg:px-8">
+        <h2 class="mb-12 text-center text-3xl font-black text-stone-100">
+          The Market Opportunity
+        </h2>
+
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+            <div class="mb-4 text-4xl font-black text-amber-400">$35B+</div>
+            <h4 class="mb-3 text-lg font-bold text-stone-200">
+              Global Cookware Market
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              Annual market with non-stick products dominating premium segments.
+              PFAS restrictions create immediate substitution demand across
+              developed markets.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+            <div class="mb-4 text-4xl font-black text-amber-400">2027</div>
+            <h4 class="mb-3 text-lg font-bold text-stone-200">
+              EU Ban Effective Date
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              Proposed PFAS restrictions eliminate PTFE from cookware sold in
+              European markets. North American and Asian jurisdictions following
+              similar timelines.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+            <div class="mb-4 text-4xl font-black text-amber-400">35-40%</div>
+            <h4 class="mb-3 text-lg font-bold text-stone-200">
+              Premium Positioning
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              PE-CVD performance enables pricing above ceramic alternatives
+              whilst delivering PTFE-equivalent results consumers demand and
+              recognise.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-stone-800 bg-stone-800/30 p-8">
+            <div class="mb-4 text-4xl font-black text-amber-400">18-24mo</div>
+            <h4 class="mb-3 text-lg font-bold text-stone-200">
+              Early-Mover Window
+            </h4>
+            <p class="leading-relaxed text-stone-400">
+              Limited PE-CVD production capacity creates opportunity for early
+              adopters to establish market position before technology scales
+              broadly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          Implementation Roadmap
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            Transitioning production to PE-CVD requires systematic planning.
+            Manufacturers who begin technical validation now position for
+            regulatory deadlines whilst competitors scramble:
+          </p>
+        </div>
+
+        <div class="my-12 space-y-6">
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              01
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Technical Validation (3-6 months)
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Coating trials on representative substrates, performance testing
+                against internal specifications, durability validation through
+                accelerated lifecycle testing, consumer acceptance studies.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              02
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Production Pilot (6-9 months)
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Small-batch manufacturing runs, process parameter optimisation,
+                quality system integration, operator training programmes, supply
+                chain validation.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              03
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Market Introduction (9-15 months)
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Limited product launches in test markets, consumer feedback
+                collection, marketing message refinement, retail partner
+                engagement, brand positioning establishment.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6">
+            <div
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-amber-600/20 text-xl font-black text-amber-400"
+            >
+              04
+            </div>
+            <div>
+              <h4 class="mb-2 text-lg font-bold text-stone-200">
+                Production Scale (12-24 months)
+              </h4>
+              <p class="leading-relaxed text-stone-400">
+                Full production line conversion or dedicated PE-CVD capacity
+                installation, supply chain optimisation, expanded product
+                portfolio, global market rollout.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: FAQ -->
+    <section id="faq" class="pb-24">
+      <div class="mx-auto max-w-4xl px-6 lg:px-8">
+        <div class="mb-16 text-center">
+          <h2 class="mb-4 text-4xl font-black tracking-tight text-stone-100">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-stone-400">
+            Critical insights about advanced cold-plasma PE-CVD coating
+            technology for cookware manufacturers.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span
+                >Can this cold-plasma PE-CVD coating be marketed as truly
+                sustainable?</span
+              >
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Yes. It is PFAS-free, non-toxic, made without additives or
+                colourants, manufactured in a low-energy cold plasma process,
+                fully recyclable and extremely durable — all of which reduces
+                lifecycle environmental impact. The 8-10 year lifespan also
+                means fewer product replacements compared to conventional
+                alternatives.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span
+                >What are the main advantages for cookware manufacturers?</span
+              >
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Extreme durability with 8-10 year lifespan, great non-stick
+                performance, multi-substrate compatibility, heat and chemical
+                resistance, low production cost, high-volume readiness, and
+                complete PFAS elimination. The technology also provides clear
+                competitive differentiation in an increasingly regulated
+                marketplace.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>How does the cost compare with traditional coatings?</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Whilst initial setup costs can be marginally higher, efficiency,
+                low energy use, high throughput and long lifespan of coated
+                products deliver a lower total cost of ownership. The
+                elimination of curing processes and reduced energy consumption
+                offset initial investment costs.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>Is the coating process fast?</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Yes. No curing or annealing is required after application. The
+                cold plasma process allows rapid deposition with high production
+                throughput and immediate readiness, significantly reducing
+                processing time compared to traditional high-temperature
+                methods.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>What substrates can be coated?</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                The technology bonds to stainless steel, enamel, glass,
+                stoneware, porcelain, and more — giving manufacturers complete
+                flexibility without substrate limitations. This versatility
+                enables product innovation across different material choices
+                whilst maintaining consistent performance.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>How does durability compare to traditional non-stick?</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                With hardness comparable to enamel and strong substrate bonding,
+                it delivers 8-10 years of performance versus 2-4 years for
+                traditional PTFE coatings. The extreme durability results from
+                the coating's glass-like structure and extensive molecular
+                cross-linking.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 7 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span
+                >Is this technology likely to face regulatory restrictions?</span
+              >
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                No. It contains zero PFAS, no harmful chemicals, complies with
+                all current regulations, and is manufactured with minimal
+                environmental impact and full recyclability. The complete
+                absence of fluorine compounds ensures future regulatory
+                compliance.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 8 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span
+                >Are all plasma-enhanced chemical vapour deposition coatings the
+                same?</span
+              >
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                No, significant variations exist among PE-CVD coatings. Key
+                factors include coating composition, deposition precision,
+                manufacturing expertise, performance consistency, and
+                application suitability. Understanding these distinctions is
+                essential for selecting the appropriate technology that aligns
+                with your specific requirements.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 9 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>How is coated cookware maintained?</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Maintenance is incredibly simple thanks to advanced non-stick
+                properties. Effortless cleaning with just a soft sponge,
+                dishwasher safe, no special tools needed, stain-resistant, and
+                long-lasting performance. The durable nature means it retains
+                non-stick properties over time.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 10 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span>How fast can the coating be applied?</span>
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Very fast. No curing or annealing required after application.
+                Rapid deposition covers areas up to 500×400mm with 800×800mm in
+                development. Compatible with automated production for improved
+                throughput. Ultra-thin coatings require minimal time and
+                material for deposition.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ 11 -->
+          <details
+            class="group rounded-xl border border-stone-800 bg-stone-800/30"
+          >
+            <summary
+              class="flex cursor-pointer items-center justify-between p-6 font-semibold text-stone-200 hover:text-amber-400"
+            >
+              <span
+                >What advantages does this provide in terms of durability and
+                longevity?</span
+              >
+              <span
+                class="text-sm text-stone-500 transition-transform group-open:rotate-180"
+                >▼</span
+              >
+            </summary>
+            <div
+              class="border-t border-stone-800 p-6 leading-relaxed text-stone-400"
+            >
+              <p>
+                Forms ultra-hard, non-stick coatings that resist scratching,
+                chipping, and wear. Creates robust bond preventing flaking or
+                degradation, ensuring consistent performance for up to 10 years
+                under high-heat and frequent use conditions following simple
+                care instructions.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <h2 class="mb-8 text-3xl font-black text-stone-100">
+          The Strategic Decision
+        </h2>
+
+        <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+          <p>
+            PFAS restrictions aren't slowing—they're accelerating across every
+            major market. Manufacturers waiting for "perfect" alternatives will
+            find themselves locked out whilst competitors establish consumer
+            preference with PE-CVD products that actually match PTFE
+            performance.
+          </p>
+
+          <p>
+            The technology exists. Production systems are proven at commercial
+            scale. Market demand is unambiguous. The remaining question is which
+            manufacturers will lead this transition and which will scramble to
+            follow.
+          </p>
+
+          <p class="text-xl font-medium text-stone-300">
+            First-mover advantages in cookware markets compound rapidly. Early
+            market position becomes difficult to displace once consumers
+            establish brand associations with "true non-stick without PFAS."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- More Intelligence -->
+    <MoreIntelligence currentArticleUrl={article.url} />
+    <IntelCTA />
+  </article>
+</BaseLayout>

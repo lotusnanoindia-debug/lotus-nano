@@ -1,0 +1,140 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<header
+  class="fixed left-0 right-0 top-0 z-50 border-b border-stone-800/50 bg-stone-900/80 backdrop-blur-md"
+>
+  <nav class="mx-auto max-w-7xl px-6 lg:px-12">
+    <div class="flex h-16 items-center justify-between lg:h-20">
+      <!-- Logo with Dot -->
+      <a href="/" class="group flex items-center gap-1">
+        <span
+          class="text-xl font-black tracking-tight text-stone-100 transition-colors duration-300 group-hover:text-amber-200 lg:text-2xl"
+        >
+          lotus nano
+        </span>
+        <span
+          class="text-xl font-black leading-none text-teal-500 lg:-mt-2 lg:text-4xl"
+          >.</span
+        >
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-8 lg:flex">
+        <a
+          href="/pfas-substitutes-sourcing"
+          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+        >
+          PFAS-Free Sourcing
+        </a>
+        <a
+          href="/pfas-management-advisory"
+          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+        >
+          PFAS Management
+        </a>
+        <a
+          href="/intelligence"
+          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+        >
+          Intelligence
+        </a>
+        <a
+          href="/working-with-us"
+          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+        >
+          Working With Us
+        </a>
+        <a
+          href="/about"
+          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+        >
+          About
+        </a>
+
+        <!-- Contact CTA -->
+        <span
+          class="cursor-pointer text-sm font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+          data-fillout-id="8F9rw7E4UBus"
+          data-fillout-embed-type="popup"
+          data-fillout-dynamic-resize
+          data-fillout-popup-size="medium"
+        >
+          Contact →
+        </span>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="mobile-menu-toggle"
+        class="text-stone-400 transition-colors duration-300 hover:text-stone-100 lg:hidden"
+        aria-label="Toggle menu"
+      >
+        <Icon name="mdi:menu" class="h-6 w-6" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-stone-800/50 bg-stone-900/95 backdrop-blur-md lg:hidden"
+  >
+    <div class="mx-auto max-w-7xl space-y-4 px-6 py-6">
+      <a
+        href="/pfas-substitutes-sourcing"
+        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+      >
+        PFAS Sourcing
+      </a>
+      <a
+        href="/pfas-management-advisory"
+        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+      >
+        PFAS Management
+      </a>
+      <a
+        href="/blog"
+        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+      >
+        Intelligence
+      </a>
+      <a
+        href="/about"
+        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
+      >
+        About
+      </a>
+
+      <span
+        class="block cursor-pointer border-t border-stone-800/50 pt-4 text-base font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+        data-fillout-id="8F9rw7E4UBus"
+        data-fillout-embed-type="popup"
+        data-fillout-dynamic-resize
+        data-fillout-popup-size="medium"
+      >
+        Contact →
+      </span>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (
+      !toggle?.contains(e.target as Node) &&
+      !menu?.contains(e.target as Node)
+    ) {
+      menu?.classList.add('hidden');
+    }
+  });
+</script>

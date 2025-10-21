@@ -1,16 +1,691 @@
 ---
+import BaseLayout from '../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import IntelCTA from '../components/IntelCTA.astro';
 
+const title =
+  'PFAS Alternatives Sourcing & PFAS Management Advisory | Lotus Nano';
+const description =
+  'Deploy PFAS alternatives in half the time. Expert PFAS-free substitutes sourcing and PFAS management advisory for brands and manufacturers navigating PFAS transitions globally.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://lotus-nano.com/#organization',
+    name: 'Lotus Nano',
+    alternateName: 'Lotus Nano PFAS Consultancy',
+    url: 'https://lotus-nano.com/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lotus-nano.com/assets/img/lotusnano-medium.jpg',
+      width: 462,
+      height: 81,
+      caption: 'Lotus Nano logo',
+    },
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-og.jpg?w=1200&h=630',
+      width: 1200,
+      height: 630,
+      caption: 'Lotus Nano PFAS alternatives sourcing and consulting',
+    },
+    description:
+      'Global PFAS transition experts helping brands and manufacturers source PFAS-free alternatives and implement PFAS management systems 50% faster than industry standard.',
+    foundingDate: '2022',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Pune',
+      addressRegion: 'Maharashtra',
+      addressCountry: 'IN',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-95791-03930',
+      contactType: 'customer service',
+      availableLanguage: ['en'],
+      email: 'info@lotus-nano.com',
+      areaServed: 'Worldwide',
+    },
+    sameAs: ['https://www.linkedin.com/company/lotus-nano'],
+    knowsAbout: [
+      'PFAS alternatives',
+      'PFAS-free substitutes',
+      'PFAS compliance software',
+      'PFAS management advisory',
+      'PFAS elimination',
+      'PFAS alternatives sourcing',
+      'PFAS sourcing',
+      'PFAS transition management',
+      'PFAS regulations',
+      'Forever chemicals alternatives',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://lotus-nano.com/#website',
+    name: 'Lotus Nano - PFAS Alternatives & Management Experts',
+    url: 'https://lotus-nano.com/',
+    description: description,
+    inLanguage: 'en-GB',
+    publisher: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://lotus-nano.com/pfas-substitutes-sourcing#service',
+    name: 'PFAS Alternatives Sourcing',
+    url: 'https://lotus-nano.com/pfas-substitutes-sourcing',
+    description:
+      'Expert sourcing and validation of PFAS-free alternatives for complex industrial applications. Access to 350+ verified zero-PFAS suppliers globally.',
+    provider: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    serviceType: 'PFAS Technology Consulting',
+    areaServed: {
+      '@type': 'Place',
+      name: 'Worldwide',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': 'https://lotus-nano.com/pfas-management-advisory#service',
+    name: 'PFAS Management Advisory',
+    url: 'https://lotus-nano.com/pfas-management-advisory',
+    description:
+      'Independent advisory for PFAS compliance: platform selection, workflow design, data architecture, supplier engagement, implementation.',
+    provider: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    serviceType: 'PFAS Management Advisory Services',
+    areaServed: {
+      '@type': 'Place',
+      name: 'Worldwide',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://lotus-nano.com/#breadcrumb',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+    ],
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://lotus-nano.com"
+  ogImage="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-og.jpg"
+  ogType="website"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Main Content -->
+  <article class="relative min-h-screen bg-stone-900 pt-32 lg:pt-48">
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+      <!-- Hero Section: Asymmetric Split -->
+      <header class="mb-48 grid gap-12 lg:grid-cols-12 lg:gap-20">
+        <!-- Left: Primary Message -->
+        <div class="lg:col-span-7">
+          <h1
+            class="mb-8 text-5xl font-black leading-tight tracking-tighter text-stone-100 sm:text-6xl lg:text-7xl xl:text-8xl"
+          >
+            PFAS Trans&shy;i&shy;tions <span class="text-amber-400"
+              >Stalling?</span
+            >
+          </h1>
+
+          <p class="mb-8 max-w-md text-base leading-relaxed text-stone-400">
+            Implement PFAS alternatives that actually work at scale. Structure
+            your PFAS compliance with systems that fit your workflow. Deploy up
+            to <strong class="text-stone-300">in half the time</strong> and usual
+            trial-and-error cycles.
+          </p>
+
+          <span
+            class="group/cta inline-block cursor-pointer font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+            data-fillout-id="8F9rw7E4UBus"
+            data-fillout-embed-type="popup"
+            data-fillout-dynamic-resize
+            data-fillout-popup-size="medium"
+          >
+            Discuss your PFAS transition
+            <span
+              class="inline-block transition-transform duration-300 group-hover/cta:translate-x-1"
+              >→</span
+            >
+          </span>
+        </div>
+
+        <!-- Right: Hero Image -->
+        <div class="flex items-center lg:col-span-5">
+          <figure class="relative w-full">
+            <img
+              src="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-hero.png?w=800"
+              alt="PFAS transition consultancy - alternatives sourcing and compliance software advisory"
+              class="w-full rounded-2xl grayscale transition-all duration-700 hover:grayscale-0"
+              width="800"
+              height="500"
+              loading="eager"
+            />
+
+            <!-- Performance Stat -->
+            <figcaption
+              class="absolute bottom-8 left-8 rounded bg-stone-900/80 px-6 py-4 backdrop-blur-sm"
+            >
+              <div class="mb-1 text-4xl font-black leading-none text-amber-400">
+                53%
+              </div>
+              <div class="text-xs uppercase tracking-wider text-stone-300">
+                Faster PFAS deployment
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </header>
+
+      <!-- Six Critical PFAS Transition Gaps -->
+      <section class="mb-32">
+        <header class="mb-12 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            What Breaks PFAS Transitions?
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            These 6 gaps appear repeatedly across sectors — each adding months
+            to your timeline.
+          </p>
+        </header>
+
+        <div class="relative">
+          <!-- Scroll Hint (Mobile Only) -->
+          <div
+            class="mb-4 flex items-center gap-2 text-xs text-stone-600 lg:hidden"
+          >
+            <Icon name="mdi:gesture-swipe-horizontal" class="h-4 w-4" />
+            <span>Swipe to explore</span>
+          </div>
+
+          <!-- Problems Container - Hidden Scrollbar -->
+          <div
+            id="pfas-problems-scroll"
+            class="scrollbar-hide -mx-6 overflow-x-auto px-6 pb-4 lg:mx-0 lg:overflow-visible lg:px-0 lg:pb-0"
+          >
+            <div
+              class="flex min-w-max gap-6 lg:grid lg:min-w-0 lg:grid-cols-3 lg:gap-8"
+            >
+              <!-- Problem 1 -->
+              <article
+                class="group w-72 flex-shrink-0 rounded-2xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:w-auto lg:flex-shrink"
+              >
+                <div
+                  class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon
+                    name="mdi:flask-empty-outline"
+                    class="h-5 w-5 text-amber-400"
+                  />
+                </div>
+                <h3 class="mb-3 text-lg font-bold leading-tight text-stone-100">
+                  Limited alternatives
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  Off-the-shelf or self-sourced PFAS alternatives rarely work at
+                  scale.
+                </p>
+              </article>
+
+              <!-- Problem 2 -->
+              <article
+                class="group w-72 flex-shrink-0 rounded-2xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:w-auto lg:flex-shrink"
+              >
+                <div
+                  class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon
+                    name="mdi:alert-circle-outline"
+                    class="h-5 w-5 text-amber-400"
+                  />
+                </div>
+                <h3 class="mb-3 text-lg font-bold leading-tight text-stone-100">
+                  Unreliable claims
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  Supplier & Lab data doesn't predict production-level
+                  performance.
+                </p>
+              </article>
+
+              <!-- Problem 3 -->
+              <article
+                class="group w-72 flex-shrink-0 rounded-2xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:w-auto lg:flex-shrink"
+              >
+                <div
+                  class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon name="mdi:clock-fast" class="h-5 w-5 text-amber-400" />
+                </div>
+                <h3 class="mb-3 text-lg font-bold leading-tight text-stone-100">
+                  Accelerating regulations
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  PFAS restrictions expand faster than teams can track.
+                </p>
+              </article>
+
+              <!-- Problem 4 -->
+              <article
+                class="group w-72 flex-shrink-0 rounded-2xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:w-auto lg:flex-shrink"
+              >
+                <div
+                  class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon
+                    name="mdi:package-variant-closed"
+                    class="h-5 w-5 text-amber-400"
+                  />
+                </div>
+                <h3 class="mb-3 text-lg font-bold leading-tight text-stone-100">
+                  Fragmented systems
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  Disconnected tools destroy supply chain visibility.
+                </p>
+              </article>
+
+              <!-- Problem 5 -->
+              <article
+                class="group w-72 flex-shrink-0 rounded-2xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:w-auto lg:flex-shrink"
+              >
+                <div
+                  class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon
+                    name="mdi:file-document-remove-outline"
+                    class="h-5 w-5 text-amber-400"
+                  />
+                </div>
+                <h3 class="mb-3 text-lg font-bold leading-tight text-stone-100">
+                  Poor traceability
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  Audit trails break across multiple suppliers.
+                </p>
+              </article>
+
+              <!-- Problem 6 -->
+              <article
+                class="group w-72 flex-shrink-0 rounded-2xl border border-stone-700/50 bg-stone-800/30 p-6 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:w-auto lg:flex-shrink"
+              >
+                <div
+                  class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon
+                    name="mdi:shield-alert-outline"
+                    class="h-5 w-5 text-amber-400"
+                  />
+                </div>
+                <h3 class="mb-3 text-lg font-bold leading-tight text-stone-100">
+                  Incomplete verification
+                </h3>
+                <p class="text-sm leading-relaxed text-stone-500">
+                  PFAS-free claims rarely stand up to real scrutiny
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Scroll Indicator Dots (Mobile Only) -->
+          <div id="pfas-dots" class="mt-4 flex justify-center gap-2 lg:hidden">
+            <button
+              class="dot h-2.5 w-2.5 rounded-full bg-amber-400 transition-colors"
+              aria-label="View problem 1"></button>
+            <button
+              class="dot h-2.5 w-2.5 rounded-full bg-stone-700 transition-colors"
+              aria-label="View problem 2"></button>
+            <button
+              class="dot h-2.5 w-2.5 rounded-full bg-stone-700 transition-colors"
+              aria-label="View problem 3"></button>
+            <button
+              class="dot h-2.5 w-2.5 rounded-full bg-stone-700 transition-colors"
+              aria-label="View problem 4"></button>
+            <button
+              class="dot h-2.5 w-2.5 rounded-full bg-stone-700 transition-colors"
+              aria-label="View problem 5"></button>
+            <button
+              class="dot h-2.5 w-2.5 rounded-full bg-stone-700 transition-colors"
+              aria-label="View problem 6"></button>
+          </div>
+        </div>
+
+        <!-- Summary Statement -->
+        <footer class="mt-16 border-t border-stone-800/50 pt-12 text-center">
+          <p
+            class="mx-auto max-w-3xl text-xl font-bold leading-relaxed text-stone-100"
+          >
+            Each gap is <span class="text-amber-400">systemic</span> — and so is
+            closing them.
+          </p>
+
+          <!-- NEW: how we work Link -->
+          <div class="mt-8">
+            <a
+              href="/intelligence"
+              class="mb-4 mr-4 inline-block border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-400 transition-colors duration-300 hover:text-amber-400 lg:mb-0"
+            >
+              Intel →
+            </a>
+            <a
+              href="/working-with-us"
+              class="mb-4 inline-block border border-stone-700 px-4 py-2 text-sm font-semibold text-stone-400 transition-colors duration-300 hover:text-amber-400 lg:mb-0"
+            >
+              How we work →
+            </a>
+          </div>
+        </footer>
+      </section>
+
+      <!-- PFAS Solutions: Two Clear Paths -->
+      <section class="mb-32">
+        <header class="mb-16 grid gap-12 lg:grid-cols-12 lg:gap-20">
+          <!-- Left: Section Title -->
+          <div class="lg:col-span-5">
+            <h2
+              class="mb-8 text-5xl font-black leading-tight tracking-tighter text-stone-100 lg:text-6xl xl:text-7xl"
+            >
+              Two Clear <span class="text-amber-400">PFAS Pathways</span>
+            </h2>
+
+            <p class="max-w-md text-base leading-relaxed text-stone-400">
+              Expert PFAS alternatives sourcing or strategic PFAS software
+              guidance. Most PFAS transitions require both — starting with
+              whatever's most urgent for your PFAS elimination goals.
+            </p>
+          </div>
+
+          <!-- Right: Services -->
+          <div class="space-y-12 lg:col-span-7">
+            <!-- PFAS Sourcing Service -->
+            <article class="border-l-4 border-amber-400 pl-8">
+              <header class="mb-6">
+                <div
+                  class="mb-3 text-xs font-bold uppercase tracking-wider text-stone-600"
+                >
+                  PFAS Alternatives Sourcing
+                </div>
+                <h3
+                  class="mb-4 text-3xl font-black tracking-tight text-stone-100"
+                >
+                  PFAS-Free Alternatives That Work at Scale
+                </h3>
+                <p class="text-base leading-relaxed text-stone-400">
+                  Direct access to hundreds of verified zero-PFAS suppliers
+                  globally. PFAS alternatives validated through real-world
+                  performance, not laboratory claims alone. Systematic PFAS
+                  sourcing that eliminates trial-and-error cycles.
+                </p>
+              </header>
+
+              <!-- Compact PFAS Sourcing Deliverables -->
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                  ></span>
+                  <span class="text-sm text-stone-500"
+                    >Full-service PFAS validation and expert PFAS screening</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                  ></span>
+                  <span class="text-sm text-stone-500"
+                    >Insider PFAS supplier networks and guided PFAS handover</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                  ></span>
+                  <span class="text-sm text-stone-500"
+                    >Critical PFAS timeline support and risk mitigation</span
+                  >
+                </li>
+              </ul>
+
+              <footer>
+                <a
+                  href="/pfas-substitutes-sourcing"
+                  class="group/link inline-block text-sm font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+                >
+                  Explore PFAS sourcing approach
+                  <span
+                    class="inline-block transition-transform duration-300 group-hover/link:translate-x-1"
+                    >→</span
+                  >
+                </a>
+              </footer>
+            </article>
+
+            <!-- PFAS Software Service -->
+            <article class="border-l-4 border-amber-400 pl-8">
+              <header class="mb-6">
+                <div
+                  class="mb-3 text-xs font-bold uppercase tracking-wider text-stone-600"
+                >
+                  PFAS Management Advisory
+                </div>
+                <h3
+                  class="mb-4 text-3xl font-black tracking-tight text-stone-100"
+                >
+                  PFAS Management That Works
+                </h3>
+                <p class="text-base leading-relaxed text-stone-400">
+                  Independent advisory for PFAS compliance: platform selection,
+                  workflow design, data architecture, supplier engagement, and
+                  implementation support.
+                </p>
+              </header>
+
+              <!-- Compact PFAS Software Deliverables -->
+              <ul class="mb-6 space-y-2">
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                  ></span>
+                  <span class="text-sm text-stone-500"
+                    >Platform selection & integration assessment</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                  ></span>
+                  <span class="text-sm text-stone-500"
+                    >Workflow design & data architecture</span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-amber-400"
+                  ></span>
+                  <span class="text-sm text-stone-500"
+                    >Supplier engagement & implementation support</span
+                  >
+                </li>
+              </ul>
+
+              <footer>
+                <a
+                  href="/pfas-management-advisory"
+                  class="group/link inline-block border-amber-400 text-sm font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+                >
+                  Explore PFAS management advisory
+                  <span
+                    class="inline-block transition-transform duration-300 group-hover/link:translate-x-1"
+                    >→</span
+                  >
+                </a>
+              </footer>
+            </article>
+          </div>
+        </header>
+      </section>
+
+      <!-- PFAS Client Testimonial -->
+      <section class="mb-32 border-y border-stone-700 py-16">
+        <figure class="mx-auto max-w-4xl">
+          <blockquote class="mb-8">
+            <p
+              class="mb-6 text-2xl font-bold italic leading-tight text-stone-100 lg:text-3xl"
+            >
+              "We've been chasing PFAS alternatives for months with little
+              progress. Connected us to 3 relevant suppliers in less than 4
+              weeks. Two are now in production trials."
+            </p>
+          </blockquote>
+          <figcaption class="flex items-center gap-4">
+            <img
+              src="https://the-knowledge-brokers.sirv.com/lotus-nano/frank-automotive.jpg?w=60&h=60"
+              alt="Frank P. - PFAS transition success"
+              class="h-12 w-12 rounded-full"
+              width="60"
+              height="60"
+              loading="lazy"
+            />
+            <div>
+              <div class="text-sm font-semibold text-stone-100">Frank P.</div>
+              <div class="text-xs text-stone-500">
+                Manufacturing Director, Tier-1 Automotive Supplier, USA
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- PFAS Track Record -->
+      <section class="mb-32">
+        <header class="mb-12 max-w-3xl">
+          <h2
+            class="mb-4 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+          >
+            Systematic PFAS Expertise, <span class="text-amber-400"
+              >Measurable Results</span
+            >
+          </h2>
+          <p class="text-base leading-relaxed text-stone-400">
+            Focused on reliable PFAS transition speed, scale, and zero
+            regrettable PFAS substitutions.
+          </p>
+        </header>
+
+        <div class="grid max-w-7xl gap-12 md:grid-cols-3">
+          <article
+            class="border border-stone-500 p-4 transition-colors hover:bg-stone-700/50"
+          >
+            <div class="mb-2 text-5xl font-black leading-none text-stone-100">
+              50%
+            </div>
+            <p class="text-sm text-stone-400">
+              Faster PFAS transitions—compliant PFAS alternatives in half the
+              typical PFAS elimination timeline
+            </p>
+          </article>
+          <article
+            class="border border-stone-500 p-4 transition-colors hover:bg-stone-700/50"
+          >
+            <div class="mb-2 text-5xl font-black leading-none text-stone-100">
+              350+
+            </div>
+            <p class="text-sm text-stone-400">
+              Verified zero-PFAS suppliers across global PFAS-free markets
+            </p>
+          </article>
+          <article
+            class="border border-stone-500 p-4 transition-colors hover:bg-stone-700/50"
+          >
+            <div class="mb-2 text-5xl font-black leading-none text-stone-100">
+              15+
+            </div>
+            <p class="text-sm text-stone-400">
+              Industries assisted with PFAS elimination
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <IntelCTA />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Hide scrollbar completely */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+</style>
+
+<script>
+  // Scroll indicator functionality
+  const scrollContainer = document.getElementById('pfas-problems-scroll');
+  const dots = document.querySelectorAll('#pfas-dots .dot');
+
+  if (scrollContainer && dots.length > 0) {
+    // Calculate which card is in view
+    function updateActiveDot() {
+      const scrollLeft = scrollContainer.scrollLeft;
+      const cardWidth = 288 + 24; // w-72 (288px) + gap-6 (24px)
+      const activeIndex = Math.round(scrollLeft / cardWidth);
+
+      // Update dot styles
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.remove('bg-stone-700');
+          dot.classList.add('bg-amber-400');
+        } else {
+          dot.classList.remove('bg-amber-400');
+          dot.classList.add('bg-stone-700');
+        }
+      });
+    }
+
+    // Listen to scroll events
+    scrollContainer.addEventListener('scroll', updateActiveDot);
+
+    // Click dots to scroll to card
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const cardWidth = 288 + 24; // w-72 (288px) + gap-6 (24px)
+        scrollContainer.scrollTo({
+          left: cardWidth * index,
+          behavior: 'smooth',
+        });
+      });
+    });
+
+    // Set initial active dot
+    updateActiveDot();
+  }
+</script>

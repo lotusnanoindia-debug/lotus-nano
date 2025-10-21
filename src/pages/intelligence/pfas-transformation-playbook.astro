@@ -1,0 +1,704 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { blogPosts } from '../../data/blogPosts';
+import MoreIntelligence from '../../components/MoreIntelligence.astro';
+import IntelCTA from '../../components/IntelCTA.astro';
+
+const article = blogPosts.find(
+  (post) => post.url === '/intelligence/pfas-transformation-playbook'
+);
+
+if (!article) {
+  throw new Error('Article metadata not found in blogPosts.ts');
+}
+
+// Format date as "MMM YYYY" (e.g., "Jul 2025")
+const publishDateFormatted = new Date(
+  article.publishDateFull
+).toLocaleDateString('en-GB', {
+  month: 'short',
+  year: 'numeric',
+});
+
+// Current date for dateModified
+const currentDate = new Date().toISOString().split('T')[0];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `https://lotus-nano.com${article.url}#article`,
+    headline: article.blogtitle,
+    description: article.blogdescr,
+    image: {
+      '@type': 'ImageObject',
+      url: article.img,
+      width: 1200,
+      height: 630,
+    },
+    author: {
+      '@type': 'Person',
+      '@id': `https://lotus-nano.com${article.url}#author`,
+      name: article.authorName,
+      jobTitle: article.authorRole,
+      image: {
+        '@type': 'ImageObject',
+        url: article.authorImage,
+      },
+    },
+    publisher: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    datePublished: article.publishDateFull,
+    dateModified: currentDate,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://lotus-nano.com${article.url}`,
+    },
+    isPartOf: {
+      '@id': 'https://lotus-nano.com/intelligence#blog',
+    },
+    inLanguage: 'en-GB',
+    articleSection: article.categoryFull,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `https://lotus-nano.com${article.url}#breadcrumb`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Intelligence',
+        item: 'https://lotus-nano.com/intelligence',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.blogtitle,
+        item: `https://lotus-nano.com${article.url}`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={article.blogtitle}
+  description={article.blogdescr}
+  canonical={`https://lotus-nano.com${article.url}`}
+  ogImage={article.img}
+  ogType="article"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <meta property="article:author" content={article.authorName} />
+    <meta property="article:published_time" content={article.publishDateFull} />
+    <meta property="article:modified_time" content={currentDate} />
+    <meta property="article:section" content={article.categoryFull} />
+  </Fragment>
+
+  <article class="bg-stone-900">
+    <!-- Hero Image - Full Bleed -->
+    <section class="relative h-[70vh] min-h-[500px] overflow-hidden">
+      <img
+        src={article.img}
+        alt={article.blogtitle}
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent"
+      >
+      </div>
+    </section>
+
+    <!-- Article Header -->
+    <section class="relative -mt-32 pb-24">
+      <div class="mx-auto max-w-4xl px-6 lg:px-8">
+        <!-- Category + Meta -->
+        <div class="mb-8 flex items-center justify-between text-sm">
+          <div class="flex items-center gap-3">
+            <span class="font-semibold text-amber-400"
+              >{article.categoryFull}</span
+            >
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{publishDateFormatted}</span>
+            <span class="text-stone-600">·</span>
+            <span class="text-stone-500">{article.readTime} read</span>
+          </div>
+          <a
+            href="/intelligence"
+            class="text-stone-500 transition-colors hover:text-stone-300"
+            >← Intelligence</a
+          >
+        </div>
+
+        <!-- Title -->
+        <h1
+          class="mb-8 text-5xl font-black leading-[0.95] tracking-tighter text-stone-100 lg:text-7xl"
+        >
+          {article.blogtitle}
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="mb-16 text-2xl font-light leading-relaxed text-stone-400 lg:text-3xl"
+        >
+          {article.blogdescr}
+        </p>
+
+        <!-- Author -->
+        <div class="flex items-center gap-4 border-t border-stone-800 pt-8">
+          <img
+            src={article.authorImage}
+            alt={article.authorName}
+            class="h-12 w-12 rounded-full"
+            width="48"
+            height="48"
+          />
+          <div>
+            <div class="font-semibold text-stone-200">{article.authorName}</div>
+            <div class="text-sm text-stone-500">{article.authorRole}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening Statement -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <p
+          class="border-l-2 border-amber-400 pl-8 text-2xl font-light leading-relaxed text-stone-300"
+        >
+          Most PFAS phase-out efforts don't fail from technical hurdles—they
+          stall because companies treat transformation as a sourcing problem,
+          not a strategic opportunity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="pb-24">
+      <div class="mx-auto max-w-3xl px-6 lg:px-8">
+        <div class="space-y-16">
+          <!-- Section 1 -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              The Reality Check
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                Every month, senior leaders quietly admit the same uncomfortable
+                truth: their PFAS phase-out initiatives are stuck. Not from lack
+                of effort. Not from insufficient budgets. They stall because
+                leadership teams approach transformation with the wrong mental
+                model.
+              </p>
+
+              <p>
+                The pattern repeats across industries. Automotive OEMs discover
+                that coating suppliers can't deliver PFAS-free alternatives at
+                scale. Consumer goods brands realise their non-stick
+                formulations fail durability testing. Electronics manufacturers
+                watch costs spiral whilst performance drops.
+              </p>
+
+              <p>
+                These aren't execution failures. They're strategy failures.
+                Companies apply procurement playbooks to problems that require
+                transformation frameworks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              Why Tactical Approaches Fail
+            </h2>
+
+            <h3 class="mb-6 text-xl font-bold text-stone-200">
+              The False Comfort of Substitution Thinking
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                When procurement teams brief suppliers on PFAS alternatives,
+                they typically frame requirements as "like-for-like"
+                substitutions. Match these performance specs. Meet this price
+                point. Deliver on existing timelines.
+              </p>
+
+              <p>This framing creates three immediate problems:</p>
+            </div>
+
+            <div class="my-8 space-y-4 border-l-2 border-stone-800 pl-8">
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >It assumes equivalent solutions exist.</span
+                > For many PFAS applications, direct replacements don't exist yet—or
+                won't exist at comparable economics for years.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >It ignores system-level changes.</span
+                > True PFAS alternatives often require different application methods,
+                curing processes, or quality control protocols.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >It prevents innovation.</span
+                > Suppliers optimise for matching existing performance rather than
+                exploring new approaches that might outperform PFAS solutions.
+              </p>
+            </div>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                The result? Lengthy supplier negotiations that discover what
+                technical teams could have predicted: perfect substitutes rarely
+                exist, and forcing them wastes everyone's time.
+              </p>
+            </div>
+
+            <h3 class="mb-6 mt-12 text-xl font-bold text-stone-200">
+              The Coordination Tax
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                PFAS transformation touches every function: R&D reformulates
+                products. Manufacturing adjusts processes. Quality revalidates
+                specifications. Regulatory updates submissions. Procurement
+                renegotiates contracts. Sales communicates changes to customers.
+              </p>
+
+              <p>
+                Without executive-level coordination, these functions optimise
+                locally—creating global failures. R&D selects alternatives that
+                Manufacturing can't process reliably. Quality establishes specs
+                that suppliers can't meet economically. Regulatory submissions
+                proceed before technical validation completes.
+              </p>
+            </div>
+
+            <!-- Example -->
+            <aside class="my-12 border-l-2 border-red-400/40 pl-8">
+              <p
+                class="mb-2 text-sm font-semibold uppercase tracking-wider text-red-400"
+              >
+                Common Failure Pattern
+              </p>
+              <p class="text-lg leading-relaxed text-stone-300">
+                One automotive manufacturer spent 18 months qualifying a
+                PFAS-free coating before discovering that their paint shop's
+                curing ovens couldn't reach the required temperature
+                consistently. The coating technically worked—but manufacturing
+                couldn't produce it reliably. The entire initiative restarted
+                from scratch.
+              </p>
+            </aside>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                This coordination tax compounds over time. Early decisions
+                constraint later options. Technical debt accumulates. Projects
+                restart repeatedly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              The Strategic Framework That Works
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                Successful PFAS transformations share common elements. Leaders
+                recognise these aren't tactical procurement projects—they're
+                strategic transformations that require different thinking,
+                different timelines, and different metrics.
+              </p>
+            </div>
+
+            <h3 class="mb-6 mt-12 text-xl font-bold text-stone-200">
+              Start with Brutal Honesty About Performance Trade-Offs
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                The first strategic question isn't "What replaces PFAS?" It's
+                "What performance can we actually trade away?"
+              </p>
+
+              <p>
+                This requires uncomfortable conversations. Marketing teams
+                defend brand promises. Engineering teams protect safety margins.
+                Operations teams resist process changes. Product teams worry
+                about competitive disadvantage.
+              </p>
+
+              <p>
+                Yet these discussions unlock transformation. They reveal which
+                performance requirements drive real value versus which exist
+                from historical inertia. They identify where modest performance
+                reductions create acceptable outcomes—and where they don't.
+              </p>
+            </div>
+
+            <!-- Strategic Insight -->
+            <aside class="my-12 border-l-2 border-green-400/40 pl-8">
+              <p
+                class="mb-2 text-sm font-semibold uppercase tracking-wider text-green-400"
+              >
+                Strategic Insight
+              </p>
+              <p class="text-lg leading-relaxed text-stone-300">
+                One textile manufacturer discovered that whilst their PFAS-based
+                water repellency lasted through 50+ wash cycles, customer
+                research showed most garments were discarded after 20 washes for
+                style reasons. This insight allowed them to specify PFAS-free
+                alternatives with 30-wash durability—meeting actual needs whilst
+                reducing costs.
+              </p>
+            </aside>
+
+            <h3 class="mb-6 mt-12 text-xl font-bold text-stone-200">
+              Map the Complete Value Chain
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                PFAS transformation isn't contained within your four walls. It
+                extends through suppliers, customers, and sometimes their
+                customers.
+              </p>
+
+              <p>
+                Strategic leaders map these dependencies early. They identify
+                which suppliers can adapt versus which can't. They understand
+                which customers will accept changes versus which require
+                extensive education. They anticipate where regulatory
+                requirements might shift before formal announcements.
+              </p>
+
+              <p>
+                This mapping reveals leverage points. Perhaps transitioning one
+                product line creates learning that accelerates others. Perhaps
+                collaborating with a key customer attracts co-investment.
+                Perhaps coordinating with competitors on testing protocols
+                reduces everyone's validation costs.
+              </p>
+            </div>
+
+            <h3 class="mb-6 mt-12 text-xl font-bold text-stone-200">
+              Build Internal Capabilities, Don't Just Buy Solutions
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                Tactical approaches treat PFAS alternatives as products to
+                procure. Strategic approaches recognise that successful
+                transformation requires building internal capabilities.
+              </p>
+
+              <p>
+                This means developing expertise in new chemistries, establishing
+                testing protocols for unfamiliar performance characteristics,
+                creating supplier qualification frameworks for emerging
+                technologies, and building organisational knowledge about what
+                works—and what doesn't.
+              </p>
+            </div>
+
+            <!-- Capability List -->
+            <div class="my-8 space-y-4 border-l-2 border-stone-800 pl-8">
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >Technical expertise:</span
+                > Training teams to evaluate alternative chemistries creates advantages
+                beyond PFAS—it builds general capability in materials innovation.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >Supplier relationships:</span
+                > Developing partnerships with emerging technology providers creates
+                early access to innovations before competitors discover them.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >Process flexibility:</span
+                > Adapting manufacturing for PFAS-free alternatives typically requires
+                process improvements that boost efficiency and quality generally.
+              </p>
+            </div>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                These capabilities compound. Early investments create advantages
+                that extend beyond PFAS transformation into broader
+                organisational resilience.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              Execution Excellence: How Winners Deploy
+            </h2>
+
+            <h3 class="mb-6 text-xl font-bold text-stone-200">
+              Phase Transitions Strategically
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                Attempting simultaneous transformation across all products and
+                markets guarantees failure. Strategic leaders sequence
+                transitions to build momentum.
+              </p>
+
+              <p>
+                This might mean starting with products facing earliest
+                regulatory deadlines, or focusing on applications where
+                performance requirements align best with available alternatives,
+                or targeting markets where customers value PFAS-free positioning
+                most.
+              </p>
+
+              <p>
+                The sequencing strategy matters less than having one. It creates
+                clear priorities, prevents resource fragmentation, and builds
+                organisational confidence through early wins.
+              </p>
+            </div>
+
+            <h3 class="mb-6 mt-12 text-xl font-bold text-stone-200">
+              Establish Clear Decision Rights
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                PFAS transformation requires hundreds of consequential
+                decisions: Which performance trade-offs to accept? Which
+                suppliers to qualify? Which process changes to implement? Which
+                customer communications to send?
+              </p>
+
+              <p>
+                Without clear decision rights, these choices escalate endlessly
+                or get made by whoever feels strongest opinions. Strategic
+                leaders establish explicit frameworks: Who decides technical
+                specifications? Who approves supplier changes? Who determines
+                customer communication timing?
+              </p>
+
+              <p>
+                This clarity accelerates execution dramatically. Teams move
+                forward confidently rather than waiting for consensus that never
+                arrives.
+              </p>
+            </div>
+
+            <h3 class="mb-6 mt-12 text-xl font-bold text-stone-200">
+              Communicate Relentlessly
+            </h3>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                PFAS transformation touches every stakeholder: employees worry
+                about job security, suppliers fear lost business, customers
+                question product changes, investors scrutinise costs, and
+                regulators monitor compliance.
+              </p>
+
+              <p>
+                Strategic leaders recognise communication isn't ancillary—it's
+                central to transformation success. They establish clear
+                narratives about why change matters, what it means for different
+                stakeholders, and how progress will be measured.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 5 -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              The Competitive Advantage Waiting to Be Claimed
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                Most companies view PFAS transformation as regulatory
+                burden—something to endure whilst minimising disruption.
+                Strategic leaders recognise it as competitive opportunity.
+              </p>
+
+              <p>Consider what transformation enables:</p>
+            </div>
+
+            <div class="my-8 space-y-4 border-l-2 border-stone-800 pl-8">
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >Regulatory Leadership:</span
+                > Companies that transition early establish reputations as regulatory
+                leaders. When restrictions tighten—and they will—these organisations
+                face less disruption whilst competitors scramble.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >Market Positioning:</span
+                > Consumer and business customers increasingly demand PFAS-free products.
+                Being first to market with credible alternatives captures value whilst
+                competitors catch up.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300"
+                  >Innovation Capability:</span
+                > The capabilities built during PFAS transformation create advantages
+                across the organisation.
+              </p>
+              <p class="text-stone-400">
+                <span class="font-semibold text-stone-300">Cost Structure:</span
+                > Whilst initial transitions often increase costs, strategic approaches
+                eventually deliver superior economics through process improvements
+                and reduced regulatory risk.
+              </p>
+            </div>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                The opportunity window won't stay open indefinitely. As
+                regulations tighten and alternatives mature, early movers'
+                advantages diminish. The question isn't whether to
+                transform—it's whether to lead or follow.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 6 -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              Where to Start
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                Strategic PFAS transformation begins with honest assessment.
+                Most organisations know their current PFAS usage imperfectly.
+                They lack clarity about regulatory timelines, available
+                alternatives, and transformation economics.
+              </p>
+
+              <p>
+                Before rushing into supplier negotiations or alternative
+                testing, leaders should establish baseline understanding:
+              </p>
+            </div>
+
+            <!-- Assessment Questions -->
+            <div class="my-12 space-y-8 border-l-2 border-amber-400/40 pl-8">
+              <div>
+                <p class="mb-3 font-bold text-stone-200">Current State</p>
+                <div class="space-y-2 text-stone-400">
+                  <p>Where does PFAS appear in your products and processes?</p>
+                  <p>What functions do these PFAS materials perform?</p>
+                  <p>Which applications face earliest regulatory deadlines?</p>
+                </div>
+              </div>
+
+              <div>
+                <p class="mb-3 font-bold text-stone-200">
+                  Performance Requirements
+                </p>
+                <div class="space-y-2 text-stone-400">
+                  <p>What performance levels truly matter to customers?</p>
+                  <p>Where do specifications exceed actual needs?</p>
+                  <p>What trade-offs might customers accept?</p>
+                </div>
+              </div>
+
+              <div>
+                <p class="mb-3 font-bold text-stone-200">
+                  Alternatives Landscape
+                </p>
+                <div class="space-y-2 text-stone-400">
+                  <p>What PFAS-free alternatives exist today?</p>
+                  <p>
+                    What technologies are emerging but not yet commercialised?
+                  </p>
+                  <p>Where do gaps remain with no obvious solutions?</p>
+                </div>
+              </div>
+
+              <div>
+                <p class="mb-3 font-bold text-stone-200">
+                  Organisational Readiness
+                </p>
+                <div class="space-y-2 text-stone-400">
+                  <p>Who owns PFAS transformation internally?</p>
+                  <p>What capabilities need building?</p>
+                  <p>How will success be measured?</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                These assessments create foundation for strategic planning. They
+                reveal where quick wins exist versus where longer-term
+                technology development is needed. They identify which
+                transitions to sequence first and which require more
+                preparation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Closing -->
+          <div>
+            <h2 class="mb-8 text-3xl font-black text-stone-100">
+              The Path Forward
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-stone-400">
+              <p>
+                PFAS transformation isn't a problem to solve—it's a capability
+                to build. The organisations that treat it strategically will
+                emerge stronger: more innovative, more resilient, better
+                positioned for whatever regulatory and market changes arrive
+                next.
+              </p>
+
+              <p>
+                Those that treat it tactically will spend years cycling through
+                failed alternatives, missed deadlines, and cost overruns. The
+                difference between these outcomes isn't resources or technology
+                access. It's strategic perspective.
+              </p>
+
+              <p class="text-xl font-medium text-stone-300">
+                The question every leader faces: Will your organisation lead
+                this transformation or follow it?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- More Intelligence -->
+    <MoreIntelligence currentArticleUrl={article.url} />
+    <IntelCTA />
+  </article>
+</BaseLayout>

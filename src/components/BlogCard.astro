@@ -1,0 +1,51 @@
+---
+import type { BlogPost } from '../data/blogPosts';
+
+interface Props {
+  post: BlogPost;
+  theme?: 'dark' | 'light';
+}
+
+const { post, theme = 'dark' } = Astro.props;
+
+const isDark = theme === 'dark';
+const bgClass = isDark ? 'bg-gray-800' : 'bg-white';
+const textClass = isDark ? 'text-white' : 'text-gray-900';
+const descrClass = isDark ? 'text-gray-200' : 'text-gray-600';
+const linkClass = isDark ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-700';
+const borderClass = isDark ? 'border-gray-600' : 'border-gray-300';
+---
+
+<div class={`${bgClass} rounded-2xl shadow-2xl hover:-translate-y-1 ${borderClass} overflow-hidden group transition-all duration-300`}>
+  <div class="relative overflow-hidden aspect-video">
+    <a href={post.url} title={post.titleAttribute}>
+      <img 
+        src={post.img}
+        class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+        alt={post.blogtitle}
+        loading="lazy"
+        width="972"
+        height="600">
+    </a>
+  </div>
+
+  <div class="p-6 flex flex-col">
+    <a href={post.url} title={post.titleAttribute}>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded-full text-xs font-semibold transition-colors">{post.categoryFull}</span>
+        <span class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded-full text-xs font-semibold transition-colors">{post.readTime}</span>
+      </div>
+      <h3 class={`text-2xl font-black ${textClass} leading-tight mb-4 transition-colors`}>{post.blogtitle}</h3>
+      <p class={`${descrClass} leading-relaxed mb-6 text-base`}>{post.blogdescr}</p>
+    </a>
+
+    <div class="mt-auto">
+      <a href={post.url}
+        class={`inline-flex items-center gap-2 ${linkClass} font-semibold text-sm transition-colors`}
+        title={`Read more about ${post.blogtitle}`}>
+        <span class="transition-transform hover:translate-x-1">→</span>
+        Read Now
+      </a>
+    </div>
+  </div>
+</div>

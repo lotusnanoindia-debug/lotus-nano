@@ -1,0 +1,21 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "prettier.documentSelectors": [
+    "**/*.astro"
+  ],
+  "html.format.enable": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "cSpell.words": [
+    "Limban",
+    "PFAS",
+    "repellency",
+    "Schäfer",
+    "Tadoba"
+  ]
+}

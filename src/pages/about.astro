@@ -1,0 +1,784 @@
+---
+import BaseLayout from '../layout/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import IntelCTA from '../components/IntelCTA.astro';
+
+const title =
+  'About Lotus Nano | Independent PFAS Sourcing & Management Advisory';
+const description =
+  'Independent PFAS sourcing and management advisory. We help manufacturers find validated alternatives 50% faster and implement compliance systems that fit actual workflows.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': 'https://lotus-nano.com/about#webpage',
+    name: title,
+    url: 'https://lotus-nano.com/about',
+    description: description,
+    inLanguage: 'en-GB',
+    mainEntity: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+    about: {
+      '@id': 'https://lotus-nano.com/#organization',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://lotus-nano.com/#organization',
+    name: 'Lotus Nano',
+    url: 'https://lotus-nano.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://lotus-nano.com/assets/img/lotusnano-medium.jpg',
+      width: 462,
+      height: 81,
+      caption: 'Lotus Nano logo',
+    },
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-team.png?w=1200&h=630',
+      width: 1200,
+      height: 630,
+      caption: 'Lotus Nano team',
+    },
+    description: description,
+    areaServed: {
+      '@type': 'Place',
+      name: 'Worldwide',
+    },
+    knowsAbout: [
+      'PFAS alternatives',
+      'Chemical Substitution',
+      'PFAS Compliance Software',
+      'Supply Chain Management',
+      'Materials Science',
+      'Environmental Compliance',
+      'PFAS Regulations',
+    ],
+    serviceType: [
+      'PFAS Alternatives Sourcing',
+      'PFAS Management Advisory',
+      'Chemical Alternatives Consulting',
+      'PFAS Compliance Consulting',
+    ],
+    foundingDate: '2022',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Pune',
+      addressRegion: 'Maharashtra',
+      addressCountry: 'IN',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-95791-03930',
+      contactType: 'customer service',
+      availableLanguage: ['en'],
+      email: 'info@lotus-nano.com',
+      areaServed: 'Worldwide',
+    },
+    sameAs: ['https://www.linkedin.com/company/lotus-nano'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://lotus-nano.com/about#breadcrumb',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://lotus-nano.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'About',
+        item: 'https://lotus-nano.com/about',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical="https://lotus-nano.com/about"
+  ogImage="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-team.png"
+  ogType="website"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article class="relative min-h-screen bg-stone-900 pt-32 lg:pt-48">
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+      <!-- Hero with Team Image -->
+      <header class="mb-32 grid gap-12 lg:mb-48 lg:grid-cols-12 lg:gap-20">
+        <div class="flex flex-col justify-center lg:col-span-7">
+          <div
+            class="mb-8 inline-flex w-fit items-center rounded-full border border-stone-700/50 bg-stone-800/50 px-4 py-2 text-sm font-medium text-stone-300 backdrop-blur-sm"
+          >
+            <div class="mr-3 h-2 w-2 rounded-full bg-amber-400"></div>
+            About Lotus Nano
+          </div>
+
+          <h1
+            class="mb-8 text-5xl font-black leading-tight tracking-tighter text-stone-100 lg:text-7xl xl:text-8xl"
+          >
+            Independent PFAS <span class="text-amber-400">Expertise</span>
+          </h1>
+
+          <p class="mb-6 text-xl leading-relaxed text-stone-400 lg:text-2xl">
+            We help manufacturers navigate PFAS transitions through independent
+            sourcing and management advisory.
+          </p>
+
+          <p class="text-lg leading-relaxed text-stone-500">
+            No vendor ties. No bias. Just systematic methodology refined over
+            time.
+          </p>
+        </div>
+
+        <div class="flex items-center lg:col-span-5">
+          <figure class="relative w-full">
+            <img
+              src="https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-team.png?w=800"
+              alt="Lotus Nano team"
+              class="w-full rounded-2xl border border-stone-800/50"
+              width="800"
+              height="600"
+              loading="eager"
+            />
+          </figure>
+        </div>
+      </header>
+
+      <!-- Mission, Vision, Values, Approach -->
+      <section class="mb-32 lg:mb-40">
+        <!-- Grid: Asymmetric Layout -->
+        <div class="grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <!-- Left Column: Vision (Large Feature) -->
+          <article
+            class="group relative overflow-hidden rounded-3xl border-2 border-stone-700/50 bg-gradient-to-br from-stone-800/60 via-stone-800/40 to-stone-800/20 p-12 transition-all duration-500 hover:border-amber-400/40 lg:col-span-7 lg:p-16"
+          >
+            <!-- Background accent -->
+            <div
+              class="absolute right-0 top-0 h-64 w-64 rounded-full bg-amber-400/5 blur-3xl transition-all duration-700 group-hover:bg-amber-400/10"
+            >
+            </div>
+
+            <div class="relative z-10">
+              <div
+                class="mb-8 inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-amber-400/40 bg-amber-600/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-amber-600/30"
+              >
+                <Icon name="mdi:eye-outline" class="h-10 w-10 text-amber-400" />
+              </div>
+
+              <h2
+                class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-5xl"
+              >
+                Our <span class="text-amber-400">Vision</span>
+              </h2>
+
+              <p
+                class="mb-8 text-xl leading-relaxed text-stone-300 lg:text-2xl"
+              >
+                A world where industry achieves peak performance without harmful
+                chemicals like PFAS.
+              </p>
+
+              <div
+                class="h-1 w-24 rounded-full bg-gradient-to-r from-amber-400 to-transparent"
+              >
+              </div>
+            </div>
+          </article>
+
+          <!-- Right Column: Mission & Values Stacked -->
+          <div class="space-y-8 lg:col-span-5 lg:space-y-12">
+            <!-- Mission -->
+            <article
+              class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:p-10"
+            >
+              <div class="flex items-start gap-6">
+                <div
+                  class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon name="mdi:target" class="h-7 w-7 text-amber-400" />
+                </div>
+                <div>
+                  <h2
+                    class="mb-3 text-2xl font-black leading-tight text-stone-100"
+                  >
+                    Our Mission
+                  </h2>
+                  <p class="text-base leading-relaxed text-stone-400">
+                    Competent guidance through complex PFAS transitions ensuring
+                    both performance and compliance.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Values -->
+            <article
+              class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50 lg:p-10"
+            >
+              <div class="flex items-start gap-6">
+                <div
+                  class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+                >
+                  <Icon
+                    name="mdi:compass-outline"
+                    class="h-7 w-7 text-amber-400"
+                  />
+                </div>
+                <div>
+                  <h2
+                    class="mb-3 text-2xl font-black leading-tight text-stone-100"
+                  >
+                    Our Values
+                  </h2>
+                  <p class="text-base leading-relaxed text-stone-400">
+                    Evidence-backed, collaborative, commitment to client success
+                    and environmental responsibility.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Our Approach -->
+        <article
+          class="group relative mt-12 overflow-hidden rounded-2xl border-2 border-stone-700 bg-stone-800/50 p-10 transition-all duration-500 hover:border-amber-400/30 lg:mt-16 lg:p-14"
+        >
+          <!-- Subtle background pattern -->
+          <div class="pointer-events-none absolute inset-0 opacity-5">
+            <div
+              class="absolute inset-0"
+              style="background-image: radial-gradient(circle, #d97706 1px, transparent 1px); background-size: 24px 24px;"
+            >
+            </div>
+          </div>
+
+          <div class="relative z-10 max-w-4xl">
+            <div class="mb-8 flex items-center gap-6">
+              <div
+                class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+              >
+                <Icon
+                  name="mdi:compass-outline"
+                  class="h-8 w-8 text-amber-400"
+                />
+              </div>
+              <h2
+                class="text-3xl font-black leading-tight text-stone-100 lg:text-4xl"
+              >
+                Our <span class="text-amber-400">Approach</span>
+              </h2>
+            </div>
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-stone-300 lg:text-xl"
+            >
+              <p>
+                We operate as specialist advisors, not vendors. Every engagement
+                begins with systematic discovery — mapping your actual
+                workflows, constraints, and decision points.
+              </p>
+
+              <p
+                class="border-l-4 border-amber-400/40 pl-6 font-semibold text-stone-200"
+              >
+                Complete independence. No bias, no supplier favouring, no
+                software sales. We facilitate introductions, transfer knowledge,
+                then step back. You own everything.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- What We Do -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16 lg:mb-40">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-6xl"
+          >
+            What We <span class="text-amber-400">Do</span>
+          </h2>
+        </header>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
+          <!-- Service 1: PFAS Sourcing -->
+          <article
+            class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+            >
+              <Icon name="mdi:flask-outline" class="h-7 w-7 text-amber-400" />
+            </div>
+            <h3 class="mb-4 text-2xl font-black leading-tight text-stone-100">
+              PFAS Alternatives Sourcing
+            </h3>
+            <p class="mb-6 leading-relaxed text-stone-400">
+              Proven 4-phase methodology delivering validated alternatives 50%
+              faster. Deep requirements capture, global supplier intelligence,
+              rigorous technical validation, clean handover.
+            </p>
+            <a
+              href="/pfas-substitutes-sourcing"
+              class="group/link inline-flex items-center gap-2 font-semibold text-amber-400 transition-colors hover:text-amber-300"
+            >
+              Learn about our sourcing process
+              <span
+                class="inline-block transition-transform duration-300 group-hover/link:translate-x-1"
+                >→</span
+              >
+            </a>
+          </article>
+
+          <!-- Service 2: Management Advisory -->
+          <article
+            class="group rounded-2xl border border-stone-700/50 bg-stone-800/30 p-10 transition-all duration-500 hover:border-amber-400/30 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl border border-amber-400/30 bg-amber-600/20 transition-colors group-hover:bg-amber-600/30"
+            >
+              <Icon
+                name="mdi:monitor-dashboard"
+                class="h-7 w-7 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-4 text-2xl font-black leading-tight text-stone-100">
+              PFAS Management Advisory
+            </h3>
+            <p class="mb-6 leading-relaxed text-stone-400">
+              Independent advisory for PFAS compliance: platform selection,
+              workflow design, data architecture, supplier engagement,
+              implementation support.
+            </p>
+            <a
+              href="/pfas-management-advisory"
+              class="group/link inline-flex items-center gap-2 font-semibold text-amber-400 transition-colors hover:text-amber-300"
+            >
+              Learn about our advisory services
+              <span
+                class="inline-block transition-transform duration-300 group-hover/link:translate-x-1"
+                >→</span
+              >
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- How We Work -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16 lg:mb-40">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-6xl"
+          >
+            How We <span class="text-amber-400">Work</span>
+          </h2>
+          <p class="text-lg leading-relaxed text-stone-400">
+            Partnership built on transparency, systematic methodology, and
+            complete independence.
+          </p>
+        </header>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon
+                name="mdi:handshake-outline"
+                class="h-6 w-6 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              100% Independence
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              No vendor relationships. No commissions. Our recommendations serve
+              your requirements—not supplier margins.
+            </p>
+          </article>
+
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon
+                name="mdi:chart-timeline-variant"
+                class="h-6 w-6 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              Systematic Process
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              Proven methodology refined across hundreds of PFAS projects.
+              Structured discovery, validation, handover.
+            </p>
+          </article>
+
+          <article
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 transition-all duration-500 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <div
+              class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600/20"
+            >
+              <Icon
+                name="mdi:shield-check-outline"
+                class="h-6 w-6 text-amber-400"
+              />
+            </div>
+            <h3 class="mb-3 text-lg font-bold text-stone-100">
+              Full Transparency
+            </h3>
+            <p class="text-sm leading-relaxed text-stone-500">
+              Complete visibility into sourcing progress, platform evaluations,
+              and decision criteria. No black boxes.
+            </p>
+          </article>
+        </div>
+
+        <!-- Link to Working With Us -->
+        <div class="mt-12 text-center">
+          <a
+            href="/working-with-us"
+            class="inline-flex items-center gap-2 border border-stone-700 px-6 py-3 font-semibold text-stone-400 transition-colors duration-300 hover:border-amber-400 hover:text-amber-400"
+          >
+            See how we work in detail
+            <span
+              class="inline-block transition-transform duration-300 group-hover:translate-x-1"
+              >→</span
+            >
+          </a>
+        </div>
+      </section>
+
+      <!-- Industries We Serve -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16 lg:mb-40">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-6xl"
+          >
+            Industries We <span class="text-amber-400">Serve</span>
+          </h2>
+          <p class="text-lg leading-relaxed text-stone-400">
+            Specialist PFAS expertise across regulated and performance-critical
+            sectors.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:car"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">Automotive</div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:airplane"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">Aerospace</div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:hanger"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">Textiles</div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:package-variant"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">Packaging</div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:office-building"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">
+              Architecture
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:chip"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">
+              Electronics
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:water"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">Coatings</div>
+          </div>
+
+          <div
+            class="rounded-xl border border-stone-700/50 bg-stone-800/30 p-8 text-center transition-all duration-300 hover:border-amber-400/20 hover:bg-stone-800/50"
+          >
+            <Icon
+              name="mdi:factory"
+              class="mx-auto mb-4 h-10 w-10 text-amber-400"
+            />
+            <div class="text-base font-semibold text-stone-300">
+              Manufacturing
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Client Voices -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16 lg:mb-40">
+        <header class="mb-16 max-w-3xl">
+          <h2
+            class="mb-6 text-4xl font-black leading-tight tracking-tight text-stone-100 lg:text-6xl"
+          >
+            Client <span class="text-amber-400">Voices</span>
+          </h2>
+          <p class="text-lg leading-relaxed text-stone-400">
+            What manufacturers say about working with Lotus Nano.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <!-- Testimonial 1: Automotive -->
+          <article
+            class="overflow-hidden rounded-2xl border border-stone-700/50 bg-stone-800/30 transition-all duration-500 hover:border-amber-400/20"
+          >
+            <div class="aspect-video bg-stone-800">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/l_oMBe9NfZk?rel=0&modestbranding=1"
+                title="Automotive sector testimonial"
+                allowfullscreen
+                class="h-48 w-full"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+            <div class="p-4 md:p-8">
+              <div
+                class="mb-2 text-sm font-bold uppercase tracking-wider text-amber-400"
+              >
+                Automotive Sector
+              </div>
+              <p class="leading-relaxed text-stone-400">
+                Helped us achieve PFAS-free status without compromising
+                performance.
+              </p>
+            </div>
+          </article>
+
+          <!-- Testimonial 2: Textiles -->
+          <article
+            class="overflow-hidden rounded-2xl border border-stone-700/50 bg-stone-800/30 transition-all duration-500 hover:border-amber-400/20"
+          >
+            <div class="aspect-video bg-stone-800">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/ZOJndUuFZ00?rel=0&modestbranding=1"
+                title="Textiles sector testimonial"
+                allowfullscreen
+                class="h-48 w-full"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+            <div class="p-4 md:p-8">
+              <div
+                class="mb-2 text-sm font-bold uppercase tracking-wider text-amber-400"
+              >
+                Textiles Sector
+              </div>
+              <p class="leading-relaxed text-stone-400">
+                Led to significant improvements in sustainability for our
+                textiles.
+              </p>
+            </div>
+          </article>
+
+          <!-- Testimonial 3: Architecture -->
+          <article
+            class="overflow-hidden rounded-2xl border border-stone-700/50 bg-stone-800/30 transition-all duration-500 hover:border-amber-400/20"
+          >
+            <div class="aspect-video bg-stone-800">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/rl41UIojYy4?rel=0&modestbranding=1"
+                title="Architecture sector testimonial"
+                allowfullscreen
+                class="h-48 w-full"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+            <div class="p-4 md:p-8">
+              <div
+                class="mb-2 text-sm font-bold uppercase tracking-wider text-amber-400"
+              >
+                Architecture Sector
+              </div>
+              <p class="leading-relaxed text-stone-400">
+                Found the perfect UV-blocking raw wood coating without PFAS that
+                worked for us.
+              </p>
+            </div>
+          </article>
+
+          <!-- Testimonial 4: Packaging -->
+          <article
+            class="overflow-hidden rounded-2xl border border-stone-700/50 bg-stone-800/30 transition-all duration-500 hover:border-amber-400/20"
+          >
+            <div class="aspect-video bg-stone-800">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/S2CBfqcyAg8?rel=0&modestbranding=1"
+                title="Packaging sector testimonial"
+                allowfullscreen
+                class="h-48 w-full"
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+            <div class="p-4 md:p-8">
+              <div
+                class="mb-2 text-sm font-bold uppercase tracking-wider text-amber-400"
+              >
+                Packaging Sector
+              </div>
+              <p class="leading-relaxed text-stone-400">
+                Lotus Nano's expertise was key to our successful PFAS
+                elimination in packaging
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Founder Section -->
+      <section class="mb-32 border-t border-stone-800/50 pt-16 lg:mb-40">
+        <div class="mx-auto max-w-5xl">
+          <div
+            class="rounded-2xl border border-stone-700/50 bg-stone-800/30 p-8 lg:p-14"
+          >
+            <!-- Mobile & Desktop: Founder Card at Top -->
+            <div
+              class="mb-12 flex items-center gap-6 border-b border-stone-700/30 pb-10"
+            >
+              <!-- Image -->
+              <div class="flex-shrink-0">
+                <img
+                  src="https://the-knowledge-brokers.sirv.com/lotus-nano/Mark-from-Lotus-Nano.png?w=200&h=200&sharpen=1"
+                  alt="Mark Schäfer, Founder of Lotus Nano"
+                  class="h-40 w-40 rounded-full border-2 border-stone-700/50 object-cover"
+                  width="160"
+                  height="160"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Name, Title, LinkedIn: Always Next to Image -->
+              <div class="flex flex-col justify-center">
+                <h3
+                  class="mb-2 text-2xl font-black leading-tight text-stone-100 lg:text-3xl"
+                >
+                  Mark Schäfer
+                </h3>
+                <div class="mb-4 text-base text-stone-400 lg:text-lg">
+                  Founder, MD
+                </div>
+                <a
+                  href="https://www.linkedin.com/in/markusschafer"
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex w-fit items-center gap-2 rounded-lg border border-stone-700/50 bg-blue-800/50 px-4 py-2 text-sm font-semibold text-white transition-all hover:border-amber-400/50 hover:bg-stone-800 hover:text-amber-300"
+                >
+                  <Icon name="mdi:linkedin" class="h-5 w-5" />
+                  Connect
+                </a>
+              </div>
+            </div>
+
+            <!-- Founder Message: Full Width Below -->
+            <div>
+              <h2
+                class="mb-8 text-3xl font-black leading-tight tracking-tight text-stone-100 lg:text-4xl"
+              >
+                Why We Founded <span class="text-amber-400">Lotus Nano</span>
+              </h2>
+
+              <div class="space-y-6 leading-relaxed text-stone-400 lg:text-lg">
+                <p class="text-lg text-stone-300 lg:text-xl">
+                  After years watching manufacturers struggle with PFAS
+                  transitions — often burned by vendor promises, paralysed by
+                  platform choices, wasting months on dead-end alternatives —
+                  the pattern became clear.
+                </p>
+
+                <p>
+                  The industry needs independent expertise. Not sales teams. Not
+                  generic consultants. Specialists who understand the chemistry,
+                  supply chains, compliance workflows, and systems architecture.
+                </p>
+
+                <p>
+                  Lotus Nano exists to provide that. Systematic sourcing
+                  methodology that delivers validated alternatives much faster.
+                  And independent advisory on how to best manage and monitor
+                  PFAS compliance.
+                </p>
+
+                <p class="font-semibold text-stone-200">
+                  No vendor bias. No black boxes. Just field-tested processes
+                  brands and manufacturers can trust.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <IntelCTA />
+  </article>
+</BaseLayout>
