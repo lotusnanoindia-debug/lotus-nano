@@ -23,7 +23,7 @@ export default defineConfig({
           item.changefreq = 'weekly';
         } else if (
           item.url.match(
-            /\/(pfas-substitutes-sourcing|pfas-management-advisory|intelligence)$/
+            /\/(pfas-alternatives-sourcing|pfas-management-services|intelligence)$/
           )
         ) {
           item.priority = 0.9;

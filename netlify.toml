@@ -1,0 +1,118 @@
+# ============================
+# Netlify configuration file
+# Project: Limban / Lotus Nano blog & content redirects
+# ============================
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  publish = "dist"
+
+# ============================
+# Redirect rules for blogs
+# ============================
+
+[[redirects]]
+  from = "/pfas-transformation-playbook"
+  to = "/intelligence/pfas-transformation-playbook"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-free-textile-playbook"
+  to = "/intelligence/pfas-free-textile-playbook"
+  status = 301
+
+[[redirects]]
+  from = "/why-consumers-demand-pfas-free"
+  to = "/intelligence/why-consumers-choose-pfas-free-products"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-roadmap-for-manufacturers"
+  to = "/intelligence/pfas-roadmap-for-manufacturers"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-delay-tactics-playbook"
+  to = "/intelligence/pfas-delay-tactics-playbook"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-free-cookware-coating-PE-CVD"
+  to = "/intelligence/pfas-free-nonstick-coating-cookware"
+  status = 301
+
+[[redirects]]
+  from = "/automotive-lens-anti-reflective-coating"
+  to = "/intelligence/automotive-lens-anti-reflective-coating"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-future-outlook"
+  to = "/intelligence/pfas-market-forecast-2025-2035"
+  status = 301
+
+# ============================
+# Additional content redirects
+# ============================
+
+[[redirects]]
+  from = "/pfas-software-advisory"
+  to = "/pfas-management-services"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-free-supplier-collaboration"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-free-consumer-products-manufacturers-guide"
+  to = "/intelligence/why-consumers-choose-pfas-free-products"
+  status = 301
+
+[[redirects]]
+  from = "/pfas-faq"
+  to = "/working-with-us"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/intelligence"
+  status = 301
+
+[[redirects]]
+  from = "/50-delay-tactics-for-phasing-out-pfas"
+  to = "/intelligence/pfas-delay-tactics-playbook"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms-of-service"
+  status = 301
+
+# ============================
+# Canonical cleanup (slashes & trailing dashes)
+# ============================
+[[redirects]]
+  from = "/(.*)/$"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# ============================
+# Security and performance headers
+# ============================
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"

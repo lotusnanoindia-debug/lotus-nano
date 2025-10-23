@@ -12,7 +12,7 @@ const {
   source,
   placeholder = 'your@company.com',
   buttonText = 'Subscribe',
-  messageText = 'Strategic insights. No spam. Unsub anytime.',
+  messageText = 'Occasional strategic insights. No spam. Unsub anytime.',
 } = Astro.props;
 ---
 
@@ -44,4 +44,4 @@ const {
   </button>
 </form>
 
-<p class="text-xs text-stone-600" id={`msg-${formId}`}>{messageText}</p>
+<p class="text-xs text-stone-500" id={`msg-${formId}`}>{messageText}</p>

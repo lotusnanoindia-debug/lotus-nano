@@ -4,8 +4,7 @@ import { blogPosts } from '../data/blogPosts';
 export async function GET(context) {
   return rss({
     title: 'Lotus Nano Intelligence',
-    description:
-      'Strategic PFAS insights and alternative technology intelligence',
+    description: 'Strategic PFAS and management insights and intelligence',
     site: 'https://lotus-nano.com', // Hardcoded instead of context.site
     items: blogPosts.map((post) => ({
       title: post.blogtitle,

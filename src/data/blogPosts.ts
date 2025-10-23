@@ -35,7 +35,7 @@ function createBlogPost(
 
 export const blogPosts: BlogPost[] = [
   createBlogPost({
-    category: 'pfas',
+    category: 'PFAS management',
     url: '/intelligence/pfas-transformation-playbook',
     blogtitle: 'The PFAS Transformation Playbook',
     blogdescr:
@@ -46,7 +46,7 @@ export const blogPosts: BlogPost[] = [
     categoryFull: 'Executive Playbook',
   }),
   createBlogPost({
-    category: 'pfas',
+    category: 'PFAS Strategy',
     url: '/intelligence/pfas-free-textile-playbook',
     blogtitle: 'The PFAS-Free Textile Playbook',
     blogdescr:
@@ -57,9 +57,9 @@ export const blogPosts: BlogPost[] = [
     categoryFull: 'Industry Playbook',
   }),
   createBlogPost({
-    category: 'pfas',
-    url: '/intelligence/why-consumers-demand-pfas-free',
-    blogtitle: 'Why Consumers Demand PFAS-Free',
+    category: 'PFAS strategy',
+    url: '/intelligence/why-consumers-choose-pfas-free-products',
+    blogtitle: 'Why Consumers Choose PFAS-Free Products',
     blogdescr:
       'Informed consumer demand for PFAS-free products now drives real market change — only those able to deliver genuine alternatives remain relevant; everyone else, however transparent, is sidelined. Here’s why.',
     img: 'https://the-knowledge-brokers.sirv.com/lotus-nano/pfas-in-everyday-products.jpg?ch=600&w=972&sharpen=1',
@@ -68,9 +68,9 @@ export const blogPosts: BlogPost[] = [
     categoryFull: 'Strategy Guide',
   }),
   createBlogPost({
-    category: 'pfas',
-    url: '/intelligence/pfas-roadmap-for-manufacturers',
-    blogtitle: 'This PFAS Exit Roadmap Beats Your Competitors',
+    category: 'PFAS strategy',
+    url: '/intelligence/pfas-phase-out-implementation-guide',
+    blogtitle: 'This PFAS Phase-Out Roadmap Beats Your Competitors’',
     blogdescr:
       'From assessment to action: follow this 5-step path to transforming PFAS elimination into competitive advantage.',
     img: 'https://the-knowledge-brokers.sirv.com/lotus-nano/pfas12.jpg?profile=lotus-nano&w=1200&h=630',
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     categoryFull: 'Strategic Guide',
   }),
   createBlogPost({
-    category: 'pfas',
+    category: 'PFAS strategy',
     url: '/intelligence/pfas-delay-tactics-playbook',
     blogtitle: 'The Delay Tactics Playbook',
     blogdescr:
@@ -90,7 +90,18 @@ export const blogPosts: BlogPost[] = [
     categoryFull: 'Industry Playbook',
   }),
   createBlogPost({
-    category: 'collab',
+    category: 'PFAS alternatives',
+    url: '/intelligence/pfas-free-nonstick-coating-cookware',
+    blogtitle: 'Trouble Finding a Real Teflon Replacement?',
+    blogdescr:
+      'Novel advanced cold-plasma PE-CVD coating technology is set to deliver what cookware manufacturers have long been looking for: great durability, great non-stick performance, and 100% PFAS free.',
+    img: 'https://the-knowledge-brokers.sirv.com/lotus-nano/fryingpan.webp?profile=lotus-nano&w=1200&h=630',
+    publishDateFull: '2025-06-30',
+    readTime: '10 min',
+    categoryFull: 'PFAS Free Cookware',
+  }),
+  createBlogPost({
+    category: 'PFAS alternatives',
     url: '/intelligence/automotive-lens-anti-reflective-coating',
     blogtitle: 'Engineering Automotive Lighting Performance',
     blogdescr:
@@ -101,8 +112,8 @@ export const blogPosts: BlogPost[] = [
     categoryFull: 'Automotive Technology',
   }),
   createBlogPost({
-    category: 'pfas',
-    url: '/intelligence/pfas-future-outlook',
+    category: 'PFAS strategy',
+    url: '/intelligence/pfas-market-forecast-2025-2035',
     blogtitle: 'PFAS Strategic Forecast',
     blogdescr:
       'Data-driven analysis of the $95.6 billion PFAS transition opportunity. Strategic insights for navigating the next 10 years of market transformation.',
@@ -110,16 +121,5 @@ export const blogPosts: BlogPost[] = [
     publishDateFull: '2025-08-05',
     readTime: '18 min',
     categoryFull: 'Strategic Analysis',
-  }),
-  createBlogPost({
-    category: 'collab',
-    url: '/intelligence/pfas-free-cookware-coating-PE-CVD',
-    blogtitle: 'Trouble Finding a Real Teflon Replacement?',
-    blogdescr:
-      'Novel advanced cold-plasma PE-CVD coating technology is set to deliver what cookware manufacturers have long been looking for: great durability, great non-stick performance, and 100% PFAS free.',
-    img: 'https://the-knowledge-brokers.sirv.com/lotus-nano/fryingpan.webp?profile=lotus-nano&w=1200&h=630',
-    publishDateFull: '2025-06-30',
-    readTime: '10 min',
-    categoryFull: 'PFAS Free Cookware',
   }),
 ];
