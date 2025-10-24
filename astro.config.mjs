@@ -4,6 +4,7 @@ import icon from 'astro-icon';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import netlify from '@astrojs/netlify';
+import mailObfuscation from 'astro-mail-obfuscation';
 
 export default defineConfig({
   output: 'static', // Keep this as static!
@@ -55,6 +56,7 @@ export default defineConfig({
         mdi: ['*'],
       },
     }),
+    mailObfuscation(),
   ],
 
   vite: {

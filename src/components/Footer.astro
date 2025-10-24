@@ -3,11 +3,9 @@ import { Icon } from 'astro-icon/components';
 import NewsletterForm from './NewsletterForm.astro';
 ---
 
-<footer class="border-t border-stone-800/50 bg-stone-900">
+<footer class="border-t border-stone-600/50 bg-stone-900">
   <div class="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
-    <!-- Single Row Layout -->
     <div class="mb-12 grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-      <!-- Logo + Contact -->
       <div class="lg:col-span-4">
         <a
           href="/"
@@ -25,23 +23,41 @@ import NewsletterForm from './NewsletterForm.astro';
         </a>
 
         <p class="mb-8 text-sm leading-relaxed text-stone-500">
-          PFAS Solutions from Sourcing Experts.
+          PFAS Solutions that work.
         </p>
 
-        <!-- Contact -->
+        <!-- Contact with obfuscation -->
         <div class="mb-8 space-y-3">
-          <a
-            href="tel:+919579103930"
-            class="group flex items-center gap-3 text-sm text-stone-400 transition-colors hover:text-amber-400"
-          >
-            <Icon
-              name="mdi:phone"
-              class="h-4 w-4 text-stone-600 transition-colors group-hover:text-amber-400"
-            />
-            <span>(+91) 95791 03930</span>
-          </a>
+          <div class="flex items-center gap-4">
+            <a
+              href="tel:+919579103930"
+              data-obfuscation="0"
+              class="group flex items-center gap-3 text-sm text-stone-400 transition-colors hover:text-amber-400"
+            >
+              <Icon
+                name="mdi:phone"
+                class="h-4 w-4 text-stone-600 transition-colors group-hover:text-amber-400"
+              />
+              <span>(+91) 95791 03930</span>
+            </a>
+            <a
+              href="https://wa.me/919579103930"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative text-stone-500 transition-colors hover:text-green-500"
+              title="Chat on WhatsApp"
+            >
+              <Icon name="mdi:whatsapp" class="h-5 w-5" />
+              <span
+                class="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-stone-100 px-2 py-1 text-xs font-semibold text-stone-900 opacity-0 shadow-md transition-opacity group-hover:opacity-100"
+              >
+                Connect via Whatsapp
+              </span>
+            </a>
+          </div>
           <a
             href="mailto:info@lotus-nano.com"
+            data-obfuscation="0"
             class="group flex items-center gap-3 text-sm text-stone-400 transition-colors hover:text-amber-400"
           >
             <Icon
@@ -141,14 +157,13 @@ import NewsletterForm from './NewsletterForm.astro';
                 Terms of Service
               </a>
             </li>
-            <li
-              class="cursor-pointer text-sm text-stone-500 transition-colors hover:text-amber-400"
-              data-fillout-id="8F9rw7E4UBus"
-              data-fillout-embed-type="popup"
-              data-fillout-dynamic-resize
-              data-fillout-popup-size="medium"
-            >
-              Contact Us
+            <li>
+              <a
+                href="/contact"
+                class="text-sm text-stone-500 transition-colors hover:text-amber-400"
+              >
+                Contact Us
+              </a>
             </li>
           </ul>
         </div>

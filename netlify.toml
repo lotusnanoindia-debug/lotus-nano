@@ -95,6 +95,12 @@
   to = "/terms-of-service"
   status = 301
 
+[[redirects]]
+  from = "/book-a-call"
+  to = "/contact"
+  status = 301
+
+
 # ============================
 # Canonical cleanup (slashes & trailing dashes)
 # ============================
