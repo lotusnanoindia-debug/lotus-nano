@@ -1,5 +1,38 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+const currentPath = Astro.url.pathname;
+
+// Tailwind classes for active and inactive navigation links
+const activeLinkClasses = 'border-b-2 border-amber-400 text-stone-100';
+const inactiveLinkClasses = 'text-stone-400 hover:text-stone-100';
+const contactInactiveLinkClasses = 'text-amber-400 hover:text-amber-300'; // Specific hover for contact link
+
+const isActive = (href: string) => {
+  // Use an exact match for the homepage
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  // Use startsWith for all other pages to highlight parent sections
+  return currentPath.startsWith(href);
+};
+
+const navLinks = [
+  {
+    href: '/pfas-alternatives-sourcing',
+    text: 'PFAS-Free Sourcing',
+    mobileText: 'PFAS Sourcing',
+  },
+  { href: '/pfas-management-services', text: 'PFAS Management' },
+  { href: '/intelligence', text: 'Intelligence' },
+  { href: '/working-with-us', text: 'Working With Us' },
+  { href: '/about', text: 'About' },
+];
+
+const contactLink = {
+  href: '/contact',
+  text: 'Contact →',
+};
 ---
 
 <header
@@ -22,43 +55,31 @@ import { Icon } from 'astro-icon/components';
 
       <!-- Desktop Navigation -->
       <div class="hidden items-center gap-8 lg:flex">
-        <a
-          href="/pfas-alternatives-sourcing"
-          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-        >
-          PFAS-Free Sourcing
-        </a>
-        <a
-          href="/pfas-management-services"
-          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-        >
-          PFAS Management
-        </a>
-        <a
-          href="/intelligence"
-          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-        >
-          Intelligence
-        </a>
-        <a
-          href="/working-with-us"
-          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-        >
-          Working With Us
-        </a>
-        <a
-          href="/about"
-          class="text-sm font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-        >
-          About
-        </a>
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'pb-2 text-sm font-medium transition-colors duration-300',
+                isActive(link.href) ? activeLinkClasses : inactiveLinkClasses,
+              ]}
+            >
+              {link.text}
+            </a>
+          ))
+        }
 
         <!-- Contact CTA -->
         <a
-          href="/contact"
-          class="text-sm font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+          href={contactLink.href}
+          class:list={[
+            'pb-2 text-sm font-semibold transition-colors duration-300',
+            isActive(contactLink.href)
+              ? activeLinkClasses
+              : contactInactiveLinkClasses,
+          ]}
         >
-          Contact →
+          {contactLink.text}
         </a>
       </div>
 
@@ -79,36 +100,32 @@ import { Icon } from 'astro-icon/components';
     class="hidden border-t border-stone-800/50 bg-stone-900/95 backdrop-blur-md lg:hidden"
   >
     <div class="mx-auto max-w-7xl space-y-4 px-6 py-6">
-      <a
-        href="/pfas-alternatives-sourcing"
-        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-      >
-        PFAS Sourcing
-      </a>
-      <a
-        href="/pfas-management-services"
-        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-      >
-        PFAS Management
-      </a>
-      <a
-        href="/intelligence"
-        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-      >
-        Intelligence
-      </a>
-      <a
-        href="/about"
-        class="block text-base font-medium text-stone-400 transition-colors duration-300 hover:text-stone-100"
-      >
-        About
-      </a>
+      {
+        navLinks
+          .filter((link) => link.href !== '/working-with-us')
+          .map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'block text-base font-medium transition-colors duration-300',
+                isActive(link.href) ? activeLinkClasses : inactiveLinkClasses,
+              ]}
+            >
+              {link.mobileText || link.text}
+            </a>
+          ))
+      }
 
       <a
-        href="/contact"
-        class="block border-t border-stone-800/50 pt-4 text-base font-semibold text-amber-400 transition-colors duration-300 hover:text-amber-300"
+        href={contactLink.href}
+        class:list={[
+          'block border-t border-stone-800/50 pt-4 text-base font-semibold transition-colors duration-300',
+          isActive(contactLink.href)
+            ? activeLinkClasses
+            : contactInactiveLinkClasses,
+        ]}
       >
-        Contact →
+        {contactLink.text}
       </a>
     </div>
   </div>
