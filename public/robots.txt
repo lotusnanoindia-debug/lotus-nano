@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /.netlify/
+
+Sitemap: https://lotus-nano.com/sitemap-index.xml
