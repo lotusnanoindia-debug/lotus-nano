@@ -45,7 +45,6 @@ const {
     <meta name="twitter:image:alt" content="Lotus Nano PFAS Consulting" />
 
     <!-- Page-specific head content -->
-    <slot name="head" />
 
     <!-- Favicon & Theme -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -54,21 +53,7 @@ const {
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="preconnect" href="https://the-knowledge-brokers.sirv.com" />
-
-    <script
-      src="https://cdn.databuddy.cc/databuddy.js"
-      data-client-id="NR4f-EZXegIciZXqsqca6"
-      data-track-attributes="true"
-      data-track-interactions="true"
-      data-track-engagement="true"
-      data-track-scroll-depth="true"
-      data-track-exit-intent="true"
-      data-track-bounce-rate="true"
-      data-track-web-vitals="true"
-      data-enable-batching="true"
-      crossorigin="anonymous"
-      async></script>
-
+    <meta name="sa-verify" content="qk4lotusnanocmke" />
     <!-- RSS Feed -->
     <link
       rel="alternate"
@@ -76,6 +61,7 @@ const {
       title="Lotus Nano RSS Feed"
       href="/rss.xml"
     />
+    <slot name="head" />
   </head>
 
   <body class="bg-stone-900">
