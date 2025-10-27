@@ -100,6 +100,14 @@
   to = "/contact"
   status = 301
 
+# ============================
+# Umami analytics proxy 
+# ============================
+[[redirects]]
+  from = "/stats/*"
+  to = "https://cloud.umami.is/:splat"
+  status = 200
+  force = true
 
 # ============================
 # Canonical cleanup (slashes & trailing dashes)
