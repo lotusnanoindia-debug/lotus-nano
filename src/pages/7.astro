@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout title="Home" description="Architecture that listens first.">
+  <Header />
+  <div class="h-20"></div>
+
+  <!-- HERO -->
+  <section class="relative h-screen">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2400"
+        alt="Architectural space"
+        class="h-full w-full object-cover opacity-50 saturate-0 dark:opacity-25"
+      />
+    </div>
+
+    <div
+      class="container relative mx-auto flex h-full flex-col justify-center px-6 lg:px-16"
+    >
+      <div class="max-w-4xl">
+        <h1
+          class="mb-16 text-7xl font-extralight leading-[0.85] tracking-tighter md:text-8xl lg:text-[11rem]"
+        >
+          Tell us what<br />
+          you need.
+        </h1>
+
+        <p
+          class="max-w-3xl text-3xl font-light leading-relaxed text-neutral-700 md:text-4xl dark:text-neutral-300"
+        >
+          No portfolio pitch. No jargon. Just a conversation about your vision.
+        </p>
+
+        <a
+          href="#talk"
+          class="group mt-16 inline-flex items-center gap-3 text-base font-light"
+        >
+          <span>Let's talk</span>
+          <Icon
+            name="mdi:arrow-down"
+            class="h-5 w-5 transition-transform group-hover:translate-y-1"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE DIFFERENCE -->
+  <section
+    id="talk"
+    class="border-t border-neutral-200 py-40 dark:border-neutral-800"
+  >
+    <div class="container mx-auto max-w-5xl px-6 lg:px-16">
+      <div class="grid grid-cols-1 gap-20 lg:grid-cols-2">
+        <div>
+          <p class="mb-12 text-5xl font-light leading-tight md:text-6xl">
+            You're not hiring an artist.
+          </p>
+          <p
+            class="text-2xl font-light leading-relaxed text-neutral-600 dark:text-neutral-400"
+          >
+            You're hiring someone to make your vision real—on your terms, your
+            timeline, your budget.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <div>
+            <p class="mb-2 text-lg font-light">First conversation:</p>
+            <p class="text-neutral-600 dark:text-neutral-400">
+              You describe what you need. Your constraints. Your priorities.
+            </p>
+          </div>
+          <div>
+            <p class="mb-2 text-lg font-light">Within 48 hours:</p>
+            <p class="text-neutral-600 dark:text-neutral-400">
+              Honest assessment. Realistic timeline. Transparent budget.
+            </p>
+          </div>
+          <div>
+            <p class="mb-2 text-lg font-light">After that:</p>
+            <p class="text-neutral-600 dark:text-neutral-400">
+              Regular updates. Direct access. Your project, your visibility.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL PROOF -->
+  <section class="py-24">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="mb-12 aspect-[21/9] overflow-hidden rounded-2xl">
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000"
+          alt="Oracle Campus"
+          class="h-full w-full object-cover saturate-0 transition-all duration-1000 hover:saturate-100"
+        />
+      </div>
+      <div class="text-center">
+        <p class="mb-2 text-2xl font-light">Oracle Corporate Campus</p>
+        <p class="text-neutral-600 dark:text-neutral-400">
+          900,000 sq ft · Delivered on schedule
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="bg-neutral-50 py-32 dark:bg-neutral-900/20">
+    <div class="container mx-auto max-w-4xl px-6 text-center lg:px-16">
+      <p class="mb-10 text-4xl font-light leading-relaxed md:text-5xl">
+        "They actually listened. Then delivered exactly what they promised."
+      </p>
+      <p
+        class="text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+      >
+        Private Client, Mumbai
+      </p>
+    </div>
+  </section>
+
+  <!-- SIMPLE CONTACT -->
+  <section class="py-40">
+    <div class="container mx-auto max-w-3xl px-6 text-center lg:px-16">
+      <h2 class="mb-8 text-6xl font-extralight">Ready?</h2>
+      <p class="mb-16 text-xl text-neutral-600 dark:text-neutral-400">
+        Tell us about your project.
+      </p>
+
+      <form class="space-y-6 text-left">
+        <input
+          type="text"
+          placeholder="Your name"
+          class="w-full border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:focus:border-neutral-100"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          class="w-full border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:focus:border-neutral-100"
+        />
+        <textarea
+          rows="5"
+          placeholder="What are you building?"
+          class="w-full resize-none border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:focus:border-neutral-100"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="mt-8 w-full rounded-sm bg-neutral-900 px-10 py-6 text-base font-light text-white transition-opacity hover:opacity-90 dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          Start the conversation
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

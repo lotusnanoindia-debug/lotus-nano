@@ -1,0 +1,486 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout
+  title="Home"
+  description="Architecture for those who refuse to compromise. Metaphors Design."
+>
+  <Header />
+  <div class="h-20"></div>
+
+  <!-- HERO: GRAYED, HUMAN, POWERFUL -->
+  <section class="relative flex min-h-screen items-center">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2400"
+        alt="People in architectural space"
+        class="h-full w-full object-cover opacity-40 grayscale dark:opacity-25"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/50 dark:from-neutral-950 dark:via-neutral-950/90 dark:to-neutral-950/50"
+      >
+      </div>
+    </div>
+
+    <div class="container relative z-10 mx-auto max-w-6xl px-6 lg:px-16">
+      <div class="max-w-4xl">
+        <p
+          class="mb-8 text-xs font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+        >
+          Architecture & Interior Design
+        </p>
+
+        <h1
+          class="mb-12 text-6xl font-extralight leading-[0.85] tracking-tighter md:text-7xl lg:text-[9rem]"
+        >
+          Spaces where<br />
+          life delights.
+        </h1>
+
+        <p
+          class="mb-6 max-w-3xl text-2xl font-light leading-relaxed text-neutral-700 md:text-3xl dark:text-neutral-300"
+        >
+          Your employees focused. Your family thriving. Your investment solid.
+        </p>
+
+        <p
+          class="mb-16 max-w-2xl text-lg text-neutral-600 dark:text-neutral-400"
+        >
+          35 years delivering architectural excellence that serves people — not
+          egos. On time. On budget. Without drama.
+        </p>
+
+        <div class="flex flex-col gap-6 sm:flex-row">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center gap-3 rounded-sm bg-neutral-900 px-10 py-5 text-base font-light text-white shadow-lg transition-opacity hover:opacity-90 dark:bg-neutral-100 dark:text-neutral-900"
+          >
+            Start a conversation
+            <Icon name="mdi:arrow-right" class="h-5 w-5" />
+          </a>
+          <a
+            href="#work"
+            class="inline-flex items-center justify-center gap-3 rounded-sm border-2 border-neutral-300 px-10 py-5 text-base font-light transition-colors hover:border-neutral-900 dark:border-neutral-700 dark:hover:border-neutral-100"
+          >
+            See our work
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section
+    class="border-t border-neutral-200 py-32 lg:py-40 dark:border-neutral-800"
+  >
+    <div class="container mx-auto max-w-6xl px-6 lg:px-16">
+      <p
+        class="mb-20 text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        Built for real outcomes
+      </p>
+
+      <!-- For Businesses -->
+      <div
+        class="mb-32 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
+      >
+        <div class="order-2 lg:order-1">
+          <div class="mb-8 flex items-start gap-4">
+            <Icon
+              name="mdi:office-building-outline"
+              class="h-10 w-10 flex-shrink-0 text-neutral-400 dark:text-neutral-600"
+            />
+            <div>
+              <p
+                class="mb-4 text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+              >
+                For businesses
+              </p>
+              <h2 class="mb-6 text-4xl font-light leading-tight md:text-5xl">
+                Workspaces that drive performance.
+              </h2>
+            </div>
+          </div>
+          <div
+            class="space-y-6 pl-14 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400"
+          >
+            <p>
+              Whether you're a Fortune 500 expanding into India or a startup
+              scaling fast—your space affects productivity, retention, and
+              bottom line.
+            </p>
+            <p>
+              Oracle's 900,000 sq ft campus: designed for 2,000+ employees to
+              focus, collaborate, and deliver. Completed on schedule. No
+              workspace complaints.
+            </p>
+            <div
+              class="border-t border-neutral-200 pt-6 dark:border-neutral-800"
+            >
+              <p class="text-sm italic text-neutral-500 dark:text-neutral-500">
+                "The space just works. Our teams perform better here." —
+                Facilities Director, Oracle India
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200"
+              alt="Professional workspace with people"
+              class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- For Families -->
+      <div
+        class="mb-32 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
+      >
+        <div class="order-1">
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200"
+              alt="Family in home"
+              class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </div>
+        <div class="order-2">
+          <div class="mb-8 flex items-start gap-4">
+            <Icon
+              name="mdi:home-heart"
+              class="h-10 w-10 flex-shrink-0 text-neutral-400 dark:text-neutral-600"
+            />
+            <div>
+              <p
+                class="mb-4 text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+              >
+                For families
+              </p>
+              <h2 class="mb-6 text-4xl font-light leading-tight md:text-5xl">
+                Homes that adapt to real life.
+              </h2>
+            </div>
+          </div>
+          <div
+            class="space-y-6 pl-14 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400"
+          >
+            <p>
+              Not showpieces. Not museums. Spaces designed around how your
+              family actually lives—from children playing to quiet evenings to
+              multi-generational gatherings.
+            </p>
+            <p>
+              Private residence in Mumbai: three generations, one home. Designed
+              for privacy when needed, connection when desired. Every room
+              serves their rhythm.
+            </p>
+            <div
+              class="border-t border-neutral-200 pt-6 dark:border-neutral-800"
+            >
+              <p class="text-sm italic text-neutral-500 dark:text-neutral-500">
+                "They understood we weren't buying a showpiece. We were building
+                a home." — Private Client, Mumbai
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- For Developers -->
+      <div
+        class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
+      >
+        <div class="order-2 lg:order-1">
+          <div class="mb-8 flex items-start gap-4">
+            <Icon
+              name="mdi:city-variant-outline"
+              class="h-10 w-10 flex-shrink-0 text-neutral-400 dark:text-neutral-600"
+            />
+            <div>
+              <p
+                class="mb-4 text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+              >
+                For developers
+              </p>
+              <h2 class="mb-6 text-4xl font-light leading-tight md:text-5xl">
+                Projects that lease fast, deliver ROI.
+              </h2>
+            </div>
+          </div>
+          <div
+            class="space-y-6 pl-14 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400"
+          >
+            <p>
+              Empty floors don't generate returns. Spaces designed to attract
+              tenants quickly mean faster cashflow, better financing terms,
+              higher valuations.
+            </p>
+            <p>
+              Chennai mixed-use development: 95% leased within 3 months of
+              completion. Designed for tenant priorities, not architectural
+              awards.
+            </p>
+            <div
+              class="border-t border-neutral-200 pt-6 dark:border-neutral-800"
+            >
+              <p class="text-sm italic text-neutral-500 dark:text-neutral-500">
+                "On schedule. On budget. Leased faster than any project we've
+                done." — Real Estate Developer, Chennai
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200"
+              alt="Commercial development"
+              class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY METAPHORS -->
+  <section
+    id="work"
+    class="bg-neutral-50 py-32 lg:py-40 dark:bg-neutral-900/20"
+  >
+    <div class="container mx-auto max-w-6xl px-6 lg:px-16">
+      <div class="mb-20 max-w-3xl">
+        <h2 class="mb-8 text-5xl font-light leading-tight md:text-6xl">
+          What actually matters when you're hiring an architect.
+        </h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          It's not awards. It's not their portfolio website. It's whether they
+          deliver what they promise.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div>
+          <div
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800"
+          >
+            <Icon name="mdi:file-document-check-outline" class="h-7 w-7" />
+          </div>
+          <h3 class="mb-4 text-2xl font-light">Fixed commitments</h3>
+          <p class="leading-relaxed text-neutral-600 dark:text-neutral-400">
+            Timeline and budget in writing. Day one. No renegotiation. No
+            "unforeseen circumstances."
+          </p>
+        </div>
+
+        <div>
+          <div
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800"
+          >
+            <Icon name="mdi:map-marker-path" class="h-7 w-7" />
+          </div>
+          <h3 class="mb-4 text-2xl font-light">India expertise</h3>
+          <p class="leading-relaxed text-neutral-600 dark:text-neutral-400">
+            35 years navigating regulations, permits, contractors. Foreign
+            companies: we handle the complexity you don't understand.
+          </p>
+        </div>
+
+        <div>
+          <div
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800"
+          >
+            <Icon name="mdi:shield-lock-outline" class="h-7 w-7" />
+          </div>
+          <h3 class="mb-4 text-2xl font-light">Absolute discretion</h3>
+          <p class="leading-relaxed text-neutral-600 dark:text-neutral-400">
+            Most of our work never gets published. Your project. Your privacy.
+            Your choice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="py-24">
+    <div class="container mx-auto px-6 lg:px-16">
+      <p
+        class="mb-12 text-center text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        Recent work
+      </p>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class="group">
+          <div class="mb-4 aspect-[3/4] overflow-hidden rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"
+              alt="Oracle Campus"
+              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+            />
+          </div>
+          <p class="mb-1 text-lg font-light">Oracle Corporate Campus</p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            900,000 sq ft · Pune & Mumbai
+          </p>
+        </div>
+
+        <div class="group">
+          <div class="mb-4 aspect-[3/4] overflow-hidden rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800"
+              alt="Private Residence"
+              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+            />
+          </div>
+          <p class="mb-1 text-lg font-light">Private Residence</p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            Confidential · Mumbai
+          </p>
+        </div>
+
+        <div class="group">
+          <div class="mb-4 aspect-[3/4] overflow-hidden rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800"
+              alt="Mixed-Use Development"
+              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+            />
+          </div>
+          <p class="mb-1 text-lg font-light">Mixed-Use Development</p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            Commercial & Residential · Chennai
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="mt-12 text-center text-sm text-neutral-500 dark:text-neutral-500"
+      >
+        Most projects remain confidential. These clients chose to share.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="border-y border-neutral-200 py-24 dark:border-neutral-800">
+    <div class="container mx-auto max-w-5xl px-6 lg:px-16">
+      <div class="grid grid-cols-2 gap-12 text-center md:grid-cols-4">
+        <div>
+          <p class="mb-3 text-6xl font-extralight md:text-7xl">35</p>
+          <p
+            class="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+          >
+            Years delivering
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-6xl font-extralight md:text-7xl">200+</p>
+          <p
+            class="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+          >
+            Projects completed
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-6xl font-extralight md:text-7xl">900K</p>
+          <p
+            class="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+          >
+            Sq ft delivered
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-6xl font-extralight md:text-7xl">100%</p>
+          <p
+            class="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
+          >
+            On commitment
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-40">
+    <div class="container mx-auto max-w-4xl px-6 lg:px-16">
+      <div class="mb-20 text-center">
+        <h2 class="mb-8 text-5xl font-light leading-tight md:text-6xl">
+          Tell us about<br />your project.
+        </h2>
+        <p class="text-xl text-neutral-600 dark:text-neutral-400">
+          Whether it's a corporate campus, residential development, or private
+          home—let's discuss what you need.
+        </p>
+      </div>
+
+      <form class="mx-auto max-w-2xl space-y-6">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <input
+            type="text"
+            placeholder="Your name"
+            required
+            class="border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            class="border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+          />
+        </div>
+
+        <input
+          type="text"
+          placeholder="Company or project type"
+          class="w-full border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+        />
+
+        <textarea
+          placeholder="Tell us about your project—timeline, budget, priorities"
+          rows="5"
+          required
+          class="w-full resize-none border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="mt-8 w-full rounded-sm bg-neutral-900 px-10 py-6 text-base font-light text-white shadow-lg transition-opacity hover:opacity-90 dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          Send message
+        </button>
+
+        <p
+          class="pt-6 text-center text-sm text-neutral-500 dark:text-neutral-500"
+        >
+          We respond within 24 hours. All inquiries are confidential.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section class="bg-neutral-50 py-24 dark:bg-neutral-900/20">
+    <div class="container mx-auto max-w-4xl px-6 text-center lg:px-16">
+      <p class="leading-relaxed text-neutral-600 dark:text-neutral-400">
+        Recognized by Forbes India, The D-List 2025, and Asian Pacific Interior
+        Design Awards.<br />
+        <span class="text-neutral-500 dark:text-neutral-500"
+          >But measured by the spaces we deliver.</span
+        >
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

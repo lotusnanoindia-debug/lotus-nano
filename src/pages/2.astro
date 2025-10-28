@@ -1,0 +1,406 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout
+  title="Home"
+  description="Your vision is too important to compromise. Metaphors Design—35 years protecting what matters to you."
+>
+  <Header />
+  <div class="h-20"></div>
+
+  <!-- HERO: ASPIRATIONAL PULL -->
+  <section class="relative flex min-h-screen items-center justify-center">
+    <div class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-white via-neutral-50 to-white dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950"
+      >
+      </div>
+    </div>
+
+    <div class="container mx-auto max-w-6xl px-6 text-center lg:px-16">
+      <p
+        class="animate-fade-in mb-16 text-xs font-light uppercase tracking-[0.4em] text-neutral-400 dark:text-neutral-600"
+      >
+        Metaphors Design
+      </p>
+
+      <h1
+        class="mb-20 text-7xl font-extralight leading-[0.85] tracking-tighter md:text-8xl lg:text-[11rem]"
+      >
+        Your vision.<br />
+        Protected.
+      </h1>
+
+      <p
+        class="mx-auto mb-20 max-w-4xl text-2xl font-extralight leading-relaxed text-neutral-600 md:text-3xl lg:text-4xl dark:text-neutral-400"
+      >
+        From the first conversation to the final detail—<br />
+        every decision serves what you're building.
+      </p>
+
+      <a
+        href="#begin"
+        class="group inline-flex items-center gap-3 text-sm font-light text-neutral-900 dark:text-neutral-100"
+      >
+        <span>Discover how</span>
+        <Icon
+          name="mdi:arrow-down"
+          class="h-5 w-5 transition-transform group-hover:translate-y-1"
+        />
+      </a>
+    </div>
+  </section>
+
+  <!-- THE PHILOSOPHY -->
+  <section
+    id="begin"
+    class="border-t border-neutral-200 py-40 dark:border-neutral-800"
+  >
+    <div class="container mx-auto max-w-7xl px-6 lg:px-16">
+      <div class="grid grid-cols-1 items-start gap-20 lg:grid-cols-2 lg:gap-32">
+        <!-- Left: Large Image -->
+        <div class="sticky top-24">
+          <div class="aspect-[4/5] overflow-hidden rounded-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200"
+              alt="Architecture Detail"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Right: The Promise -->
+        <div class="space-y-16 pt-12">
+          <div>
+            <p
+              class="mb-12 text-5xl font-extralight leading-[1.15] md:text-6xl"
+            >
+              You've spent years imagining this space.
+            </p>
+            <p
+              class="text-2xl font-light leading-relaxed text-neutral-600 md:text-3xl dark:text-neutral-400"
+            >
+              It's in your head when you wake up. When you drive past the site.
+              When you close your eyes at night.
+            </p>
+          </div>
+
+          <div>
+            <p
+              class="text-2xl font-light leading-relaxed text-neutral-600 md:text-3xl dark:text-neutral-400"
+            >
+              That vision—the one only you can see right now—deserves
+              protection.
+            </p>
+          </div>
+
+          <div>
+            <p
+              class="text-2xl font-light leading-relaxed text-neutral-600 md:text-3xl dark:text-neutral-400"
+            >
+              Not interpretation. Not compromise.<br />
+              Not some architect's version of what they think you meant.
+            </p>
+          </div>
+
+          <div class="border-t border-neutral-200 pt-8 dark:border-neutral-800">
+            <p class="text-3xl font-light md:text-4xl">
+              That's what the next 35 years of your life deserves.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="bg-neutral-50 py-40 dark:bg-neutral-900/20">
+    <div class="container mx-auto max-w-6xl px-6 lg:px-16">
+      <p
+        class="mb-20 text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        How your vision stays yours
+      </p>
+
+      <div class="space-y-20">
+        <!-- Step 1 -->
+        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-2">
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-neutral-300 dark:border-neutral-700"
+            >
+              <span class="text-2xl font-extralight">1</span>
+            </div>
+          </div>
+          <div class="lg:col-span-10">
+            <h3 class="mb-6 text-4xl font-light md:text-5xl">
+              You talk. We listen.
+            </h3>
+            <p
+              class="text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+            >
+              Not a sales pitch. Not a portfolio presentation. Just you
+              describing what you see, what you need, what matters. We ask
+              questions until we understand your vision as clearly as you do.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-2">
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-neutral-300 dark:border-neutral-700"
+            >
+              <span class="text-2xl font-extralight">2</span>
+            </div>
+          </div>
+          <div class="lg:col-span-10">
+            <h3 class="mb-6 text-4xl font-light md:text-5xl">
+              You see it before we build it.
+            </h3>
+            <p
+              class="text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+            >
+              Concepts. Iterations. Refinements. Nothing moves forward until you
+              say, "Yes, that's exactly it." Your approval drives every phase.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-2">
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-neutral-300 dark:border-neutral-700"
+            >
+              <span class="text-2xl font-extralight">3</span>
+            </div>
+          </div>
+          <div class="lg:col-span-10">
+            <h3 class="mb-6 text-4xl font-light md:text-5xl">
+              You know what's happening.
+            </h3>
+            <p
+              class="text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+            >
+              Regular updates. Clear milestones. Direct access. No mysteries. No
+              waiting for callbacks. Your project, your visibility.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-2">
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-neutral-300 dark:border-neutral-700"
+            >
+              <span class="text-2xl font-extralight">4</span>
+            </div>
+          </div>
+          <div class="lg:col-span-10">
+            <h3 class="mb-6 text-4xl font-light md:text-5xl">
+              You walk into your vision.
+            </h3>
+            <p
+              class="text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+            >
+              On the day we promised. At the budget we agreed. The space you
+              imagined—now real. Now yours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL GALLERY -->
+  <section class="py-32">
+    <div class="container mx-auto px-6 lg:px-16">
+      <!-- Hero Project -->
+      <div class="mb-12">
+        <div class="mb-6 aspect-[21/9] overflow-hidden rounded-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000"
+            alt="Oracle Campus"
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <div class="max-w-3xl">
+          <p class="mb-3 text-2xl font-light md:text-3xl">
+            900,000 square feet of precision.
+          </p>
+          <p class="text-lg text-neutral-600 dark:text-neutral-400">
+            Oracle's corporate campus in Pune and Mumbai—delivered on schedule,
+            on budget, without compromise.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <div class="mb-4 aspect-[4/5] overflow-hidden rounded-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200"
+              alt="Residence"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <p class="mb-1 text-lg font-light">A family's sanctuary.</p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            Private residence, Mumbai
+          </p>
+        </div>
+
+        <div>
+          <div class="mb-4 aspect-[4/5] overflow-hidden rounded-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200"
+              alt="Urban"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <p class="mb-1 text-lg font-light">Where community thrives.</p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            Mixed-use development, Chennai
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="mt-16 text-center text-sm text-neutral-500 dark:text-neutral-500"
+      >
+        Most projects remain confidential. These clients chose to share.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="bg-neutral-50 py-40 dark:bg-neutral-900/20">
+    <div class="container mx-auto max-w-5xl px-6 lg:px-16">
+      <p
+        class="mb-20 text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        What your vision gets
+      </p>
+
+      <div class="space-y-24">
+        <div>
+          <p
+            class="mb-10 text-4xl font-extralight leading-[1.2] md:text-5xl lg:text-6xl"
+          >
+            "They protected our vision at every turn. Not once did we feel
+            steamrolled. The result is exactly what we imagined."
+          </p>
+          <p
+            class="text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+          >
+            Leading Industrialist, Mumbai
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="mb-10 text-4xl font-extralight leading-[1.2] md:text-5xl lg:text-6xl"
+          >
+            "On schedule. On budget. Zero surprises. They respect your time and
+            your investment."
+          </p>
+          <p
+            class="text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+          >
+            CFO, International Tech Company
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS (SUBTLE) -->
+  <section class="border-y border-neutral-200 py-24 dark:border-neutral-800">
+    <div class="container mx-auto max-w-5xl px-6 lg:px-16">
+      <div class="grid grid-cols-2 gap-12 text-center md:grid-cols-4">
+        <div>
+          <p class="mb-3 text-6xl font-extralight">35</p>
+          <p
+            class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-600"
+          >
+            Years protecting visions
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-6xl font-extralight">200+</p>
+          <p
+            class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-600"
+          >
+            Projects delivered
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-6xl font-extralight">900K</p>
+          <p
+            class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-600"
+          >
+            Sq ft built
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-6xl font-extralight">100%</p>
+          <p
+            class="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-600"
+          >
+            Confidential
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-40">
+    <div class="container mx-auto max-w-4xl px-6 text-center lg:px-16">
+      <h2
+        class="mb-16 text-5xl font-extralight leading-tight md:text-6xl lg:text-7xl"
+      >
+        Ready to protect<br />your vision?
+      </h2>
+
+      <form class="mx-auto max-w-2xl space-y-8">
+        <input
+          type="text"
+          placeholder="Your name"
+          class="w-full border-b border-neutral-300 bg-transparent px-0 py-5 text-lg transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+        />
+        <input
+          type="email"
+          placeholder="Your email"
+          class="w-full border-b border-neutral-300 bg-transparent px-0 py-5 text-lg transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+        />
+        <textarea
+          placeholder="Describe your vision"
+          rows="5"
+          class="w-full resize-none border-b border-neutral-300 bg-transparent px-0 py-5 text-lg transition-colors placeholder:text-neutral-400 focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:placeholder:text-neutral-600 dark:focus:border-neutral-100"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="mt-12 w-full rounded-sm bg-neutral-900 px-10 py-6 text-base font-light text-white transition-opacity hover:opacity-90 dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          Begin the conversation
+        </button>
+
+        <p class="pt-6 text-sm text-neutral-500 dark:text-neutral-500">
+          Responses within 24 hours. Every inquiry confidential.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout
+  title="Home"
+  description="Spaces where life happens. Metaphors Design."
+>
+  <Header />
+  <div class="h-20"></div>
+
+  <!-- HERO: HUMAN-FIRST -->
+  <section class="relative flex min-h-screen items-center">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2400"
+        alt="Family in modern home"
+        class="h-full w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"
+      >
+      </div>
+    </div>
+
+    <div class="container relative z-10 mx-auto max-w-6xl px-6 lg:px-16">
+      <div class="max-w-3xl text-white">
+        <h1
+          class="mb-12 text-7xl font-extralight leading-[0.85] tracking-tighter md:text-8xl lg:text-[10rem]"
+        >
+          Where your<br />
+          people thrive.
+        </h1>
+
+        <p
+          class="mb-16 text-2xl font-light leading-relaxed opacity-95 md:text-3xl"
+        >
+          Architecture isn't about buildings.<br />
+          It's about the lives happening inside them.
+        </p>
+
+        <a
+          href="#proof"
+          class="inline-flex items-center gap-3 rounded-sm bg-white px-10 py-5 text-base font-light text-neutral-900 shadow-2xl transition-colors hover:bg-neutral-100"
+        >
+          See how it works
+          <Icon name="mdi:arrow-right" class="h-5 w-5" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO YOU'RE BUILDING FOR -->
+  <section class="py-40">
+    <div class="container mx-auto max-w-6xl px-6 lg:px-16">
+      <p
+        class="mb-16 text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        Spaces designed for real life
+      </p>
+
+      <div class="mb-32 grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
+        <div>
+          <h2 class="mb-8 text-5xl font-light leading-tight md:text-6xl">
+            Your employees need to focus.
+          </h2>
+          <p
+            class="mb-8 text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+          >
+            Not be distracted by noise, poor lighting, or cramped layouts.
+            Productive spaces mean better output, lower turnover, higher ROI.
+          </p>
+          <p class="text-lg text-neutral-500 dark:text-neutral-500">
+            Commercial spaces designed around workflow, not ego.
+          </p>
+        </div>
+        <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200"
+            alt="People working in modern office"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <div class="mb-32 grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
+        <div
+          class="order-2 aspect-[4/3] overflow-hidden rounded-2xl lg:order-1"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200"
+            alt="Family in living space"
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="mb-8 text-5xl font-light leading-tight md:text-6xl">
+            Your family needs to feel at home.
+          </h2>
+          <p
+            class="mb-8 text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+          >
+            Not live in a museum. Spaces that adapt to how your family actually
+            lives—from kids playing to quiet evenings to hosting guests.
+          </p>
+          <p class="text-lg text-neutral-500 dark:text-neutral-500">
+            Residences designed for living, not photographing.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
+        <div>
+          <h2 class="mb-8 text-5xl font-light leading-tight md:text-6xl">
+            Your tenants need to lease fast.
+          </h2>
+          <p
+            class="mb-8 text-xl font-light leading-relaxed text-neutral-600 md:text-2xl dark:text-neutral-400"
+          >
+            Developers don't profit from empty floors. Spaces that attract
+            tenants quickly mean faster ROI and better financing terms.
+          </p>
+          <p class="text-lg text-neutral-500 dark:text-neutral-500">
+            Commercial developments designed to lease, not just look good.
+          </p>
+        </div>
+        <div class="aspect-[4/3] overflow-hidden rounded-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200"
+            alt="Modern office space with people"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="proof" class="bg-neutral-50 py-32 dark:bg-neutral-900/20">
+    <div class="container mx-auto max-w-6xl px-6 lg:px-16">
+      <p
+        class="mb-16 text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        Spaces where people thrive
+      </p>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <div class="mb-6 aspect-[4/5] overflow-hidden rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200"
+              alt="Oracle employees working"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <p class="mb-3 text-2xl font-light">2,000+ employees. Daily.</p>
+          <p class="mb-6 text-lg text-neutral-600 dark:text-neutral-400">
+            Oracle's campus designed for collaboration, focus, and growth.
+            Delivered on schedule.
+          </p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            "Zero complaints about the workspace. That's unheard of." —
+            Facilities Director
+          </p>
+        </div>
+
+        <div>
+          <div class="mb-6 aspect-[4/5] overflow-hidden rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200"
+              alt="Family in luxury home"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <p class="mb-3 text-2xl font-light">A family's forever home.</p>
+          <p class="mb-6 text-lg text-neutral-600 dark:text-neutral-400">
+            Private residence in Mumbai. Designed around three generations
+            living together.
+          </p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            "They understood we weren't buying a showpiece. We were building a
+            home." — Client
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE GUARANTEE -->
+  <section class="py-40">
+    <div class="container mx-auto max-w-5xl px-6 text-center lg:px-16">
+      <h2 class="mb-16 text-6xl font-light leading-tight md:text-7xl">
+        What you actually need<br />from your architect.
+      </h2>
+
+      <div class="mt-20 grid grid-cols-1 gap-12 text-left md:grid-cols-3">
+        <div>
+          <Icon name="mdi:shield-check" class="mb-6 h-12 w-12" />
+          <h3 class="mb-4 text-2xl font-light">Certainty</h3>
+          <p class="text-neutral-600 dark:text-neutral-400">
+            Fixed timelines. Fixed budgets. In writing. Day one.
+          </p>
+        </div>
+        <div>
+          <Icon name="mdi:account-group" class="mb-6 h-12 w-12" />
+          <h3 class="mb-4 text-2xl font-light">Human spaces</h3>
+          <p class="text-neutral-600 dark:text-neutral-400">
+            Designed for how people actually work, live, and move.
+          </p>
+        </div>
+        <div>
+          <Icon name="mdi:handshake" class="mb-6 h-12 w-12" />
+          <h3 class="mb-4 text-2xl font-light">Partnership</h3>
+          <p class="text-neutral-600 dark:text-neutral-400">
+            Direct access. Regular updates. Your project, your control.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="bg-neutral-900 py-32 text-white dark:bg-neutral-950">
+    <div class="container mx-auto max-w-3xl px-6 text-center lg:px-16">
+      <h2 class="mb-12 text-5xl font-light md:text-6xl">
+        Ready to build spaces<br />where people thrive?
+      </h2>
+
+      <form class="mt-16 space-y-6 text-left">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <input
+            type="text"
+            placeholder="Your name"
+            class="rounded-sm border border-white/20 bg-white/10 px-6 py-5 text-white transition-colors placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            class="rounded-sm border border-white/20 bg-white/10 px-6 py-5 text-white transition-colors placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+          />
+        </div>
+        <input
+          type="text"
+          placeholder="Company / Project type"
+          class="w-full rounded-sm border border-white/20 bg-white/10 px-6 py-5 text-white transition-colors placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+        />
+        <textarea
+          rows="4"
+          placeholder="Tell us about your project"
+          class="w-full resize-none rounded-sm border border-white/20 bg-white/10 px-6 py-5 text-white transition-colors placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="mt-8 w-full rounded-sm bg-white px-10 py-6 text-base font-light text-neutral-900 transition-colors hover:bg-neutral-100"
+        >
+          Start the conversation
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

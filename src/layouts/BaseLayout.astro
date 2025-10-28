@@ -1,84 +1,76 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
+interface Props {
+  title: string;
+  description?: string;
+}
+
 const {
-  title = 'Lotus Nano - PFAS Alternatives',
-  description = 'PFAS alternatives sourcing and compliance software advisory',
-  canonical = Astro.url.href,
-  ogImage = 'https://the-knowledge-brokers.sirv.com/lotus-nano/lotus-nano-og.jpg',
-  ogType = 'website',
+  title,
+  description = 'Metaphors Design - Architecture & Interior Design across India',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en-GB">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- SEO -->
-    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <meta name="author" content="Lotus Nano" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <title>{title} | Metaphors Design</title>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Lotus Nano PFAS Consulting" />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:site_name" content="Lotus Nano" />
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Lotus Nano PFAS Consulting" />
-
-    <!-- Page-specific head content -->
-
-    <!-- Favicon & Theme -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="preconnect" href="https://the-knowledge-brokers.sirv.com" />
-
-    <script
-      defer
-      src="/stats/script.js"
-      data-website-id="9173fd91-19f1-4308-bbda-4b36a9ca4343"></script>
-
-    <!-- RSS Feed -->
+    <!-- Font - Keep it minimal, 2 weights max -->
     <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="Lotus Nano RSS Feed"
-      href="/rss.xml"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
     />
-    <slot name="head" />
+
+    <!-- Favicon placeholder - replace later -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme script - runs before paint to prevent flash -->
+    <script is:inline>
+      // Check for saved theme preference or default to dark
+      const theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    </script>
   </head>
 
-  <body class="bg-stone-900">
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <script is:inline defer src="/assets/js/fo.js"></script>
+  <body
+    class="bg-white text-neutral-900 transition-colors duration-300 dark:bg-neutral-950 dark:text-neutral-100"
+  >
+    <slot />
+
+    <!-- Theme toggle functionality -->
+    <script>
+      function initThemeToggle() {
+        const toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+
+        toggle.addEventListener('click', () => {
+          const html = document.documentElement;
+          const isDark = html.classList.contains('dark');
+
+          if (isDark) {
+            html.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        });
+      }
+
+      // Run on page load
+      initThemeToggle();
+
+      // Re-run after view transitions
+      document.addEventListener('astro:page-load', initThemeToggle);
+    </script>
   </body>
 </html>
-
-<script>
-  import '../scripts/newsletter.js';
-</script>

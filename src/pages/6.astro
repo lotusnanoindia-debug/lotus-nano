@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<BaseLayout title="Home" description="Your deadline. Your budget. Delivered.">
+  <Header />
+  <div class="h-20"></div>
+
+  <!-- HERO -->
+  <section class="relative flex h-screen items-center justify-center">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2400"
+        alt="Architecture"
+        class="h-full w-full object-cover opacity-40 grayscale dark:opacity-20"
+      />
+    </div>
+
+    <div class="container relative mx-auto px-6 text-center lg:px-16">
+      <h1
+        class="mb-20 text-8xl font-extralight leading-[0.8] tracking-tighter md:text-9xl lg:text-[15rem]"
+      >
+        Delivered.
+      </h1>
+
+      <p
+        class="mx-auto mb-20 max-w-4xl text-3xl font-light text-neutral-700 md:text-4xl dark:text-neutral-300"
+      >
+        Your timeline. Your budget. No excuses.
+      </p>
+
+      <a
+        href="#how"
+        class="inline-flex items-center gap-3 rounded-sm bg-neutral-900 px-10 py-5 text-base font-light text-white transition-opacity hover:opacity-90 dark:bg-neutral-100 dark:text-neutral-900"
+      >
+        How it works
+        <Icon name="mdi:arrow-right" class="h-5 w-5" />
+      </a>
+    </div>
+  </section>
+
+  <!-- THE PROCESS -->
+  <section id="how" class="py-40">
+    <div class="container mx-auto max-w-5xl px-6 lg:px-16">
+      <div class="space-y-20">
+        <div class="flex items-start gap-8">
+          <span
+            class="text-6xl font-extralight text-neutral-300 dark:text-neutral-700"
+            >01</span
+          >
+          <div class="pt-3">
+            <h3 class="mb-4 text-4xl font-light">You tell us what you need.</h3>
+            <p class="text-xl text-neutral-600 dark:text-neutral-400">
+              Your vision. Your constraints. Your priorities.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-8">
+          <span
+            class="text-6xl font-extralight text-neutral-300 dark:text-neutral-700"
+            >02</span
+          >
+          <div class="pt-3">
+            <h3 class="mb-4 text-4xl font-light">
+              You get a fixed price and timeline.
+            </h3>
+            <p class="text-xl text-neutral-600 dark:text-neutral-400">
+              Transparent. In writing. No hidden fees.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-8">
+          <span
+            class="text-6xl font-extralight text-neutral-300 dark:text-neutral-700"
+            >03</span
+          >
+          <div class="pt-3">
+            <h3 class="mb-4 text-4xl font-light">You approve the design.</h3>
+            <p class="text-xl text-neutral-600 dark:text-neutral-400">
+              Nothing moves forward without your sign-off.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-8">
+          <span
+            class="text-6xl font-extralight text-neutral-300 dark:text-neutral-700"
+            >04</span
+          >
+          <div class="pt-3">
+            <h3 class="mb-4 text-4xl font-light">You walk into your space.</h3>
+            <p class="text-xl text-neutral-600 dark:text-neutral-400">
+              On the day promised. At the price agreed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF GRID -->
+  <section class="bg-neutral-50 py-24 dark:bg-neutral-900/20">
+    <div class="container mx-auto px-6 lg:px-16">
+      <p
+        class="mb-12 text-center text-sm font-light uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-600"
+      >
+        Recent deliveries
+      </p>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          [
+            {
+              img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800',
+              title: 'Oracle Campus',
+              detail: '900K sq ft',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800',
+              title: 'Private Residence',
+              detail: 'Mumbai',
+            },
+            {
+              img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800',
+              title: 'Mixed-Use',
+              detail: 'Chennai',
+            },
+          ].map((project) => (
+            <div>
+              <div class="mb-4 aspect-square overflow-hidden rounded-lg grayscale transition-all duration-700 hover:grayscale-0">
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <p class="font-light">{project.title}</p>
+              <p class="text-sm text-neutral-500 dark:text-neutral-500">
+                {project.detail}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="border-y border-neutral-200 py-24 dark:border-neutral-800">
+    <div class="container mx-auto px-6 lg:px-16">
+      <div class="mx-auto grid max-w-4xl grid-cols-3 gap-12 text-center">
+        <div>
+          <p class="mb-3 text-7xl font-extralight">35</p>
+          <p
+            class="text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+          >
+            Years
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-7xl font-extralight">200+</p>
+          <p
+            class="text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+          >
+            Delivered
+          </p>
+        </div>
+        <div>
+          <p class="mb-3 text-7xl font-extralight">0</p>
+          <p
+            class="text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-500"
+          >
+            Excuses
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="py-40">
+    <div class="container mx-auto max-w-3xl px-6 lg:px-16">
+      <h2 class="mb-16 text-center text-7xl font-extralight">Start.</h2>
+
+      <form class="space-y-6">
+        <input
+          type="text"
+          placeholder="Name"
+          class="w-full border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:focus:border-neutral-100"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          class="w-full border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:focus:border-neutral-100"
+        />
+        <textarea
+          rows="4"
+          placeholder="Project details"
+          class="w-full resize-none border-b border-neutral-300 bg-transparent px-6 py-5 transition-colors focus:border-neutral-900 focus:outline-none dark:border-neutral-700 dark:focus:border-neutral-100"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="mt-8 w-full rounded-sm bg-neutral-900 px-10 py-6 text-base font-light text-white transition-opacity hover:opacity-90 dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

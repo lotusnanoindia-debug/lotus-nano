@@ -1,9 +1,9 @@
 ---
-// No props needed yet
+// At the top, no changes needed
 ---
 
 <header
-  class="fixed left-0 right-0 top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-md transition-colors dark:border-neutral-800 dark:bg-neutral-950/80"
+  class="fixed left-0 right-0 top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur-md transition-colors dark:border-neutral-800 dark:bg-neutral-950/90"
 >
   <div class="container mx-auto px-6 lg:px-8">
     <nav class="flex h-20 items-center justify-between">
@@ -16,48 +16,39 @@
             >M</span
           >
         </div>
-        <span class="hidden text-xl font-semibold tracking-tight sm:block"
-          >Metaphors</span
-        >
+        <div class="hidden sm:block">
+          <span class="text-lg font-light tracking-tight">Metaphors</span>
+          <span
+            class="-mt-1 block text-xs text-neutral-500 dark:text-neutral-500"
+            >Design</span
+          >
+        </div>
       </a>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden items-center space-x-8 lg:flex">
-        <a
-          href="/work"
-          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          Our Work
-        </a>
-        <a
-          href="/services"
-          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          Services
-        </a>
-        <a
-          href="/process"
-          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          How We Work
-        </a>
-        <a
-          href="/about"
-          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          About
-        </a>
+      <!-- Desktop Navigation - TEMPORARY MOCKUP NAV -->
+      <div class="hidden items-center gap-3 lg:flex">
+        {
+          [1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+            <a
+              href={`/${num}`}
+              class="flex h-8 w-8 items-center justify-center rounded text-xs font-light text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-neutral-100"
+            >
+              {num}
+            </a>
+          ))
+        }
       </div>
 
       <!-- Right Side: Theme Toggle + CTA -->
       <div class="flex items-center space-x-4">
-        <!-- Theme Toggle -->
+        <!-- Theme Toggle Button -->
         <button
           id="theme-toggle"
+          type="button"
           class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 transition-colors hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
           aria-label="Toggle theme"
         >
-          <!-- Sun Icon (shows in dark mode) -->
+          <!-- Sun icon (visible in dark mode) -->
           <svg
             class="hidden h-5 w-5 dark:block"
             fill="none"
@@ -71,7 +62,7 @@
               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
             ></path>
           </svg>
-          <!-- Moon Icon (shows in light mode) -->
+          <!-- Moon icon (visible in light mode) -->
           <svg
             class="block h-5 w-5 dark:hidden"
             fill="none"
@@ -89,15 +80,16 @@
 
         <!-- CTA Button -->
         <a
-          href="/contact"
-          class="hidden items-center rounded-lg bg-neutral-900 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-neutral-800 hover:shadow-lg sm:inline-flex dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200"
+          href="#contact"
+          class="hidden items-center rounded-md bg-neutral-900 px-6 py-2.5 text-sm font-normal text-white transition-opacity hover:opacity-90 sm:inline-flex dark:bg-neutral-100 dark:text-neutral-900"
         >
-          Start a Conversation
+          Let's talk
         </a>
 
         <!-- Mobile Menu Toggle -->
         <button
           id="mobile-menu-toggle"
+          type="button"
           class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 lg:hidden dark:bg-neutral-900"
           aria-label="Toggle menu"
         >
@@ -117,41 +109,38 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu (hidden by default) -->
+    <!-- Mobile Menu -->
     <div
       id="mobile-menu"
       class="hidden border-t border-neutral-200 py-6 lg:hidden dark:border-neutral-800"
     >
-      <div class="flex flex-col space-y-4">
-        <a
-          href="/work"
-          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+      <div class="mb-4">
+        <p
+          class="mb-3 text-xs font-light uppercase tracking-wider text-neutral-500 dark:text-neutral-600"
         >
-          Our Work
-        </a>
+          Mockup versions
+        </p>
+        <div class="grid grid-cols-5 gap-2">
+          {
+            [1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+              <a
+                href={`/${num}`}
+                class="flex h-10 items-center justify-center rounded bg-neutral-100 text-sm font-light text-neutral-600 hover:bg-neutral-900 hover:text-white dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-100 dark:hover:text-neutral-900"
+              >
+                {num}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div
+        class="flex flex-col space-y-4 border-t border-neutral-200 pt-4 dark:border-neutral-800"
+      >
         <a
-          href="/services"
-          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+          href="#contact"
+          class="inline-flex items-center justify-center rounded-md bg-neutral-900 px-6 py-3 text-base font-normal text-white dark:bg-neutral-100 dark:text-neutral-900"
         >
-          Services
-        </a>
-        <a
-          href="/process"
-          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          How We Work
-        </a>
-        <a
-          href="/about"
-          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-        >
-          About
-        </a>
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-6 py-3 text-base font-semibold text-white dark:bg-neutral-100 dark:text-neutral-900"
-        >
-          Start a Conversation
+          Let's talk
         </a>
       </div>
     </div>
