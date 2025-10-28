@@ -1,151 +1,176 @@
 ---
-import { Icon } from 'astro-icon/components';
-
-const currentPath = Astro.url.pathname;
-
-// Tailwind classes for active and inactive navigation links
-const activeLinkClasses = 'border-b-2 border-amber-400 text-stone-100';
-const inactiveLinkClasses = 'text-stone-400 hover:text-stone-100';
-const contactInactiveLinkClasses = 'text-amber-400 hover:text-amber-300'; // Specific hover for contact link
-
-const isActive = (href: string) => {
-  // Use an exact match for the homepage
-  if (href === '/') {
-    return currentPath === '/';
-  }
-  // Use startsWith for all other pages to highlight parent sections
-  return currentPath.startsWith(href);
-};
-
-const navLinks = [
-  {
-    href: '/pfas-alternatives-sourcing',
-    text: 'PFAS-Free Sourcing',
-    mobileText: 'PFAS Sourcing',
-  },
-  { href: '/pfas-management-services', text: 'PFAS Management' },
-  { href: '/intelligence', text: 'Intelligence' },
-  { href: '/working-with-us', text: 'Working With Us' },
-  { href: '/about', text: 'About' },
-];
-
-const contactLink = {
-  href: '/contact',
-  text: 'Contact →',
-};
+// No props needed yet
 ---
 
 <header
-  class="fixed left-0 right-0 top-0 z-50 border-b border-stone-800/50 bg-stone-900/80 backdrop-blur-md"
+  class="fixed left-0 right-0 top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-md transition-colors dark:border-neutral-800 dark:bg-neutral-950/80"
 >
-  <nav class="mx-auto max-w-7xl px-6 lg:px-12">
-    <div class="flex h-16 items-center justify-between lg:h-20">
-      <!-- Logo with Dot -->
-      <a href="/" class="group flex items-center gap-1">
-        <span
-          class="text-xl font-black tracking-tight text-stone-100 transition-colors duration-300 group-hover:text-amber-200 lg:text-2xl"
+  <div class="container mx-auto px-6 lg:px-8">
+    <nav class="flex h-20 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="group flex items-center space-x-3">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-600 transition-transform group-hover:scale-105 dark:from-neutral-200 dark:to-neutral-400"
         >
-          lotus nano
-        </span>
-        <span
-          class="text-xl font-black leading-none text-teal-500 lg:-mt-2 lg:text-4xl"
-          >.</span
+          <span class="text-xl font-semibold text-white dark:text-neutral-900"
+            >M</span
+          >
+        </div>
+        <span class="hidden text-xl font-semibold tracking-tight sm:block"
+          >Metaphors</span
         >
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden items-center gap-8 lg:flex">
-        {
-          navLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                'pb-2 text-sm font-medium transition-colors duration-300',
-                isActive(link.href) ? activeLinkClasses : inactiveLinkClasses,
-              ]}
-            >
-              {link.text}
-            </a>
-          ))
-        }
-
-        <!-- Contact CTA -->
+      <div class="hidden items-center space-x-8 lg:flex">
         <a
-          href={contactLink.href}
-          class:list={[
-            'pb-2 text-sm font-semibold transition-colors duration-300',
-            isActive(contactLink.href)
-              ? activeLinkClasses
-              : contactInactiveLinkClasses,
-          ]}
+          href="/work"
+          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
         >
-          {contactLink.text}
+          Our Work
+        </a>
+        <a
+          href="/services"
+          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          Services
+        </a>
+        <a
+          href="/process"
+          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          How We Work
+        </a>
+        <a
+          href="/about"
+          class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          About
         </a>
       </div>
 
-      <!-- Mobile Menu Toggle -->
-      <button
-        id="mobile-menu-toggle"
-        class="text-stone-400 transition-colors duration-300 hover:text-stone-100 lg:hidden"
-        aria-label="Toggle menu"
-      >
-        <Icon name="mdi:menu" class="h-6 w-6" />
-      </button>
-    </div>
-  </nav>
+      <!-- Right Side: Theme Toggle + CTA -->
+      <div class="flex items-center space-x-4">
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 transition-colors hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+          aria-label="Toggle theme"
+        >
+          <!-- Sun Icon (shows in dark mode) -->
+          <svg
+            class="hidden h-5 w-5 dark:block"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
+          </svg>
+          <!-- Moon Icon (shows in light mode) -->
+          <svg
+            class="block h-5 w-5 dark:hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            ></path>
+          </svg>
+        </button>
 
-  <!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="hidden border-t border-stone-800/50 bg-stone-900/95 backdrop-blur-md lg:hidden"
-  >
-    <div class="mx-auto max-w-7xl space-y-4 px-6 py-6">
-      {
-        navLinks
-          .filter((link) => link.href !== '/working-with-us')
-          .map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                'block text-base font-medium transition-colors duration-300',
-                isActive(link.href) ? activeLinkClasses : inactiveLinkClasses,
-              ]}
-            >
-              {link.mobileText || link.text}
-            </a>
-          ))
-      }
+        <!-- CTA Button -->
+        <a
+          href="/contact"
+          class="hidden items-center rounded-lg bg-neutral-900 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-neutral-800 hover:shadow-lg sm:inline-flex dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200"
+        >
+          Start a Conversation
+        </a>
 
-      <a
-        href={contactLink.href}
-        class:list={[
-          'block border-t border-stone-800/50 pt-4 text-base font-semibold transition-colors duration-300',
-          isActive(contactLink.href)
-            ? activeLinkClasses
-            : contactInactiveLinkClasses,
-        ]}
-      >
-        {contactLink.text}
-      </a>
+        <!-- Mobile Menu Toggle -->
+        <button
+          id="mobile-menu-toggle"
+          class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 lg:hidden dark:bg-neutral-900"
+          aria-label="Toggle menu"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div
+      id="mobile-menu"
+      class="hidden border-t border-neutral-200 py-6 lg:hidden dark:border-neutral-800"
+    >
+      <div class="flex flex-col space-y-4">
+        <a
+          href="/work"
+          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          Our Work
+        </a>
+        <a
+          href="/services"
+          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          Services
+        </a>
+        <a
+          href="/process"
+          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          How We Work
+        </a>
+        <a
+          href="/about"
+          class="text-base font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+        >
+          About
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-6 py-3 text-base font-semibold text-white dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          Start a Conversation
+        </a>
+      </div>
     </div>
   </div>
 </header>
 
+<!-- Mobile menu toggle script -->
 <script>
-  const toggle = document.getElementById('mobile-menu-toggle');
-  const menu = document.getElementById('mobile-menu');
+  function initMobileMenu() {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
 
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-  });
+    if (!toggle || !menu) return;
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (
-      !toggle?.contains(e.target as Node) &&
-      !menu?.contains(e.target as Node)
-    ) {
-      menu?.classList.add('hidden');
-    }
-  });
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+
+  initMobileMenu();
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>
